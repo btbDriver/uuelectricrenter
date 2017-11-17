@@ -1,0 +1,97 @@
+package com.uu.facade.dot.protobuf.iface;
+
+
+//地图页获取网点请求
+message MapSearchDotListRequest{
+	optional double currentPositionLat = 1;  //app上传当前地理位置坐标 纬度
+	optional double currentPositionLon = 2;  //app上传当前地理位置坐标 经度
+	required string cityId = 3;              //城市Id
+	optional int32 needScale = 4;            //客户端是否请求比例尺  1：需要   2：不需要
+	optional int32 iconResolution = 5;       //活动图标分辨率    1:大图   2:小图
+
+}
+
+//地图页获取网点响应
+message MapSearchDotListResponse{
+	required int32 ret = 1;                   //返回码
+	repeated DotInfo allDots = 2;             //所有网点列表
+	repeated DotInfo nearDots = 3;            //附近网点列表
+	optional float scale = 4;                 //比例尺   （for IOS）
+	optional float displayRatio = 5;          //显示比例 （for Android）
+	optional DotInfo defaultDot = 6;          //给客户端的默认网点
+	repeated ActivityIcon activityIcon = 7;   //活动图标
+}
+
+//地图页网点信息
+message DotInfo{
+	optional int32 carTotal = 1;     //车辆个数
+	optional string dotId = 2;       //网点Id
+	optional double dotLat = 3;      //网点位置纬度
+	optional double dotLon = 4;      //网点位置经度
+	optional string dotName = 5;     //网点 名称    （eg:佳亿青年汇地面停车场） 
+	optional string dotDesc = 6;     //网点位置描述 （eg:青年路与朝阳北路交口往南50米）
+	optional int32 distance = 7;     //距离网点步行约 XX 米 （单位：米）
+	optional int32 hasDiscount = 8;  //是否打折   1-有折扣   非1-无折扣
+	optional int32 isA2B = 9;	//是否支持异地还车1-支持，2-不支持
+	optional float backCarFee = 10;	//A2B还车费
+	optional string dotSpace = 11;	//停车位信息
+	optional string backCarFeeDesc = 12;	//A2B还车费文案
+}
+
+//活动图标
+message ActivityIcon{
+	optional ActivityIconType type = 1;   //活动图标类型
+	optional string url = 2;              //图片url   
+}
+
+//活动图标类型
+enum ActivityIconType{
+	CheckedNoDiscount = 1;             //选中                        无折扣
+	UncheckedNoCarNoDiscount = 2;      //未选中      无车       无折扣 
+	UncheckedHasCarNoDiscount = 3;     //未选中      有车       无折扣
+	CheckedHasDiscount = 4;            //选中                        有折扣
+	UncheckedNoCarHasDiscount = 5;     //未选中      无车       有折扣
+	UncheckedHasCarHasDiscount = 6;    //未选中      有车       有折扣
+	CheckedNoDiscountA2B = 7;             //选中                        无折扣	A2B
+	UncheckedNoCarNoDiscountA2B = 8;      //未选中      无车       无折扣 	A2B
+	UncheckedHasCarNoDiscountA2B = 9;     //未选中      有车       无折扣	A2B
+}
+
+//行程规划-附近网点(非登录态)
+message FindNearA2BDot{
+	message Request{
+		required double currentPositionLat = 1;  //app上传当前地理位置坐标 纬度
+		required double currentPositionLon = 2;  //app上传当前地理位置坐标 经度
+		required string cityId = 3;              //城市Id
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;
+		repeated DotInfo dots = 2; //网点集合
+	}
+}
+
+//行程规划-常用网点-登录态
+message FindCommonA2BDotNL{
+	message Request{
+		required string cityId = 1; //城市ID
+		optional string parkingId = 2; //本次取车网点ID，费用预估场景必传。否则不知道本次取车网点
+		optional string orderId = 3; //本次行程订单ID，行程中场景必传。否则拿不到本次取车网点
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;
+		repeated DotInfo dots = 2; //网点集合
+		optional DotInfo currentDot = 3; //当前取车网点信息
+	}
+}
+
+//更改行程
+message ChangeBackDotNL{
+	message Request{
+		optional DotInfo backParkingInfo = 1; //还车车网点
+		optional string orderId = 2; //订单号
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;
+		optional string mess = 2; //文本信息
+	}
+}

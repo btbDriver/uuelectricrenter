@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/c10"
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/current_top_tip"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#f69d3d"
+        android:visibility="gone"
+        android:animateLayoutChanges="true"
+        >
+
+        <TextView
+            android:id="@+id/current_top_tip_btn"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:text="点击充值"
+            android:textSize="@dimen/f5"
+            android:textColor="#f69d3d"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/s4"
+            android:padding="0dp"
+            android:background="@drawable/current_toptip_btn_bg"
+            />
+
+        <TextView
+            android:id="@+id/current_top_tip_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s4"
+            android:layout_centerVertical="true"
+            android:textColor="@color/c11"
+            android:textSize="@dimen/f5"
+            android:text="为确保账户余额充足不影响长时间用车，请及时充值，以免影响继续用车"
+            android:layout_toLeftOf="@+id/current_top_tip_btn"
+            android:layout_marginRight="@dimen/s2"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/car_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/current_top_tip"
+        android:background="@color/c11">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/car_img"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/s4"/>
+
+        <LinearLayout
+            android:animateLayoutChanges="true"
+            android:id="@+id/folding_car_control"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/s4"
+            android:layout_marginTop="@dimen/s4"
+            android:background="@drawable/bt_shape"
+            android:gravity="center"
+            android:minWidth="40dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/car_control_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_voice_trip"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/car_control_lock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="3dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_lock_trip"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/car_control_unlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="3dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_unlock_trip"/>
+
+            <ImageView
+                android:id="@+id/car_control_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_remotecontrol_trip"/>
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/img_car_tips"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/folding_car_control"
+            android:layout_marginRight="@dimen/s4"
+            android:layout_marginTop="@dimen/s4"
+            android:background="@drawable/car_tips_shape"
+            android:padding="12dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_guide_trip"/>
+
+        <LinearLayout
+            android:id="@+id/car_name_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/car_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/s1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/car_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f3"/>
+
+            <TextView
+                android:id="@+id/gear_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f3"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/car_nubmer"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_below="@id/car_name_root"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/s2"
+            android:background="@drawable/car_number_bg"
+            android:paddingLeft="@dimen/s1"
+            android:paddingRight="@dimen/s1"
+            android:textColor="@color/c7"
+            android:textSize="@dimen/f5"/>
+
+        <LinearLayout
+            android:id="@+id/info_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/car_nubmer"
+            android:layout_marginTop="@dimen/s4"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/user_mileage_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/s4"
+                    android:text="@string/use_mileage"
+                    android:textColor="@color/c4"
+                    android:textSize="@dimen/f5"/>
+
+                <TextView
+                    android:id="@+id/user_mileage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_mileage_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/s4"
+                    android:layout_marginTop="@dimen/s1"
+                    android:paddingBottom="@dimen/s3"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"/>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/c6"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/user_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/s4"
+                    android:text="@string/use_time"
+                    android:textColor="@color/c4"
+                    android:textSize="@dimen/f5"/>
+
+                <TextView
+                    android:id="@+id/user_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_time_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/s4"
+                    android:layout_marginTop="@dimen/s1"
+                    android:paddingBottom="@dimen/s4"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"/>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/c6"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/user_price_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/s4"
+                    android:text="@string/use_price"
+                    android:textColor="@color/c4"
+                    android:textSize="@dimen/f5"/>
+
+                <TextView
+                    android:id="@+id/user_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_price_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/s4"
+                    android:layout_marginTop="@dimen/s1"
+                    android:paddingBottom="@dimen/s3"
+                    android:textColor="@color/c8"
+                    android:textSize="@dimen/f4"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/car_root"
+        android:background="@color/c10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:background="@color/c10"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/s2"
+                android:gravity="center|left"
+                android:text="@string/return_car_address_title"
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f4"
+                android:paddingTop="@dimen/s2"
+                />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"></View>
+
+
+            <LinearLayout
+                android:id="@+id/ll_change_return_car_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:paddingTop="@dimen/s2"
+                    android:id="@+id/tv_change_return_car_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="@string/change_return_car_address"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"/>
+
+                <ImageView
+                    android:paddingTop="@dimen/s2"
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/s1"
+                    android:layout_marginRight="@dimen/s3"
+                    android:src="@mipmap/ic_nextpage_small"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/s1"
+            android:layout_marginRight="@dimen/s1"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_topview_address"
+            />
+
+        <RelativeLayout
+            android:background="@color/c11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s2"
+            android:layout_marginRight="@dimen/s2"
+            >
+
+            <LinearLayout
+
+                android:id="@+id/navigation"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@mipmap/ic_navigation_return"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/s1"
+                    android:text="导航"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"/>
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/divider"
+                layout="@layout/vertical_divider"
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/park_desc"
+                android:layout_marginBottom="@dimen/s4"
+                android:layout_marginTop="@dimen/s4"
+                android:layout_toLeftOf="@id/navigation"/>
+
+
+            <LinearLayout
+                android:background="@color/c11"
+                android:layout_marginTop="@dimen/s1"
+                android:id="@+id/park_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/divider"
+                android:orientation="vertical"
+                android:src="@mipmap/ic_bottomview_address"
+                android:tileMode="repeat"
+                >
+
+                <include
+                    android:id="@+id/park_name"
+                    layout="@layout/list_item_l4_left"/>
+
+                <TextView
+                    android:id="@+id/park_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f3"/>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="6dp"/>
+
+                <TextView
+                    android:id="@+id/remote_park_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:text="需支付10元异地还车费"
+                    android:textColor="@color/c8"
+                    android:textSize="@dimen/f4"/>
+
+
+                <View
+                    android:layout_width="1px"
+
+                    android:layout_height="@dimen/s2"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <ImageView
+
+            android:layout_marginLeft="@dimen/s2"
+            android:layout_marginRight="@dimen/s2"
+            android:layout_width="match_parent"
+            android:background="@drawable/bottom_address"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/c11"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/b3_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s4"
+            android:layout_marginRight="@dimen/s4"
+            android:layout_marginTop="@dimen/s3"/>
+
+        <TextView
+            android:id="@+id/call_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/s2"
+            android:layout_marginTop="@dimen/s3"
+            android:text="@string/call_center"
+            android:textColor="@color/c4"
+            android:textSize="@dimen/f4"/>
+
+    </LinearLayout>
+</RelativeLayout>

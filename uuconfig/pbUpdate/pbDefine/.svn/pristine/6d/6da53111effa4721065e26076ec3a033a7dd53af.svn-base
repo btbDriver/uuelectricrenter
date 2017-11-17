@@ -1,0 +1,59 @@
+import "uu_common.proto";
+package com.uu.facade.usecar.protobuf.bean;
+
+
+/**
+* 订单用车中开门
+*
+*/
+message OpenCarDoorDuringOrderMessage{	
+	message Request {
+		optional string orderId = 1; //订单ID
+		optional com.uu.facade.base.common.LatLon latLong = 2; //手机客户端的经纬度
+	}
+
+	message Response {
+		required int32 retStatus=1; //开门状态 0:成功，-1：失败
+		optional string msg = 2;//消息		
+	}
+}
+
+
+
+
+/**
+* 订单用车中关门
+*
+*/
+message CloseCarDoorDuringOrderMessage{	
+	message Request {
+		optional string orderId = 1; //订单ID
+		optional com.uu.facade.base.common.LatLon latLong = 2; //手机客户端的经纬度
+	}
+
+	message Response {
+		required int32 retStatus=1; //开门状态 0:成功，-1：失败
+		optional string msg = 2;//消息		
+	}
+}
+
+
+
+
+
+/**
+*订单用车中 寻车
+*
+*/
+message FindCarDuringOrderMessage{
+	message Request {
+	    optional string orderId = 1; //订单ID
+		optional com.uu.facade.base.common.LatLon latLong = 2; //手机客户端的经纬度
+	}
+
+	message Response {
+		required int32 retStatus=1; //开门状态 0:成功，-1：失败
+		optional string msg = 2;//消息		
+		}
+		
+}

@@ -1,0 +1,11 @@
+package com.uu.facade.auth.pb.mq;
+
+/**
+ * 用户注册成功mq [copy from UUBusiness-User]
+ *
+ */
+message UserMsg{
+	optional int32 userId=1; //用户id
+	optional string mobile=2; //手机号
+	optional string gf=3; //来源渠道
+}

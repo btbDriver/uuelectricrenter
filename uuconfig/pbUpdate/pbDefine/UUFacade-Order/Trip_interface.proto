@@ -1,0 +1,30 @@
+import "uu_common.proto";
+import "Trip_common.proto";
+package com.uu.facade.order.protobuf.bean;
+
+
+
+message OrderTripList {
+	message Request {
+		optional com.uu.facade.base.common.PageNoRequest pageRequest = 1; // 翻页请求
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+		repeated com.uu.facade.order.protobuf.common.TripListInfo orderInfos = 2; // 订单列表
+		optional com.uu.facade.base.common.PageResultNew pageResult = 3; // 翻页返回参数
+	}
+}
+
+message OrderDetail {
+	message Request {
+		required string orderId = 1; // 订单标识
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+		optional com.uu.facade.order.protobuf.common.OrderInfo orderDetailInfo = 2; // 订单详情
+	}
+}
+
+

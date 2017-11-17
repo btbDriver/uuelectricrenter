@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.youyou.uuelectric.renter">
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <!-- <uses-sdk tools:node="replace"/> -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.Activity.NOTIFICATION_SERVICE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.youyou.uuelectric.renter.permission.MMOAUTH_CALLBACK" />
+    <uses-permission android:name="com.youyou.uuelectric.renter.permission.MM_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--<uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
+    <application
+        android:name=".UUApp"
+        android:allowBackup="true"
+        android:anyDensity="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:logo="@mipmap/icon"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="55de88ed67e58ea4fb000cf5" />
+        <!--<meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="0af630b167bb256fba796650c8c697a7" />
+
+        <activity
+            android:name=".UI.main.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomHeaderDark" />
+
+        <!-- scheme协议 -->
+        <activity
+            android:name=".UI.translate.NativeAppActivity"
+            android:label="@string/app_name">
+
+            <!-- 要想在别的App上能成功调起App，必须添加intent过滤器 -->
+            <intent-filter>
+
+                <!-- 协议部分，随便设置 -->
+                <data android:scheme="uuyongchemobile" />
+                <!-- 下面这几行也必须得设置 -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UI.start.StartActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/APPFullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".UI.start.GuideActivity"
+            android:theme="@style/APPFullScreen" />
+
+        <!-- 高德定位service -->
+        <service android:name="com.amap.api.location.APSService"></service>
+
+        <service android:name=".Service.LongConnService">
+            <intent-filter>
+                <action android:name="com.youyou.uuelectric.renter.Service.LongConnService" />
+            </intent-filter>
+        </service>
+
+        <!-- 轮询服务 -->
+        <service android:name=".Service.LoopService">
+            <intent-filter>
+                <action android:name="com.youyou.uuelectric.renter.Service.LoopService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".UI.main.AboutActivity"
+            android:label="@string/about_title" />
+        <activity
+            android:name=".UI.mapsearch.MapSearchActivity"
+            android:label="@string/map_search_title" />
+        <activity
+            android:name=".UI.mapsearch.AddressSelectForMapActivity"
+            android:label="@string/map_search_title" />
+        <activity
+            android:name=".UI.web.H5Activity"
+            android:label="@string/title_activity_h5" />
+        <activity
+            android:name=".UI.nearstation.NearStationActivity"
+            android:label="@string/title_near_station_activity" />
+        <activity
+            android:name=".UI.login.LoginPhoneActivity"
+            android:label="@string/title_activity_validate_phone"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name=".UI.main.rentcar.ConfirmCarActivity"
+            android:label="@string/title_activity_confirm_car" />
+        <activity
+            android:name=".UI.order.FavourActivity"
+            android:label="@string/title_activity_favour"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".UI.main.SettingActivity"
+            android:label="@string/setting" />
+        <activity
+            android:name=".UI.main.user.UserInfoActivity"
+            android:label="@string/title_activity_user_info" />
+        <activity
+            android:name=".UI.main.StartNaviActivity"
+            android:label="@string/title_activity_start_navi" />
+        <activity
+            android:name=".UI.license.ValidateLicenseActivity"
+            android:hardwareAccelerated="false"
+            android:label="@string/title_activity_validate_license"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".UI.main.rentcar.CostAssessActivity"
+            android:label="@string/title_activity_cost_assess" />
+        <activity
+            android:name=".UI.main.rentcar.AddressSelectActivity"
+            android:label="@string/title_activity_address_select" />
+        <activity
+            android:name=".UI.main.rentcar.ReturnCarActivity"
+            android:label="@string/title_activity_return_car"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.license.CameraActivity"
+            android:theme="@style/APPFullScreen" />
+        <activity
+            android:name=".UI.license.PhotoActivity"
+            android:label="@string/photo_camera_preview" />
+
+        <receiver
+            android:name=".Receiver.NetworkReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".UI.order.NeedPayOrderActivity"
+            android:label="@string/title_activity_need_pay_order" />
+        <activity
+            android:name=".UI.order.TripOrderDetailActivity"
+            android:label="@string/title_activity_trip_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.order.RouteActivity"
+            android:label="@string/title_activity_route" />
+
+        <!-- 登陆后轮询服务 -->
+
+        <activity
+            android:name=".UI.main.FeedbackActivity"
+            android:label="@string/title_activity_feedback"
+            android:windowSoftInputMode="stateVisible" />
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".UI.order.FavourSelectActivity"
+            android:label="@string/title_activity_favour_select" />
+
+        <!-- 通知公共处理类 -->
+        <activity android:name=".UI.translate.NotificationActivity"></activity>
+
+        <!--微信分享后的回调监听-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="微信分享" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:label="微信支付"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent" />
+
+    </application>
+
+</manifest>

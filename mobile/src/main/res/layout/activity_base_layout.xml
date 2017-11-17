@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youyou.uuelectric.renter.Utils.view.ProgressLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/progress_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 默认ToolBar布局 -->
+    <FrameLayout
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/default_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/AppTheme">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c11"
+                android:textSize="@dimen/f3"
+                android:visibility="gone" />
+
+
+            <com.youyou.uuelectric.renter.Utils.view.RippleView
+                android:id="@+id/rv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:paddingLeft="@dimen/f3"
+                android:paddingRight="@dimen/f3"
+                android:visibility="gone"
+                app:rv_color="@color/c11"
+                app:rv_type="rectangle">
+
+                <TextView
+                    android:id="@+id/right_opt_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/c11"
+                    android:textSize="@dimen/f3" />
+
+            </com.youyou.uuelectric.renter.Utils.view.RippleView>
+
+
+        </android.support.v7.widget.Toolbar>
+    </FrameLayout>
+
+    <!-- 内容布局容器 -->
+    <FrameLayout
+        android:id="@+id/fl_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_container" />
+
+</com.youyou.uuelectric.renter.Utils.view.ProgressLayout>

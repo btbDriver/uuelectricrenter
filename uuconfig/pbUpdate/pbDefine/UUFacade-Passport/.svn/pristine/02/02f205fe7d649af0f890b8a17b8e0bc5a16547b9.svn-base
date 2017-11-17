@@ -1,0 +1,116 @@
+import "login_common.proto";
+import "uu_common.proto";
+package com.uu.facade.passport.pb.iface;
+
+ /*
+ * 客户端启动后登陆策略如下：
+ * 1、客户端在没有票据或者票据失效的情况下，使用写死的对称加密密钥对接口请求进行加密
+ * 2、客户端启动后，在后台异步的使用uuid进行登录，拿到游客票据
+ * 3、客户端拿到游客票据后，使用票据里的密钥对通信通道进行加密
+ */
+
+/*
+ * 下发短信验证码
+ */
+message RequireSmsVerifyCode {
+	message Request {
+		required string phone = 1; // 手机号码
+		optional com.uu.facade.passport.pb.bean.VerifyCodeScene scene = 4 [default = SMS_LOGIN]; // 场景
+	}
+
+	message Response {
+
+		/*
+		 * 0：获得验证码成功；
+		 * -1:获得验证码失败；
+		 * -2：手机号码格式不正确；
+		 * -3：申请验证码太频繁
+		 * -5：不是内测用户不能登录
+		 */
+		required int32 ret = 1;
+	}
+
+}
+
+// 请求语音验证码
+message RequireVoiceVerifyCode {
+	message Request {
+		required string phone = 1; // 手机号码
+		optional com.uu.facade.passport.pb.bean.VerifyCodeScene scene = 3 [default = SMS_LOGIN]; // 场景
+	}
+
+	message Response {
+
+		/*
+		 * 0：获得验证码成功；
+		 * -1:获得验证码失败；
+		 * -2：手机号码格式不正确；
+		 * -3：申请验证码太频繁
+		 * -5：不是内测用户不能登录
+		 */
+		required int32 ret = 1;
+		optional string voiceCallNumber = 2; // 语音电话号码
+	}
+
+}
+
+// 提交短信验证码，如果该手机号码没有注册过，则直接给用户注册
+message SmsLogin {
+	message Request {
+		required string phone = 1; // 手机号码
+		required string verifyCode = 2; // 验证码
+	}
+
+	message Response {
+		/*
+		 * 0：成功；-1:登录失败；-2：验证码错误；-3：验证码已经失效；-4：手机号码格式不正确；-5：不是内测用户不能登录
+		 */
+		required int32 ret = 1;
+		optional com.uu.facade.passport.pb.bean.UserAppSessionTicket sessionTicket = 2;
+		optional string phone = 3; // 手机号码
+		optional string imgUrl = 4; // 用户图像url
+		optional com.uu.facade.base.common.UserStatus userStatus = 5; // 用户状态
+		optional string displayName = 6; //登录后展示的名字(如果系统保存的名字不完整显示手机号)
+	}
+
+}
+
+
+// 更新票据
+message UpdateTicket {
+	message Request {
+	}
+
+	message Response {
+		required int32 ret = 1; // 0:成功；-1：失败
+		optional com.uu.facade.passport.pb.bean.UserAppSessionTicket sessionTicket = 2;
+	}
+
+}
+
+// 注销请求
+message Logout {
+	message Request {
+		optional int32 time = 1; // 客户端当前时间
+	}
+
+	message Response {
+		required int32 ret = 1; // 0:成功；-1：失败
+	}
+
+}
+
+// 活动点赞验证用户
+message VerifyActivitySupport {
+	message Request {
+		required string phone = 1; // 手机号码
+		required string verifyCode = 2; // 验证码
+		required int32  isRegistere = 3; //是否注册： 0-否   1-是
+	}
+
+	message Response {
+		required int32 ret = 1; //0：成功；-1:验证失败；-2：验证码错误；-3：验证码已经失效；-4：手机号码格式不正确；
+		optional int32 isNewUser = 2;	//是否是新用户  0-不是，1-是
+	}
+
+}

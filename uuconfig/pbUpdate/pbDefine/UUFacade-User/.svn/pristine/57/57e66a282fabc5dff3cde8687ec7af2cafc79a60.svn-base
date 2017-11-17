@@ -1,0 +1,89 @@
+import "uu_common.proto";
+package com.uu.facade.user.protobuf.bean;
+
+message ShareCode {
+	message Request {
+		optional int32 r = 1; // 默认字段，填入一个随机数即可
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+		repeated string shareCode = 2; // 分享码
+	}
+
+}
+
+message UserReportDot {
+	message Request {
+		optional double userLn = 1; //经度
+		optional double userLat = 2; //纬度
+		optional string reportAddress = 3; //上报地址
+		optional string dotId = 4; //网点标识 当出现用户选择有车后提醒时但是没选择网点信息时dotId设置成-1，如果是建点请求dotid设置成-2
+		optional int32 reqType = 5; //请求类型 '1.建点提示2.有车提醒',
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+	}
+
+}
+
+//用户状态信息
+message UserInfo {
+	message Request {
+		optional int32 r = 1; // 默认字段，填入一个随机数即可
+	}
+
+	message Response {
+		required int32 ret = 1; // 0:成功；-1：失败
+		optional string phone = 2; // 手机号码
+		optional string imgUrl = 3; // 用户图像url
+		optional com.uu.facade.base.common.UserStatus userStatus = 4; // 用户状态
+		optional string orderId = 5; // 用户当前有效订单
+		optional int32 orderStatus = 6; // 1:待取车；2：行程中；4：待支付;   （20之前预留订单使用）   20：存在必须要要支付的欠费记录
+		optional int32 otherFee = 7;//1 存在其他普通费用  0:不存在
+		optional int32 trafficFee = 8;//1 存在违章费用  0:不存在
+		optional string displayName = 9; //侧导及用户中心展示的名字(如果系统保存的名字不完整显示手机号)
+	}
+
+}
+
+// 查询用户审核状态信息
+message UserVerifyInfo {
+	message Request {
+		optional int32 r = 1; // 默认字段，填入一个随机数即可
+	}
+
+	message Response {
+		required int32 ret = 1; // 0:成功；-1：失败
+		optional string verifyNotice = 2; // 提示文案
+	}
+
+}
+
+// 客户端启动时，调用的通用查询接口，查询的内容包括
+// 1、各种配置的版本号
+// 2、如果有登录态，则查询用户的各种信息
+message StartQueryInterface {
+	message Request {
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+		optional int32 longConnectionLoopMsgIntervalSecs = 2 [default = 60]; // 后台配置的客户端轮询消息间隔秒数，注意，客户端本地必须有一个轮询消息间隔时间的默认值，从接口拉到该值后，覆盖掉客户端本地的默认值
+		optional com.uu.facade.base.common.WebUrl helpCenter = 3; // 帮助中心
+		optional com.uu.facade.base.common.WebUrl share = 4; // 分享
+		optional com.uu.facade.base.common.WebUrl balanceList = 5; //余额
+		optional com.uu.facade.base.common.WebUrl activeList = 6; // 活动
+		optional com.uu.facade.base.common.WebUrl billingRule = 7; //收费规则
+		optional com.uu.facade.base.common.WebUrl invoice = 8; //发票
+		optional com.uu.facade.base.common.WebUrl registeredAgreement = 9; //注册用户协议
+		optional com.uu.facade.base.common.WebUrl platformRule = 10; //平台规则
+		optional string b4Domain = 11;//b4跳转的域名
+		optional com.uu.facade.base.common.WebUrl paymentNotice = 12;//待支付费用
+		optional com.uu.facade.base.common.WebUrl peccancyList =13;//待处理违章
+		optional string rechargeDesc =14;//侧边栏充值活动文案
+		optional com.uu.facade.base.common.WebUrl CarEarlyKnow  = 15; //用车早知道
+	}
+
+}

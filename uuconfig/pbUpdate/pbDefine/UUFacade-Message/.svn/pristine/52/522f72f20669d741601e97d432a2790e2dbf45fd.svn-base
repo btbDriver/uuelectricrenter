@@ -1,0 +1,68 @@
+package com.uu.facade.message.pb.common;
+
+message MsgStructPackage {
+	required MessageType messageType = 1; // 消息展示类型
+	required bytes reqData = 2; // 该字段是消息结构体序列化后的数据
+	required int32 validSecs = 3[default = -1]; // 消息在客户端保存的有效秒数，超过这个时间客户端不展示，如果是-1，表示不需要限制
+	required int32 delayShowSecs = 4[default = 0]; // 客户端拿到消息后，延迟多少秒再展示，0，表示不延迟
+	required int32 level = 5[default = 0]; // 此消息结构在端显示优先级别，级别越高，最先展示
+}
+
+//消息展示类型
+enum MessageType {
+	MSG_TYPE_TOAST = 0; // toast消息
+	OUT_OF_APP_MSG = 1; // 应用外push的结构
+	ALTER_WITH_BUTTON_MSG = 2; // 带按钮的alert提示弹框 结构是 AlterWithButtonMsg
+	OP_ORDER_ALTER_WITH_BUTTON_MSG = 3; // 操作订单后的提示，结构是 AlterWithButtonMsg，其中的 logicId 表示订单id
+	OP_ORDER_PAID_MSG = 4; // 订单支付成功后，等待服务器端发送此类型消息，以确定服务端支付已成功。结构是 OperateOrder
+	TEMP_MSG = 5;//临时消息类型，不做处理
+	OTHER_FEE_TYPE_MSG = 6;//其它费用项
+	RECHARGE_MSG = 7;//充值
+}
+
+message Button {
+	optional string text = 1; // 文字内容
+	optional string textColor = 2; // 文字颜色
+	optional string backgroundColor = 3; // 背景颜色
+	optional string actionUrl = 4; // 动作跳转连接，可能是客户端内置的页面，也可能是h5页面url，如果这个字段为空，则客户端点击按钮后，只需要把弹窗关闭；如果字段有效，则点击按钮后打开对应的页面
+}
+
+//获取消息对应的场景
+enum MessageScene {
+	ACTIVATED_STATE = 0; // 表示客户端当前住处前台状态，优先级别设为3
+	ACTIVATED_TO_UNACTIVATED_STATE = 1; // 用户由非激活状态转激活状态，即由后台切换到APP应用内，查询应用内push，卡片，应用外push不需要查询，优先级别设为3
+	UNACTIVATED_STATE = 2; // 表示客户端当前不在活跃状态，即处在后台运行状态，优先级别为2
+}
+
+//toast消息结构体(普通)
+message ToastMsgStruct {
+	required string content = 1; // 消息内容
+	optional string actionUrl = 2; // 动作跳转连接，可能是客户端内置的页面，也可能是h5页面url，如果这个字段为空，则客户端点击按钮后，只需要把弹窗关闭；如果字段有效，则点击按钮后打开对应的页面
+}
+
+//应用外push的结构
+message OutOfAppMsg {
+	required int32 id = 1; // push唯一标识
+	required string title = 2; // 标题
+	required string description = 3; // 描述
+	optional string validTimeActionUrl = 4; // 有效时间内，跳转的url
+	required int64 validTime = 5; // 截止的有效时间，单位秒，当客户端本地时间超过该值，则push已经失效
+	optional string invalidTimeActionUrl = 6; // 无效时间内，跳转的url
+}
+
+//按钮的弹窗push
+message AlterWithButtonMsg {
+	required string content = 1; // 消息内容
+	optional Button singleButton = 2; // 只有一个按钮时，使用此字段
+}
+
+message OperateOrder {
+	required string orderId = 1;
+}
+message OtherFeeTypeMsg {
+	required string content = 1; //内容
+}
+message RechargeMsg {
+	required string content = 1; //内容
+	required string title = 2; //标题
+}

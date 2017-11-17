@@ -1,0 +1,20 @@
+import "box_operation_common.proto";
+package com.uu.facade.box.operation.pb.iface;
+
+// 提交驾驶证号 驾驶证档案编号信息进行验证
+message UploadBoxOperationMessage {
+	message Request {
+		required string car_licence_plate = 1; // 车牌号
+	    required int32 operation_type = 2; //操作类型:1,找车、双闪、鸣笛;2开门;3关门;4供电,恢复供电;5断电;6查看GPS数据,查看里程数或电量
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1:上传失败
+		optional string msg = 2;//消息
+		optional double mileage= 3;//里程数
+		optional double electricity= 4;//电量
+		
+	}
+
+}
+

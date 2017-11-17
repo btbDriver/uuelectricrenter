@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/ic_estimate_expand" android:state_checked="false" android:state_enabled="true"/>
+    <item android:drawable="@mipmap/ic_estimate_expand" android:state_checked="true" android:state_enabled="true"/>
+    <item android:drawable="@mipmap/ic_estimate_expand" android:state_checked="true" android:state_window_focused="false"/>
+    <item android:drawable="@mipmap/ic_estimate_normal" android:state_checked="false" android:state_window_focused="false"/>
+
+
+</selector>

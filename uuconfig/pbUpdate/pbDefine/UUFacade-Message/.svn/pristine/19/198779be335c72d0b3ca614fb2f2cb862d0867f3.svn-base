@@ -1,0 +1,28 @@
+import  "long_msg_common.proto";
+package com.uu.facade.message.pb.iface;
+
+//端(APP)获取消息，客户端根据 StartQueryInterface.Response.longConnectionLoopMsgIntervalSecs 设置的间隔时间，定时轮询本接口
+message GetInstantMsg {
+	message Request {
+		required int64 version = 1; // 用户在APP端已拉取的消息版本号，首次默认为0，获取返回值后，设置为服务器返回的值
+		required com.uu.facade.message.pb.common.MessageScene msgScene = 2; // 获取消息对应的场景 
+	}
+
+	message Response {
+		required int32 ret = 1; // 0-suc  -1-fail
+		optional int64 version = 2; // 本次用户拉取到的消息最大版本号
+		repeated com.uu.facade.message.pb.common.MsgStructPackage  msgStructPackageList = 3; // 消息内容列
+	}
+}
+
+
+//端(APP)反馈给消息服务器已经获取消息
+message FeedbackHasGetMsg {
+	message Request {
+		required int64 version = 2; // 用户在APP端已消费的消息版本号
+	}
+
+	message Response {
+		required int32 ret = 1;
+	}
+}

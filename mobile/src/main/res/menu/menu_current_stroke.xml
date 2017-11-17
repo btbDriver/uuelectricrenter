@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/current_stroke_menu"
+        android:title=""
+        android:icon="@mipmap/ic_navigtionbar_moreoption"
+        app:showAsAction="always"
+        android:visible="false"
+        />
+
+</menu>

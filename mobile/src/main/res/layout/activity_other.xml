@@ -1,0 +1,239 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EditText样式"
+            android:textSize="18dp" />
+
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/textfield_et_char_counter"
+            style="@style/LightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入手机号"
+            android:inputType="phone"
+            app:et_inputId="@+id/textfield_et_char_counter_input"
+            app:et_supportMaxChars="11"
+            app:et_supportMode="charCounter" />
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/textfield_et_helper"
+            style="@style/LightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            app:et_helper="密码为字符数字或下划线"
+            app:et_inputId="@+id/textfield_et_helper_input"
+            app:et_supportMode="helper" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Button样式"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <com.rey.material.widget.Button
+                style="@style/NoBgRaiseWaveButtonRippleStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="无背景"
+                app:rd_enable="true" />
+
+            <com.rey.material.widget.Button
+                style="@style/RaiseWaveColorButtonRippleStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="有背景"
+                app:rd_enable="true" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <com.rey.material.widget.Button
+                style="@style/RaiseWaveColorButtonRippleStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_red_shape"
+                android:text="日期选择器"
+                android:onClick="showDateDialog"
+                app:rd_enable="true" />
+
+            <com.rey.material.widget.Button
+                style="@style/NoBgRaiseWaveButtonRippleStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:onClick="showTimeDialog"
+                android:background="@drawable/btn_white_shape_normal"
+                android:text="时间选择器"
+                app:rd_enable="true" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="CheckBox样式"
+                    android:textSize="18dp" />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/switches_cb1"
+                    style="@style/CheckBoxDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="Checkbox 1" />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/switches_cb2"
+                    style="@style/CheckBoxDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:gravity="center_vertical"
+                    android:text="Checkbox 2" />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/switches_cb3"
+                    style="@style/CheckBoxDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:gravity="center_vertical"
+                    android:text="Checkbox 3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="RadioButton样式"
+                    android:textSize="18dp" />
+
+                <com.rey.material.widget.RadioButton
+                    android:id="@+id/switches_rb1"
+                    style="@style/RadioButtonDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:text="Radio Button 1" />
+
+                <com.rey.material.widget.RadioButton
+                    android:id="@+id/switches_rb2"
+                    style="@style/RadioButtonDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:gravity="center_vertical"
+                    android:text="Radio Button 2" />
+
+                <com.rey.material.widget.RadioButton
+                    android:id="@+id/switches_rb3"
+                    style="@style/RadioButtonDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:gravity="center_vertical"
+                    android:text="Radio Button 3" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Switch样式"
+            android:textSize="18dp" />
+
+        <com.rey.material.widget.Switch
+            android:id="@+id/switches_sw1"
+            style="@style/LightSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:gravity="center"
+            android:padding="16dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Slide样式"
+            android:textSize="18dp" />
+
+        <com.rey.material.widget.Slider
+            android:id="@+id/slider_sl_discrete"
+            style="@style/LightSliderDiscrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            app:sl_maxValue="100"
+            app:sl_minValue="0"
+            app:sl_value="50" />
+
+
+    </LinearLayout>
+</ScrollView>

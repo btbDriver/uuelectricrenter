@@ -1,0 +1,55 @@
+package com.uu.facade.ext.protobuf.bean;
+
+
+message Feedback {
+	message Request {
+		optional string contentDesc = 1;//反馈描述
+		optional string contactInformation = 2; // 联系方式 qq，电话，邮箱
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+	}
+}
+
+/*
+ * ios客户端上报token
+ */
+message ReportApnsToken {
+	message Request {
+		required string token = 1;
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功; -1：失败
+	}
+}
+
+/*
+ *  客户端基本日志上报
+ */
+ message CommonReportLog{
+	message Request{
+		required int32 type = 1;       //业务类型 （数据中心维护）
+		required string logData = 2; // 日志数据，使用\t分隔
+	}
+
+	message Response{
+		required int32 ret = 1;  // 0：成功   -1：失败
+	}
+ }
+
+ /*
+ *  客户端拉取脚本内容
+ */
+ message GetShContent{
+	message Request{
+		optional string shVersion = 1; // 当前客户端存放的脚本版本号
+	}
+
+	message Response{
+		required int32 ret = 1;  // 0：成功，并带有最新版本的脚本  -1：失败   1：成功，但没有更新版本的脚本
+		optional bytes content = 2; // 脚本内容
+		optional string shVersion = 3; // 脚本的版本号
+	}
+ }

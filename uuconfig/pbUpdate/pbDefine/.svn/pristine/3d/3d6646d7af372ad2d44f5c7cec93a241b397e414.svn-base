@@ -1,0 +1,149 @@
+import "uu_common.proto";
+import "usecar_common.proto";
+package com.uu.facade.usecar.protobuf.iface;
+
+// 确认用车 （若给网点Id，则根据网点Id给客户端返回数据）
+// 若没有网点Id，则根据地理位置坐标，查该坐标1km之内有车的网点，根据这个网点Id给客户端返回数据
+message RentConfirmDetail {
+	message Request {
+		optional string dotId = 1;               //网点id
+		optional double currentPositionLat = 2;  //app上传当前地理位置坐标 纬度
+		optional double currentPositionLon = 3;  //app上传当前地理位置坐标 经度
+		optional string cityCode = 4;            //城市码
+	}
+
+	message Response {
+		required int32 ret = 1;             //返回码   0：成功；-1：失败  -3：根据位置坐标没查到 1km之内网点   -2：根据位置坐标可以查到 1km之内网点，但没有车
+		optional double dotLat = 2;          //网点纬度
+		optional double dotLon = 3;          //网点经度
+		optional string dotDesc = 4;        //网点地址描述
+		optional string dotName = 5;        //网点名称
+		optional string carImgUrl = 6;      //车辆图片
+		optional string carLicense = 7;     //车牌号
+		optional int32 endurance = 8;       //当前可续航 XX 公里
+		optional int32 seat = 9;            //座位
+		optional string structure = 10;      //结构  （eg：两厢）
+		optional float pricePerKm = 11;     //公里价（每公里 XX 元）
+		optional float pricePerMinute = 12; //分钟价 (每分钟 XX 元)
+		optional string activityDesc = 13;  //活动描述
+		optional string activityIconDesc = 14; //活动图标文字（eg：折后）
+		optional string carId = 15;         //车辆唯一标识 carId
+		optional string brand = 16;         //品牌
+		optional string model = 17;         //型号
+		optional int32  carGearBox = 18;    //变速箱 （1-自动 2-手动）
+		optional string dotId = 19;         //根据地理位置坐标查到的1km之内的有车网点Id
+		repeated CarBaseInfo carInfo = 20;  //车辆列表
+	}
+}
+
+// 确认用车
+message RentConfirm {
+	message Request {
+		required string dotId = 1; //取车网点id
+		required string carId = 2; //车辆唯一标识 carId
+		required string rentCity = 3; //城市码
+		optional int32 accessType = 4; //访问入口标识   1-立即用车   2-我知道了
+		optional float pricePerKm = 5; //公里价（每公里 XX 元）
+		optional float pricePerMinute = 6; //分钟价 (每分钟 XX 元)
+		optional string returnDotId = 7; 	//还车网店ID
+	}
+
+	message Response {
+		required int32 ret = 1; //返回码   0：成功；-1：失败；-2 系统错误 ;-3   目前还未通过租客认证，请上传相关证件。 ;-4 该车不可租	-5用户没有同意提醒规则  ; -6  客户端1.1.3版本之后，弹窗提示
+		optional string orderId = 2; //生成的订单id，当返回码 ret = 0 时，该字段才会有值
+		optional string errorMsg = 3; // 错误提示消息，客户端判断该字段是否有值，如果有值，则直接使用msg作为提示消息
+		optional string warnMsg = 4; //警告提示消息
+		optional string newestVersionCode = 5;//当校验用户是否同意提醒时候所返回的版本号
+		optional string commitmentMsg = 6;//用户是否同意提醒文案
+		
+		repeated string popupVersion = 7;   //弹窗文案版本号列表(场景号_版本号     eg: 1_1, 2_3, 3_2)
+		repeated string popupMessage = 8;   //弹窗文案 列表
+		optional float pricePerKm = 9;      //服务端最新公里价（每公里 XX 元）
+		optional float pricePerMinute = 10; //服务端最新分钟价 (每分钟 XX 元)
+		optional string labelColor = 11;    //标签颜色代码     eg:#CC0033
+		optional string labelContent = 12;  //标签文案            eg:特惠
+ 	}
+}
+
+//找车
+message FindCar {
+	message Request{
+		optional string orderId = 1; //订单ID
+		optional com.uu.facade.base.common.LatLon latLong = 2; //手机客户端的经纬度
+	}
+	message Response{
+		required int32 ret = 1; //0:成功   -1：失败
+		optional string msg = 2; //操作结果文案
+	}
+}
+
+//开车门
+message OpenTheDoor {
+	message Request{
+		optional string orderId = 1; //订单ID
+		optional com.uu.facade.base.common.LatLon latLong = 2; //手机客户端的经纬度
+	}
+	message Response{
+		required int32 ret = 1; //0:成功   -1：失败；-2：距离过远，不能开门
+		optional string msg = 2; //操作结果文案
+	}
+}
+//操作用户同意规则
+message OpratorUserCommitment {
+	message Request{
+		required string newestVersionCode = 1; //最新版本号
+	}
+	message Response{
+		required int32 ret = 1; //0:成功   -1：失败;
+	}
+}
+
+//弹窗提示，用户同意（我知道了），记录同意结果
+//（仅当rentConfirm请求的返回结果中存在popupVersion,才请求该命令字）
+message SubmitUserCommitment{
+	message Request{
+		repeated string popupVersion = 1;   //弹窗文案版本号列表(场景号_版本号     eg: 1_1, 2_3, 3_2)
+	}
+	message Response{
+		required int32 ret = 1; //0:成功   -1：失败;
+	}
+}
+
+//评价场景
+enum EvaluateScene{
+	open_door_after = 0;	//开车门后
+	order_pay_after = 1;	//订单支付成功后
+}
+//评价类型
+enum EvaluateType{
+	none = 0;		//无评价
+	user_cancel = 1;// 用户取消评价
+	well = 2;		// 评价还可以
+	spit_bad=3;	    //吐槽
+}
+//车辆使用前获取评价云标签
+message QueryUseCarEvaluate {
+	message Request{
+		required EvaluateScene  evaluateScene = 1;   // 0-开车门前   1-订单支付成功后
+	}
+	message Response{
+		required int32  ret = 1;   			 // 0:成功   -1：失败
+		repeated string evaluateTage  = 2;   //评价标签，格式为[{"id":1,"desc":"车内脏乱差"},{"id":2,"desc":"有异味"},{"id":3,"desc":"乱停车，不好找"},{"id":4,"desc":"停车区域不好找"}]
+	}
+}
+//车辆使用前创建评价内容
+message SaveUseCarEvaluate{
+	message Request{
+	    required int32 userId=1;					//租客id
+		required string carId = 2;      			//车辆唯一标识 carId
+		required string parkingId = 3;  			//停车场唯一标识
+		required EvaluateScene evaluateScene = 4;   //评价场景,0:开车门前,1:订单支付成功后
+		required EvaluateType  evaluateType = 5;  	//评价类型,0:无评价,1:用户取消评价,2:评价还可以,3:吐槽
+		required string evaluateDesc = 6;   		//评价内容 当评价场景为 开车门前是数据格式为： ["1","2","3"] 为评价标签id数组集合，当为订单支付成功后时数据格式为用户自定义内容
+		required string orderId = 7;  				//订单id
+	}
+	message Response{ 
+		required int32 ret = 1;   					// 0:成功   -1：失败  
+	}
+}
+

@@ -1,0 +1,80 @@
+import "adv_common.proto";
+import "uu_common.proto";
+package com.uu.facade.advertisement.protobuf.iface;
+
+
+//客户端  查询广告信息
+message QueryAdv{
+	message Request{
+		required string cityCode = 1;		//城市id
+		optional string clientTypeWeb = 2;//客户端类型 web(php) 专用    1:ios 2:android
+	}
+
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败
+		repeated com.uu.facade.advertisement.protobuf.bean.AdvInfo advInfoList = 2;//广告信息
+	}
+}
+
+
+//弹窗行为统计
+message PopWindowStat{
+	message Request{
+		optional string advId = 1; // 广告Id
+		optional string eventType = 2;		//1:曝光   2：点击
+	}
+
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败
+	}
+}
+
+
+
+
+
+
+
+
+//后台    暂未用
+//查询广告详情
+message QueryAdvDetail{
+	message Request{
+		optional string advId = 1; // 广告Id
+	}
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败
+		optional com.uu.facade.advertisement.protobuf.bean.AdvDetailInfo advDetailInfo = 2;
+	}
+}
+
+
+//后台    暂未用
+//查询广告列表
+message ListAdv{
+	message Request{
+		optional string advTitle = 1; // 广告名称
+		optional com.uu.facade.base.common.PageRequestNew pageRequest=2;		//翻页
+
+	}
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败
+		repeated com.uu.facade.advertisement.protobuf.bean.AdvDetailInfo advDetailInfo = 2;
+		optional com.uu.facade.base.common.ResultPage pageResult=3;		//翻页参数
+	}
+}
+
+//后台    暂未用
+//操作广告信息
+message OperateAdv{
+	message Request{
+		required string operateType = 1; // 操作类型 0： 新增   1：更新    -1:删除
+		optional com.uu.facade.advertisement.protobuf.bean.AdvDetailInfo advDetailInfo = 2;
+	}
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败
+	}
+}
+
+
+

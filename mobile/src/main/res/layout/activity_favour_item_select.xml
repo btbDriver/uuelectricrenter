@@ -1,0 +1,270 @@
+<com.youyou.uuelectric.renter.Utils.view.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/s4"
+    android:layout_marginRight="@dimen/s4"
+    android:background="@color/c10"
+    android:id="@+id/favour_item_root_rela"
+    app:rv_color="@color/c1"
+    app:rv_type="rectangle"
+    >
+
+    <!-- 布局文件左侧锯齿效果 -->
+    <View
+        android:id="@+id/favour_item_bg_left"
+        android:layout_width="6dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@+id/content_rela"
+        android:layout_alignTop="@+id/content_rela"
+        />
+
+    <!-- 布局文件右侧锯齿效果 -->
+    <View
+        android:id="@+id/favour_item_bg_right"
+        android:layout_width="6dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/content_rela"
+        android:layout_alignTop="@+id/content_rela"
+        />
+
+    <!-- 布局文件内容区域 -->
+    <RelativeLayout
+        android:id="@+id/content_rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/favour_item_bg_left"
+        android:layout_toLeftOf="@+id/favour_item_bg_right"
+        android:background="@color/c11">
+
+        <RelativeLayout
+            android:id="@+id/favour_item_top_rela"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 打折金额布局 -->
+            <RelativeLayout
+                android:id="@+id/favour_account_rela"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/favour_item_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/c8"
+                    android:textSize="36dp"
+                    />
+                <TextView
+                    android:id="@+id/favour_item_account_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=".0折"
+                    android:textColor="#fe9223"
+                    android:textSize="18dp"
+                    android:layout_alignBottom="@+id/favour_item_account"
+                    android:layout_toRightOf="@+id/favour_item_account"
+                    android:layout_marginBottom="5dp"
+                    />
+            </RelativeLayout>
+            <!-- 优惠券金额布局 -->
+            <RelativeLayout
+                android:id="@+id/favour_price_rela"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                >
+                <TextView
+                    android:id="@+id/favour_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textColor="@color/c8"
+                    android:textSize="36dp"
+                    android:layout_toRightOf="@+id/favour_item_price_unit"
+                    />
+
+                <TextView
+                    android:id="@+id/favour_item_price_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥"
+                    android:textColor="#fe9223"
+                    android:textSize="@dimen/f2"
+                    android:layout_alignBottom="@+id/favour_item_price"
+                    android:layout_marginBottom="4dp"
+                    />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/favour_item_content_right_rela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/favour_price_rela"
+                android:layout_marginLeft="@dimen/s3"
+                android:layout_centerVertical="true"
+                android:paddingTop="@dimen/s4"
+                android:paddingBottom="@dimen/s4">
+
+                <RelativeLayout
+                    android:id="@+id/favour_item_center_rela"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/favour_item_center_rela_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/s2"
+                        android:layout_marginLeft="@dimen/s2"
+                        android:layout_marginTop="2dp"
+                        android:layout_alignParentRight="true">
+
+                        <Button
+                            android:id="@+id/favour_item_radiobutton"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@mipmap/ic_checkbox_coupon1"
+                            android:gravity="center_vertical" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/favour_item_center_rela_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/favour_item_center_rela_right"
+                        android:layout_alignParentLeft="true"
+                        >
+
+                        <me.grantland.widget.AutofitTextView
+                            android:id="@+id/favour_item_content_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="首次租车优惠-神马搜索"
+                            android:textColor="@color/c3"
+                            android:textSize="@dimen/f3" />
+
+                        <LinearLayout
+                            android:id="@+id/favour_item_content_date_rela"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/favour_item_content_title"
+                            android:layout_marginTop="@dimen/s1">
+
+                            <TextView
+                                android:id="@+id/favour_item_content_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="有效期："
+                                android:textColor="@color/c3"
+                                android:textSize="@dimen/f5" />
+
+                            <TextView
+                                android:id="@+id/favour_item_content_start"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="10月12日"
+                                android:textColor="@color/c3"
+                                android:textSize="@dimen/f5" />
+
+                            <TextView
+                                android:id="@+id/favour_item_content_line"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-"
+                                android:textColor="@color/c3"
+                                android:textSize="@dimen/f5" />
+
+                            <TextView
+                                android:id="@+id/favour_item_content_end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="10月12日"
+                                android:textColor="@color/c3"
+                                android:textSize="@dimen/f5" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/favour_item_content_status_rela"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/favour_item_center_rela"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/s1"
+                    >
+
+                    <TextView
+                        android:id="@+id/favour_item_content_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="仅当前订单可使用"
+                        android:textColor="@color/c1"
+                        android:textSize="@dimen/f5"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/favour_item_center_verview"
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/c6"
+                android:layout_marginTop="@dimen/s4"
+                android:layout_marginBottom="@dimen/s4"
+                android:layout_toRightOf="@+id/favour_price_rela"
+                android:layout_alignBottom="@+id/favour_item_content_right_rela"
+                android:layout_alignTop="@+id/favour_item_content_right_rela"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/favour_item_center_view"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/c6"
+            android:layout_below="@+id/favour_item_top_rela"
+            android:layout_marginLeft="@dimen/s3"
+            android:layout_marginRight="@dimen/s3" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/favour_item_center_view"
+            >
+
+            <TextView
+                android:id="@+id/favour_item_buttom_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.每个行程只能使用一张。2.代金券不能找零。3.不能与其他优惠券同享。4.其他条件。"
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f6"
+                android:paddingLeft="@dimen/s3"
+                android:paddingRight="@dimen/s3"
+                android:paddingTop="@dimen/s2"
+                android:paddingBottom="@dimen/s2"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_centerVertical="true"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</com.youyou.uuelectric.renter.Utils.view.RippleView>

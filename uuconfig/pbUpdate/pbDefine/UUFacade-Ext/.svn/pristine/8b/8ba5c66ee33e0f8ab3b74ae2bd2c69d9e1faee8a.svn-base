@@ -1,0 +1,90 @@
+package com.uu.facade.ext.protobuf.bean;
+
+// 可借用  和 待归还 返回的对象
+message DisposePeccancy{
+	message Request {
+		required int32 userId  = 1;	//用户唯一标识
+	}
+	message Response {
+		required int32 ret = 1;             	//返回码   0：成功；-1：失败
+		repeated PeccancyLog peccancyLog = 2;	// 行驶本
+		optional string oneCarCash = 3;				//每一行驶本押金
+
+	}
+}
+//某车违章记录
+message PeccancyLog{
+	required string licensePlate = 1;  //行驶本标识 车牌号
+	optional string punishSum =2;      // 罚款金额
+	optional string	punishScore =3;	   //罚款分数
+	optional string describe =4;	   // 借用描述 可邮寄时间等
+	repeated string arrearIds = 5;		//欠费Id
+	optional string carId =6 ;		//车Id
+	optional string cashDeposit = 7; //押金
+}
+//收件人地址
+message MailAddress{
+		required string recipientsName = 1;	//收件人名称
+		required string contactMethod = 2;	//联系方式
+		required string mailAddress = 3;	//收件人地址
+		optional int32 id = 4;			//邮件id
+}
+//借用行车本
+message BorrowReq{
+	message Request{
+		optional MailAddress mailAddress = 1;	//联系地址对象
+		repeated CarDrivingLog carDrivingLog = 2;		//借用车
+	}
+	message Response{
+		required int32 ret = 1;			// 返回结果 0成功 -1 失败
+		optional string pledgeFlowId = 2;	//创建借用行驶本临时表id
+		optional string cost = 3 ;		//需要支付的费用
+	}
+}
+
+//行驶本欠费信息id
+message CarDrivingLog{
+	required string carId =1; //车id
+	repeated string arrearIds = 5; //欠费id
+}
+//行驶本押金记录
+message DepositReceipt{
+	message Request{
+		required int32 userId = 1;	//用户唯一标识
+		optional int32 page = 2 ;		//当前页数
+		optional int32 size = 3 ;		//一页显示条数
+	}
+	message Response{
+		required int32 ret = 1;			// 返回结果 0成功 -1 失败
+		repeated DepositLog depositLog = 2;	//记录
+		optional int32 page = 3 ;		//当前页数
+		optional int32 size = 4 ;		//一页显示条数
+		optional int32 count  = 5;		//总行数
+	}
+}
+//当前押金
+message GetUserCurrentDeposit{
+	message Request{
+		required int32 userId = 1;	//用户唯一标识
+	}
+	message Response{
+		required int32 ret = 1;			// 返回结果 0成功 -1 失败
+		optional string currentDeposit =2;	// 当前押金
+	}
+}
+
+message DepositLog{
+		optional string dateTime = 1;		// 时间
+		optional string  money = 2 ;		//金额
+		optional string describe = 3 ;		//描述
+}
+//查询用户邮寄地址
+message UserMailAddress{
+	message Request{
+		required int32 userId = 1;//用户id	
+		}
+	message Response{
+		required int32 ret = 1;		// 返回结果 0成功 -1 失败
+		optional MailAddress mailaddress = 2;			//邮寄地址
+	}
+}

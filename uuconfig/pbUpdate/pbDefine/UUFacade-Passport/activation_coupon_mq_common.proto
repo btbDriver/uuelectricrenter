@@ -1,0 +1,19 @@
+package com.uu.facade.passport.pb.bean;
+
+/**
+* 注册成功激活邀请优惠券mq
+*
+*/
+message ActivationCoupon{
+	required string mobile =1; //手机号码
+	optional string code =2; // 邀请码
+	optional int32 userId =3; // 用户Id
+	optional string gf = 4; //来源渠道
+	optional int32 couponRuleId = 5;	//优惠规则Id
+	optional int32 couponType = 6;	//优惠券类型
+}
+
+message ActivationCouponList{
+	repeated ActivationCoupon activationCouponList = 1; //未注册用户优惠规则List
+	required int32 toActiviteWxNewCoupon = 2[default = 1]; //是否激活微信新人优惠券  0-否   1-是
+}

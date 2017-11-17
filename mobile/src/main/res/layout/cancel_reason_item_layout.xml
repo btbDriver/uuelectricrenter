@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_reason"
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:layout_margin="6dp"
+    android:background="@drawable/cancel_reason_item_selector"
+    android:gravity="center"
+    android:text="其他原因"
+    android:textColor="@drawable/reason_item_text_color"
+    android:textSize="@dimen/f4" />
+

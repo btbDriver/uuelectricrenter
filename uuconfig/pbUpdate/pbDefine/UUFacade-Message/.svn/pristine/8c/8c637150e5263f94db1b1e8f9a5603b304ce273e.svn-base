@@ -1,0 +1,11 @@
+package com.uu.facade.message.pb.common;
+
+message MsgSenceContext {
+	optional string title = 1; // 消息标题
+	optional string msgSenceName = 2; //消息 场景名称
+	optional string msgContex = 3; // 消息文本
+	optional int64  msgSendTime = 4; //消息发送时间
+	optional string validVersionCode = 5; // 消息有效版本号
+	optional string isRead=6;//是否阅读  1未读  0 已读
+
+}

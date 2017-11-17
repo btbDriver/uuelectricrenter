@@ -1,0 +1,52 @@
+package com.uu.facade.activity.pb.iface;
+//新年抢券活动-发放固定金额优惠券
+message AddActivityQuotaCoupon{
+	message Request{
+		required string userMobile = 1;//手机号码
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;1:重复领取
+	}
+}
+
+//新年抢劵活动-初始化方法
+message InitActivityGrabCoupon{
+	message Request{
+		required string userMobile = 1;//手机号码
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 0:成功;-1:失败
+		optional string message = 2;//如果成功返回UUID
+	}
+}
+
+//新年抢劵活动-查询朋友帮忙记录
+message SelectActivityGrabCouponFirends{
+	message Request{
+		required string uuId = 1;//本次活动用户唯一标识,对外暴漏
+		
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 0:成功;-1:失败
+		repeated ActivityGrabCouponPB grabCouponArray = 2;//抢券记录集合
+	}
+}
+
+//抢券记录
+message ActivityGrabCouponPB{
+	required string uuId = 1;	//本次活动业务主键
+	required string userMobile =2;	//用户手机号
+	required string firendMobile =3;	//朋友手机号
+	optional int32 createTime =4;	//朋友帮忙抢券时间
+}
+
+//新年抢劵活动-发放抢劵优惠券:如果不满足上限保存入库，满足上限发券
+message AddActivityGrabCoupon{
+	message Request{
+		optional string uuId = 1;//本次活动用户唯一标识,对外暴漏
+		required string firendMobile = 2;//朋友手机号
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;1:还未达到上限;2:优惠券已发放3:输入的是自己的手机号;4:朋友重复点击
+	}
+}

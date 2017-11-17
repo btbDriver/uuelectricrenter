@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youyou.uuelectric.renter.Utils.view.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:rv_color="@color/c1"
+    app:rv_type="rectangle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/s2"
+    android:paddingLeft="@dimen/s4"
+    android:paddingRight="@dimen/s4"
+    android:paddingTop="@dimen/s2">
+
+    <ImageView
+        android:id="@+id/iv_pay_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/tv_pay_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/s2"
+        android:layout_toRightOf="@id/iv_pay_icon"
+        android:text="微信"
+        android:textColor="@color/c3"
+        android:textSize="@dimen/f3" />
+
+    <com.rey.material.widget.RadioButton
+        android:id="@+id/radio_button"
+        style="@style/RadioButtonDrawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:checked="false" />
+
+
+</com.youyou.uuelectric.renter.Utils.view.RippleView>

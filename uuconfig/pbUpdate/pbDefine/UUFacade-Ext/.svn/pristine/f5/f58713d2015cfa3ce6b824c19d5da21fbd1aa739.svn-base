@@ -1,0 +1,110 @@
+package com.uu.facade.ext.protobuf.bean;
+
+
+message Feedback {
+	message Request {
+		optional string contentDesc = 1;//反馈描述
+		optional string contactInformation = 2; // 联系方式 qq，电话，邮箱
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+	}
+}
+
+/*
+ * ios客户端上报token
+ */
+message ReportApnsToken {
+	message Request {
+		required string token = 1;
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功; -1：失败
+	}
+}
+
+/*
+ *  客户端基本日志上报
+ */
+ message CommonReportLog{
+	message Request{
+		required int32 type = 1;       //业务类型 （数据中心维护）
+		required string logData = 2; // 日志数据，使用\t分隔
+	}
+
+	message Response{
+		required int32 ret = 1;  // 0：成功   -1：失败
+	}
+ }
+
+ /*
+ *  客户端拉取脚本内容
+ */
+ message GetShContent{
+	message Request{
+		optional string shVersion = 1; // 当前客户端存放的脚本版本号
+	}
+
+	message Response{
+		required int32 ret = 1;  // 0：成功，并带有最新版本的脚本  -1：失败   1：成功，但没有更新版本的脚本
+		optional bytes content = 2; // 脚本内容
+		optional string shVersion = 3; // 脚本的版本号
+	}
+ }
+ 
+ 
+ //强制升级版本 版本基本信息
+message AppBaseVersionInfo{
+	optional int32 clientChannel = 1;   //客户端渠道 1:Android;2:IOS
+	optional string clientChannelName = 2; //客户端渠道 名称
+	optional string versionCode = 3;  //版本号
+	optional string title = 4;        //标题
+	optional string updateMsg = 5;    //更新文案
+	optional string buttonMsg = 6;    //按钮文案
+	optional string downLinkUrl = 7;  //下载链接地址
+	optional string noteRmk = 8;      //备注说明
+}
+
+//添加版本信息数据
+message AddAppBaseVersionInfoNL{
+	message Request{
+		required AppBaseVersionInfo appBaseVersionInfo = 1; //版本信息
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;
+		optional string msg = 2; //文本信息
+	}
+}
+
+
+
+//修改版本信息数据
+message UpdateAppBaseVersionInfoNL{
+	message Request{
+		required AppBaseVersionInfo appBaseVersionInfo = 1; //版本信息
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;
+		optional string msg = 2; //文本信息
+	}
+}
+
+
+
+
+//查询版本信息数据
+message QueryAppBaseVersionInfoNL{
+	message Request{
+		required int32 clientChannel = 1; // 客户端渠道 1:Android;2:IOS
+		optional string versionCode = 2; //版本号
+		
+	}
+	message Response{
+		required int32 ret = 1;	//返回码 -1:失败;0:成功;
+		optional string msg = 2; //文本信息
+		optional AppBaseVersionInfo appBaseVersionInfo = 3; //版本信息
+		
+	}
+}

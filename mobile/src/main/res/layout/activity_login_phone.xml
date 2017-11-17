@@ -1,0 +1,178 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c10">
+
+    <RelativeLayout
+        android:id="@+id/validate_phone_rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/s4"
+        android:layout_marginRight="@dimen/s4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="94dp">
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/validate_phone_edit"
+                style="@style/LightEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入手机号"
+                android:maxLength="11"
+                android:digits="0123456789"
+                android:inputType="number"
+                app:et_supportMaxChars="11"
+                app:et_supportMode="charCounter" />
+
+            <ImageView
+                android:id="@+id/validate_phone_delete"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/ic_delete"
+                android:layout_marginBottom="5dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/validate_phone_relative"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s1"
+            android:layout_alignParentRight="true">
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/validate_phone_button"
+                style="@style/LightEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="获取验证码"
+                android:textColor="?attr/colorPrimary"
+                android:gravity="center"
+                android:digits="0123456789"
+                android:layout_centerVertical="true"
+                android:maxLength="5"
+                android:singleLine="true"
+                app:rd_enable="false"
+                app:et_dividerColor="@color/c5"
+                android:enabled="false"
+                android:editable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/c5"
+                android:layout_alignBottom="@+id/validate_phone_button" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/validate_phone_view"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/validate_phone_relative" />
+
+    </RelativeLayout>
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/validate_code_edit"
+        style="@style/LightEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/s4"
+        android:layout_marginRight="@dimen/s4"
+        android:layout_below="@+id/validate_phone_rela"
+        android:hint="请输入验证码"
+        android:maxLength="4"
+        android:digits="0123456789"
+        android:inputType="number"
+        app:et_supportSingleLine="true"
+        app:et_supportMaxChars="4"
+        app:et_supportMode="charCounter" />
+
+
+    <RelativeLayout
+        android:id="@+id/validate_desc_rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/s4"
+        android:layout_marginRight="@dimen/s4"
+        android:layout_below="@+id/validate_code_edit">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/validate_desc_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/c1"
+            android:textSize="@dimen/f5"
+            android:text="@string/login_voice_btn"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/start_use_rela"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/s2"
+        android:layout_marginLeft="@dimen/s4"
+        android:layout_marginRight="@dimen/s4"
+        android:layout_below="@+id/validate_desc_rela">
+
+        <include
+            layout="@layout/b3_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/validate_buttom_rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/s3"
+        android:layout_marginLeft="@dimen/s4"
+        android:layout_marginRight="@dimen/s4"
+        android:layout_below="@+id/start_use_rela">
+
+        <TextView
+            android:id="@+id/validate_buttom_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/c5"
+            android:textSize="@dimen/f5"
+            android:text="@string/activity_validate_phone_desc"
+            android:singleLine="true"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/validate_buttom_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/validate_buttom_s"
+            android:textColor="@color/c1"
+            android:textSize="@dimen/f5"
+            android:text="《友友用车会员协议》"
+            android:singleLine="true"
+            android:ellipsize="end" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

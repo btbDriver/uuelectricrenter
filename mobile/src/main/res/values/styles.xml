@@ -1,0 +1,137 @@
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:actionBarSize">48dp</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark
+        </item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/c10</item>
+        <!--<item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>-->
+        <!--<item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>-->
+        <!--<item name="android:fitsSystemWindows">true</item>-->
+        <item name="android:windowAnimationStyle">@style/windowAnimation</item>
+    </style>
+
+    <style name="windowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <!--<item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>-->
+        <!--<item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>-->
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="APPFullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowAnimationStyle">@style/windowAnimation</item>
+    </style>
+    <style name="edit_AlertDialog_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 是否启用标题栏 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 是否使用背景半透明 -->
+    </style>
+    <style name="Toolbar" parent="Theme.AppCompat">
+        <item name="android:background">@color/primary</item>
+        <item name="android:textColorPrimary">#FFF</item>
+        <item name="android:textColorSecondary">#FFF</item>
+        <item name="actionMenuTextColor">#FFF</item>
+        <item name="android:actionBarSize">48dp</item>
+    </style>
+
+    <!-- Custom Drawer Header -->
+    <style name="CustomHeaderDark" parent="MaterialNavigationDrawerTheme">
+        <item name="colorPrimary">@color/c1</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="drawerColor">#fff0f3f7</item>
+        <item name="colorAccent">#FFFFFF</item>
+        <item name="drawerType">@integer/DRAWERTYPE_CUSTOM</item>
+        <!-- toolbar高度-->
+        <item name="android:actionBarSize">44dp</item>
+        <item name="android:titleTextStyle">@style/MyTitleStyle</item>
+        <item name="android:windowAnimationStyle">@style/windowAnimation</item>
+    </style>
+
+    <style name="MyTitleStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textSize">8dp</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="my_snackbar_style" parent="Material.Widget.SnackBar">
+
+        <item name="sb_singleLine">false</item>
+        <item name="sb_height">wrap_content</item>
+        <item name="sb_minHeight">48dp</item>
+
+    </style>
+
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/slide_in_top</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_top</item>
+    </style>
+
+    <!-- 自定义进度条 -->
+    <array name="pv_linear_determinate">
+        <item>@style/LightDeterminateLinearProgressView</item>
+        <item>@style/DarkDeterminateLinearProgressView</item>
+    </array>
+
+    <style name="LightLinearProgressView">
+        <item name="pv_autostart">false</item>
+        <item name="pv_circular">false</item>
+        <item name="pv_progressStyle">@style/LightLinearProgressDrawable</item>
+        <item name="pv_progressMode">indeterminate</item>
+    </style>
+
+    <style name="LightLinearProgressDrawable" parent="Material.Drawable.LinearProgress">
+        <item name="lpd_strokeColor">@color/colorPrimary</item>
+        <item name="lpd_strokeSecondaryColor">@android:color/transparent</item>
+    </style>
+
+    <style name="LightDeterminateLinearProgressView" parent="LightLinearProgressView">
+        <item name="pv_progressStyle">@style/LightDeterminateLinearProgressDrawable</item>
+        <item name="pv_progressMode">determinate</item>
+    </style>
+
+    <style name="LightDeterminateLinearProgressDrawable" parent="Material.Drawable.LinearProgress.Determinate">
+        <item name="lpd_strokeColor">@color/colorPrimary</item>
+        <item name="lpd_strokeSecondaryColor">@color/colorPrimaryQuarter</item>
+    </style>
+
+    <style name="DarkDeterminateLinearProgressView" parent="LightLinearProgressView">
+        <item name="pv_progressStyle">@style/DarkDeterminateLinearProgressDrawable</item>
+        <item name="pv_progressMode">determinate</item>
+    </style>
+
+    <style name="DarkDeterminateLinearProgressDrawable" parent="Material.Drawable.LinearProgress.Determinate">
+        <item name="lpd_strokeColor">@color/colorAccent</item>
+        <item name="lpd_strokeSecondaryColor">@color/colorAccentQuarter</item>
+        <item name="lpd_reverse">true</item>
+    </style>
+</resources>

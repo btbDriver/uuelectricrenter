@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="370dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+    >
+    <FrameLayout
+
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="380dp"
+        android:layout_gravity="center"
+        >
+        <ImageView
+            android:layout_marginBottom="20dp"
+            android:layout_width="308dp"
+            android:layout_height="308dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/ic_redbag_expand"/>
+
+        <Button
+
+            android:id="@+id/btn_redbag_cancle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@mipmap/ic_redbag_cancel"
+            android:layout_gravity="right"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="24dp"
+            />
+        <LinearLayout
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center|bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff000"
+                android:textSize="@dimen/f2"
+                android:text="恭喜获得"
+                android:layout_marginBottom="106dp"
+                />
+            <TextView
+                android:id="@+id/redbag_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8"
+                android:textColor="#fff000"
+                android:textSize="30sp"
+                android:layout_marginBottom="106dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff000"
+                android:text="个红包"
+                android:textSize="@dimen/f2"
+                android:layout_marginBottom="106dp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="130dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/c11"
+            android:textSize="@dimen/f4"
+            android:text="分享给小伙伴,大家一起抢！"
+            />
+        <Button
+            android:layout_marginBottom="20dp"
+            android:id="@+id/btn_sharetofriends"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@drawable/redbag_btn_shape"
+            android:text="发送给好友"
+            android:textColor="#fff000"
+            android:textSize="@dimen/f3"
+            android:layout_gravity="center|bottom"
+            />
+
+
+
+
+
+    </FrameLayout>
+</RelativeLayout>

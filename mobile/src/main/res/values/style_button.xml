@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="b1_left_button" parent="Material.Drawable.Ripple.Wave.Light">
+        <item name="android:textSize">@dimen/f3</item>
+        <item name="android:textColor">@color/btn_1_left_text_color</item>
+        <item name="rd_rippleColor">@color/c1</item>
+        <item name="rd_leftPadding">1dp</item>
+        <item name="android:radius">3dp</item>
+        <item name="rd_topPadding">1dp</item>
+        <item name="rd_rightPadding">1dp</item>
+        <item name="rd_bottomPadding">2dp</item>
+        <item name="rd_delayClick">untilRelease</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="confirm_dialog_btn_style" parent="Material.Drawable.Ripple.Wave.Light">
+        <item name="android:textSize">@dimen/f3</item>
+        <item name="android:textColor">@color/confirm_dialog_btn_text_color</item>
+        <item name="rd_rippleColor">@color/c1</item>
+        <item name="rd_leftPadding">1dp</item>
+        <item name="android:radius">3dp</item>
+        <item name="rd_topPadding">1dp</item>
+        <item name="rd_rightPadding">1dp</item>
+        <item name="rd_bottomPadding">2dp</item>
+        <item name="rd_delayClick">untilRelease</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="share_red_box_icon_bg" parent="Material.Drawable.Ripple.Wave.Light">
+        <item name="rd_rippleColor">@color/c10</item>
+        <item name="rd_leftPadding">1dp</item>
+        <item name="android:radius">3dp</item>
+        <item name="rd_topPadding">1dp</item>
+        <item name="rd_rightPadding">1dp</item>
+        <item name="rd_bottomPadding">2dp</item>
+        <item name="rd_delayClick">untilRelease</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
+    </style>
+    <style name="b3_button" parent="Material.Drawable.Ripple.Wave.Light">
+        <item name="android:textSize">@dimen/f3</item>
+        <item name="android:textColor">@color/c10</item>
+        <item name="android:background">@drawable/bg3_button_bg</item>
+        <item name="rd_rippleColor">@color/c2</item>
+        <item name="rd_leftPadding">1dp</item>
+        <item name="android:radius">3dp</item>
+        <item name="rd_topPadding">1dp</item>
+        <item name="rd_rightPadding">1dp</item>
+        <item name="rd_bottomPadding">2dp</item>
+        <item name="rd_delayClick">untilRelease</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="bt_base_botton" parent="Material.Drawable.Ripple.Wave.Light">
+        <item name="rd_rippleColor">@color/c2</item>
+        <item name="android:radius">0dp</item>
+        <item name="rd_delayClick">untilRelease</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
+    </style>
+</resources>

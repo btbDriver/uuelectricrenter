@@ -1,0 +1,191 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c10">
+
+
+    <com.youyou.uuelectric.renter.Utils.view.MSwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeRefreshLayout"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <RelativeLayout
+                android:id="@+id/favour_top_rela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/c11"
+                android:paddingBottom="@dimen/s2"
+                android:paddingLeft="@dimen/s4"
+                android:paddingRight="@dimen/s4"
+                android:layout_marginBottom="@dimen/s3"
+                >
+                <RelativeLayout
+                    android:id="@+id/favour_exchange_rela"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/s4">
+
+                    <com.rey.material.widget.EditText
+                        android:id="@+id/favour_exchange_edit"
+                        style="@style/LightEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/s2"
+                        android:text="兑换"
+                        android:textColor="@color/c1"
+                        android:textSize="@dimen/f4"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        app:rd_enable="true"
+                        app:et_dividerColor="@color/c5"
+                        app:et_labelEnable="false"
+                        android:editable="false" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_marginTop="@dimen/s3"
+                    android:id="@+id/favour_exchange_view"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignBottom="@+id/favour_exchange_rela" />
+
+
+                <com.rey.material.widget.EditText
+                    android:id="@+id/favour_input_edit"
+                    style="@style/LightEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/favour_exchange_rela"
+                    android:hint="可兑换优惠券、邀请码等"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"
+                    android:maxLength="12"
+                    app:rd_enable="true"
+                    app:et_labelEnable="false"
+                    android:paddingTop="@dimen/s4"
+                    android:singleLine="true" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/favour_exchange_rela"
+                    >
+
+                    <ImageView
+                        android:id="@+id/validate_favour_delete"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/ic_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+
+
+            </RelativeLayout>
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/favour_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/favour_top_rela"
+                android:visibility="visible">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <RelativeLayout
+                android:id="@+id/layout_call_friend0"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/favour_top_rela"
+                android:layout_marginLeft="@dimen/s4"
+                android:layout_marginRight="@dimen/s4"
+                android:background="@drawable/addfriend_shap">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_addfriend_cuppons"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="@mipmap/ic_addfriend_cupons"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_addfriend_cuppons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/s1"
+                        android:layout_toRightOf="@+id/img_addfriend_cuppons"
+                        android:layout_weight="1"
+                        android:text="@string/addfriend_cupons"
+                        android:textColor="@color/c3"
+                        />
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/ic_nextpage_list"/>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <!-- 空数据页面 -->
+            <RelativeLayout
+                android:id="@+id/favour_empty_rela"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/favour_top_rela"
+                android:visibility="visible"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@mipmap/ic_nodata_reminder" />
+
+                    <TextView
+                        android:id="@+id/empty_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/s3"
+                        android:text="还没有优惠券哦"
+                        android:textColor="@color/c4"
+                        android:textSize="@dimen/f3" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </com.youyou.uuelectric.renter.Utils.view.MSwipeRefreshLayout>
+
+
+</RelativeLayout>

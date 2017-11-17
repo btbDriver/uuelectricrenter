@@ -1,0 +1,61 @@
+import "uu_common.proto";
+import "Account_common.proto";
+package com.uu.facade.account.protobuf.bean;
+
+
+message BalanceList {
+	message Request {
+		optional bool isRequestBalance = 1;//是否请求余额信息
+		optional com.uu.facade.base.common.PageNoRequest pageRequest = 2; // 翻页请求
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+		optional string balanceY = 2;//余额元
+		repeated com.uu.facade.account.protobuf.common.BalanceInfo balance = 3; // 余额
+		optional com.uu.facade.base.common.PageResultNew pageResult = 4;//分页
+		optional string rechargeActivityDesc = 5; //充值活动文案描述
+	}
+}
+
+//查询发票可用额度
+message QueryInvoiceQuota {
+	message Request {
+		optional int32 type = 1;
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+		required double invoiceQuota = 2;//可用发票额度
+	}
+}
+
+//使用发票额度
+message UseInvoiceQuota {
+	message Request {
+		required double useQuota = 1;//使用额度
+		required string receiver = 2; //联系人
+		required string address = 3; //联系地址
+		required string phone = 4; //联系电话
+		optional string title = 5; //抬头
+		optional string content = 6; //详细内容
+	}
+
+	message Response {
+		required int32 ret = 1; // 1：额度不足 0：成功；-1：失败
+	}
+}
+
+//查询发票额度记录明细
+message QueryInvoiceQuotaIssues {
+	message Request {
+		optional com.uu.facade.base.common.PageRequestNew pageRequest = 1; // 翻页请求
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1：失败
+		repeated com.uu.facade.account.protobuf.common.InvoiceQuotaIssue issues = 2; // 发票额度明细
+		optional com.uu.facade.base.common.PageResultNew pageResult = 3;//分页
+	}
+}
+

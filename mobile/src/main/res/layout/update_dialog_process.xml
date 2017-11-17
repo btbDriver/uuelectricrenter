@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    >
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/update_dialog_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/f3"
+        android:textColor="@color/c4"
+        android:text="更新提示文案"
+        />
+
+    <RelativeLayout
+        android:id="@+id/update_dialog_rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/update_dialog_msg"
+        android:visibility="invisible"
+        >
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/update_dialog_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textSize="@dimen/f4"
+            android:textColor="@color/c4"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <com.rey.material.widget.ProgressView
+            android:id="@+id/update_dialog_progress"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_toLeftOf="@+id/update_dialog_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            app:pv_circular="false"
+            app:v_styleId="@array/pv_linear_determinate"
+            app:pv_progressMode="determinate"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <com.youyou.uuelectric.renter.Utils.view.RippleView
+                android:id="@+id/rv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/s4"
+                android:paddingRight="@dimen/s4"
+                android:layout_alignParentRight="true"
+                app:rv_alpha="255"
+                app:rv_color="@color/c11"
+                app:rv_type="rectangle">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="@color/c11"
+                    android:textSize="@dimen/f3" />
+
+            </com.youyou.uuelectric.renter.Utils.view.RippleView>
+
+            <RelativeLayout
+                android:id="@+id/left_rela"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/rv_cancel"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                >
+
+                <ImageView
+                    android:id="@+id/image_search"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/ic_search_textfield"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_del_icon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginRight="@dimen/s1"
+                    android:visibility="invisible"
+                    android:background="@mipmap/ic_delete_textfield"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="输入目的地"
+                    android:inputType="text"
+                    android:textColor="@color/c11"
+                    android:textColorHint="#c7dfff"
+                    android:textSize="@dimen/f4"
+                    android:layout_toRightOf="@+id/image_search"
+                    android:layout_marginLeft="@dimen/s2"
+                    android:layout_toLeftOf="@+id/iv_del_icon"
+                    android:layout_marginRight="8dp"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

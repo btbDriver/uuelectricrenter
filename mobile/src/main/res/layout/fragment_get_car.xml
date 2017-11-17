@@ -1,0 +1,273 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c10"
+    tools:context="com.youyou.uuelectric.renter.UI.main.rentcar.GetCarFragment">
+
+    <include
+        android:id="@+id/park_address"
+        layout="@layout/list_item_l4_left" />
+
+    <LinearLayout
+        android:id="@+id/park_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/park_address"
+        android:background="@color/c11"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/park_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/f4" />
+
+        <include
+            layout="@layout/horizontal_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="@dimen/s2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="32dp">
+
+            <include
+                android:id="@+id/v_divider"
+                layout="@layout/vertical_divider"
+                android:layout_width="1px"
+                android:layout_height="1dp"
+                android:layout_centerInParent="true" />
+
+            <com.youyou.uuelectric.renter.Utils.view.RippleView
+                android:id="@+id/navigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/v_divider"
+                android:background="@color/c11"
+                android:gravity="center"
+                app:rv_color="@color/c1"
+                app:rv_type="rectangle">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    >
+
+                    <ImageView
+                        android:id="@+id/getcar_image"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/ic_navigation_list" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/s2"
+                        android:layout_toRightOf="@+id/getcar_image"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:text="@string/navigation_title"
+                        android:textColor="@color/c3"
+                        android:textSize="@dimen/f3" />
+
+                </RelativeLayout>
+            </com.youyou.uuelectric.renter.Utils.view.RippleView>
+
+            <com.youyou.uuelectric.renter.Utils.view.RippleView
+                android:id="@+id/find_car"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/v_divider"
+                android:background="@color/c11"
+                android:gravity="center"
+                app:rv_color="@color/c1"
+                app:rv_type="rectangle">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    >
+
+                    <ImageView
+                        android:id="@+id/findcar_image"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/ic_searchcar_list" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/s2"
+                        android:layout_toRightOf="@+id/findcar_image"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:text="@string/find_car_title"
+                        android:textColor="@color/c3"
+                        android:textSize="@dimen/f3" />
+
+                </RelativeLayout>
+            </com.youyou.uuelectric.renter.Utils.view.RippleView>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/park_root"
+        android:layout_marginTop="@dimen/s2"
+        android:background="@color/c11"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/car_img"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp" />
+
+            <TextView
+                android:id="@id/car_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/car_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/s2"
+                android:text="呵呵"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f3" />
+
+            <TextView
+                android:id="@+id/car_nubmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/car_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/s1"
+                android:background="@drawable/car_number_bg"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:text="123"
+                android:textColor="@color/c7"
+                android:textSize="@dimen/f4" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:id="@+id/open_car_door"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/open_car_door_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/open_car_door_icon_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/s2"
+                    android:text="@string/open_car_door_text"
+                    android:textColor="@color/open_car_door_text_color"
+                    android:textSize="@dimen/f4" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/getcar_wait_pay_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前费用"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥"
+                    android:textColor="@color/c8"
+                    android:textSize="@dimen/f4"
+                    android:paddingLeft="4dp"
+                    />
+
+                <TextView
+                    android:id="@+id/getcar_wait_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/c8"
+                    android:textSize="@dimen/f4"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/call_center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/s2"
+                android:text="12313123"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f4" />
+
+            <TextView
+                android:id="@+id/call_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/s2"
+                android:text="@string/call_center"
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f4" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

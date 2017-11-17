@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loadingStateRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@color/c10">
+
+
+    <com.youyou.uuelectric.renter.Utils.view.MetaballView
+        android:id="@+id/loadingStateProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <TextView
+        android:id="@+id/loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loadingStateProgressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/s3"
+        android:text="加载中..."
+        android:textColor="@color/c3"
+        android:textSize="@dimen/f3" />
+
+</RelativeLayout>

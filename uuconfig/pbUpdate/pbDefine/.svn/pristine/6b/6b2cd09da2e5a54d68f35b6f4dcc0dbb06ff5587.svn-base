@@ -1,0 +1,29 @@
+import "user_auth_common.proto";
+package com.uu.facade.auth.pb.iface;
+
+// 提交驾驶证号 驾驶证档案编号信息进行验证
+message UploadLicenseMessage {
+	message Request {
+		required string license = 1; // 驾驶证号 必输
+	    required string licenseid = 2; // 驾驶证档案编号 必输
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1:上传失败
+		optional string msg = 2;//消息
+	}
+
+}
+
+// 提交驾驶本图片 进行驾照验证
+message LicenseAuthMessage {
+	message Request {
+		required string imageKey = 1; // 驾照图片Key
+		optional string license = 2; // 驾驶证号
+	    optional string licenseId = 3; // 驾驶证档案编号   
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功；-1:上传失败
+	}
+}

@@ -1,0 +1,33 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="toolbar_height">48dp</dimen>
+
+    <dimen name="welcome_heading">24.0sp</dimen>
+    <dimen name="welcome_content">16.0sp</dimen>
+
+    <dimen name="f1">20dp</dimen>
+    <dimen name="f2">18dp</dimen>
+    <dimen name="f3">16dp</dimen>
+    <dimen name="f4">14dp</dimen>
+    <dimen name="f5">12dp</dimen>
+    <dimen name="f6">10dp</dimen>
+    <dimen name="f7">8dp</dimen>
+
+    <dimen name="s1">4dp</dimen>
+    <dimen name="s2">8dp</dimen>
+    <dimen name="s3">12dp</dimen>
+    <dimen name="s4">16dp</dimen>
+    <!-- 单行列表/button高度-->
+    <dimen name="s5">48dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="tip_item_height">24dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="map_confirm_height">176dp</dimen>
+</resources>

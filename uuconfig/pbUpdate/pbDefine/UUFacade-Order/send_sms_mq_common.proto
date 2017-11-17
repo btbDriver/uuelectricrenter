@@ -1,0 +1,15 @@
+package com.uu.facade.order.protobuf.bean;
+
+/**
+* 生成预约单发送短信mq
+*
+*/
+message CreateAppointmentSendSms{
+	required int32 userId = 1; //用户id
+	optional string clientVersion = 2; //客户端版本号
+	optional string gf = 3; //渠道
+	optional string appointmentId = 4; //预约id
+	optional string content = 5; //预约id
+	optional int64  currentTime = 6; //当前时间戳
+	optional int32 timeOut = 7; //消息失效时间，毫秒
+}

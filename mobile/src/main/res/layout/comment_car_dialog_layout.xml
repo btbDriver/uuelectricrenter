@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/confirm_car_round_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_comment_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:background="@drawable/comment_car_round_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_header_getcash_text"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:background="@mipmap/ic_titletag_popup"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="46dp"
+            android:paddingRight="46dp"
+            android:text="亲，小友的车如何呀？"
+            android:textColor="@color/c1"
+            android:textSize="@dimen/f3" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_nagtive_weight"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/ll_comment_nagtive"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@mipmap/ic_nagtive_comment" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/s1"
+                        android:text="我要吐槽"
+                        android:textColor="@color/c11"
+                        android:textSize="@dimen/f4" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="1px"
+                android:layout_height="44dp"
+                android:background="#81bff9"></View>
+
+            <LinearLayout
+                android:id="@+id/ll_normal_weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/ll_comment_normal"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@mipmap/ic_normal_comment" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/s1"
+                        android:text="还不错噢"
+                        android:textColor="@color/c11"
+                        android:textSize="@dimen/f4" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_comment_result_with_submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/s4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/s4"
+            android:overScrollMode="never"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_normal_ic"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="18dp"
+            android:src="@mipmap/ic_normal_popup" />
+
+
+        <TextView
+            android:id="@+id/tv_comment_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/comment_text_nagtive"
+            android:textColor="@color/c4"
+            android:textSize="@dimen/f5" />
+
+        <Button
+            android:id="@+id/ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="@dimen/s2"
+            android:background="@drawable/confirm_dialog_btn_bg"
+            android:gravity="center"
+            android:text="评价"
+            android:textColor="@drawable/reason_button_text_color"
+            android:textSize="@dimen/f3" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/s4"></View>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,258 @@
+import "uu_common.proto";
+import "order_common.proto";
+package com.uu.facade.entire.pb.bean;
+//车型基本信息
+message EntireRentCarModel{
+	optional string carImgUrl = 1;         		//车辆图片
+	optional int32 endurance = 2;          		//可续航 XX 公里
+	optional int32 seat = 3;               		//座位
+	optional string structure = 4;        		 //结构  （eg：两厢）
+	optional string activityDesc = 5;     		 //活动描述
+	optional string activityIconDesc = 6;       //活动图标文字（eg：折后）
+	optional string brand = 7;            		//品牌
+	optional string model = 8;           	    //型号
+	optional string labelColor = 9;       	    //标签颜色代码     eg:#CC0033
+	optional string labelContent = 10;          //标签文案            eg:特惠
+	optional string activityDetails = 11;       //优惠活动描述    eg:新用户可享受前3小时优惠活动
+	optional int32 isActivityUrlExist = 12;     // 0 存在 -1 不存在 是否存在链接
+	optional com.uu.facade.base.common.WebUrl activityWebUrl = 13; //活动链接和title
+	repeated EntireRentModelPrice  carModelPrice = 14;	//车辆价格
+	optional int32  startPosition = 15;			//车辆价格日期显示起始 0~6
+	optional bool   usable = 16;			   	//是否可租， true 可用，false 不可用
+}
+//车型价格
+message EntireRentModelPrice{
+	optional string title = 1;				//标题
+	optional double	price = 2;				//价格
+	optional bool	titleHighlight = 3;		//标题高亮
+	optional bool	backgroundHighLight = 4;//背景高亮
+}
+//预约整租单状态
+enum EntireRentStatus{
+	back_cancel = -3;		//后台取消
+	system_cancel= -2;		//系统取消
+	user_cancel= -1;		//用户取消
+	init=0;					//已取消（初始状态）
+	have_been=1;			//已预约
+	to_be_paid=2;  			//待支付
+	payment_in=3;			//支付中
+	to_be_allot=4;			//待分配车
+	to_be_car=5;			//待取车
+	open_the_door=6;		//开车门中
+	in_the_car=7;			//用车中
+	return_car=8;			//还车成功
+	order_finished=9;		//订单已完成
+	payment_timeout=10;		//支付超时
+	to_be_refunded=11;		//待退款
+	refund=12;				//退款中
+	rfund_finished=13;		//退款完成
+}
+//网点信息
+message EntireRentPark{
+	required string  id = 1;   			 	 // 网点id
+	required string  name = 2;   	 		 // 网点名称
+	optional string address= 3;				 // 网点地址
+	required int32  availableCar= 4;   		 // 可用车辆信息
+	optional double distance = 5;        	 //距离  
+	optional com.uu.facade.base.common.LatLon latlon = 6;//网点经纬度
+	repeated EntireRentCarModel rentalCarModel = 7;//车辆信息
+}
+//整租单信息
+message EntireRent{
+	optional string   entireRentId = 1;   	  	// 预约单ID
+	optional string   orderStartTime = 2;    	// 预约开始时间
+	optional string   orderEndTime = 3;     	// 预约结束时间
+	optional EntireRentPark	orderGetPark=4;	  	// 预约取车网点
+	optional EntireRentPark	orderReturnPark=5;	// 预约还车网点
+	optional string   realStartTime = 6;    	// 实际开始时间
+	optional string   realEndTime = 7;     		// 实际结束时间
+	optional EntireRentPark	realGetPark=8;	    // 实际取车网点
+	optional EntireRentPark	realReturnPark=9;	// 实际还车网点
+	optional int32    userId = 10;   	 	  	// 用户ID
+	optional string   userName = 11;   	      	// 用户名称
+	optional string   phone = 12;   		    // 用户手机
+	optional string   orderAccountId = 13;		//关联到 order_account.id
+	optional int32 	  flag=14;					//预约单类型（0:正常单  ，1：换车单）
+	optional int32 	  status=15;				//订单状态
+	optional int32    platformType=16;			//平台类型  0：android  1:ios
+	optional string   clientVersion=17;			//客户端版本号
+	repeated OrderCostItem costInfos = 18;		//费用信息
+	optional string   createTime = 19;			//创建时间
+	optional string   update_time = 20;			//更新时间
+	optional com.uu.facade.order.pb.common.CarBaseInfo carBaseInfo=21; //车辆信息
+} 
+//费用项目信息
+message OrderCostItem{
+	optional string id = 1;		//id
+	optional string amount = 2; //金额
+	optional string name = 3;	//费用类别名称
+	optional string tag = 4;	//费用标签提示
+	optional string btn = 5;	//费用按钮
+	optional string note = 6;	//费用备注
+	optional bool bold = 7;		//是否粗体
+	optional com.uu.facade.base.common.WebUrl activityWebUrl = 8; //活动链接和title
+}
+//可租时间段
+message RentTime{
+	required string startTime = 1;					//开始时间
+	required string leaseTerm = 2;					//租期时长
+	required string endTime = 3;					//结束时间
+}
+//获取整租单弹窗内容
+message QueryWindowsShowContent{
+
+	message Request{
+		required string costItemId = 1;		//弹窗ID
+	}
+	message Response{
+		required int32  ret = 1;   			// 0:成功   -1：失败 
+		required string content  = 2;  		//还车注意事项文案
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+//获取初始化整租配置信息
+message QueryServiceConfig {
+	message Request{
+		required string cityCode = 1;			//城市id
+	}
+	message Response{
+		required int32  ret = 1;   			// 0:成功   -1：失败 
+		required string note  = 2;  		//还车注意事项文案
+		required int32 lastTime  = 3;  		//最近取车时间（最小单位秒）
+		required int32 mostTime  = 4;		//最远取车时间（最小单位秒）
+		required int32 longTerm  = 5;		//最长租期（最小单位秒）
+		required int32 shortTerm  = 6;		//最短租期（最小单位秒）
+		optional com.uu.facade.base.common.Result result = 7; //结果信息
+	}
+}
+//获取附近可预约网点信息
+message QueryNearParks {
+	message Request{
+		required string cityCode = 1;			//城市id
+		optional com.uu.facade.base.common.LatLon latLon = 2;//手机客户端的经纬度
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败 
+		repeated EntireRentPark parks  = 2;  			//网点信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+//获取预约网点车型信息
+message QueryParkCarModels {
+	message Request{
+		required string parkId = 1;						//网点id
+		required string startTime = 2;					//开始时间
+		required string endTime = 3;					//结束时间
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败 
+		repeated EntireRentCarModel carModels = 2;		//车型信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+//获取推荐时间信息，根据车型，取还车时间
+message QueryTimeByCarModel {
+	message Request{
+		required string parkId = 1;						//网点id
+		required string carModelId = 2;					//车型id
+		required string startTime = 3;					//开始时间
+		required string endTime = 4;					//结束时间
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败 
+		repeated RentTime rentTimes  = 2;  				//时段信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+//获取网点信息，根据车型，取还车时间
+message QueryParkByCarModel {
+	message Request{
+		required string carModelId = 1;					//车型id
+		required string startTime = 2;					//开始时间
+		required string endTime = 3;					//结束时间
+		optional com.uu.facade.base.common.LatLon latLon = 4;//手机客户端的经纬度
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败 
+		repeated EntireRentPark parks  = 2;  			//网点信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+//获取用户可用优惠券信息（默认带用户ID）
+message QueryUserCoupons {
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败 
+		repeated com.uu.facade.order.pb.common.CouponBaseInfo couponBaseInfo = 2; //优惠券信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+//获取预约单费用信息
+message QueryEntireRentFee {
+	message Request{
+		optional string   orderStartTime = 1;    		// 预约开始时间
+		optional string   orderEndTime = 2;     		// 预约结束时间
+		optional EntireRentPark	orderGetPark=3;	  		// 预约取车网点
+		optional EntireRentPark	orderReturnPark=4;	  	// 预约还车网点
+		optional int32  couponId = 5;					// 优惠券ID
+		repeated OrderCostItem costInfos = 6;			//费用信息（在用户选择或取消某些费用项时，设置其值）
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败 
+		repeated OrderCostItem costInfos = 2;			//费用信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+
+//创建预约订单信息
+message CreateEntireRent{
+	message Request{	
+		optional string  modelId = 1;   				//车型ID
+		optional string  startTime = 2;   				//预约开始时间
+		optional string  endTime = 3;   				//预约结束时间
+		optional string  getParkId = 4;      			//取车网点ID信息
+		optional string  returnParkId = 5;      		//还车网点ID信息
+		optional int32 	 couponId=6;					//优惠券ID
+		repeated OrderCostItem costInfos = 7;			//费用信息
+	}
+	message Response{ 
+		required int32 ret = 1;   						// 0:成功   -1：失败  -2:已存在相同的预约单（同一时间段只能创建一个预约单）
+		optional com.uu.facade.order.pb.common.UnderWayEntireRentInfo underWayEntireRentInfo = 2;//进行中整租单信息		
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+
+//取消预约单
+message CancelEntireRent {
+	message Request{
+		required string  orderId = 1;  	 				//预约单ID
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败,-2:预约单已经取消
+		optional com.uu.facade.base.common.Result result = 2; //结果信息
+	}
+}
+//获取用户的预约单列表
+message QueryEntireRents {
+	message Request{
+		repeated EntireRentStatus status  = 1; 			//预约单状态(为空表示查询所有)，反之查询指定状态信息
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败,-2:绑定订单失败
+		repeated EntireRent entireRents  = 2;  			//预约单信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+//获取用户的预约单详情
+message QueryEntireRentsDetail {
+	message Request{
+		required string  orderId = 1;  	 				//预约单ID
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败,-2:绑定订单失败
+		optional EntireRent entireRent  = 2;  			//预约单信息
+		optional com.uu.facade.base.common.Result result = 3; //结果信息
+	}
+}
+
+
+

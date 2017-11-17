@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fpi="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/iv_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/guide_image1" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/tv_jump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/s3"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/guide_jump_bg"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:text="跳过"
+        android:textColor="@color/c1"
+        android:textSize="@dimen/f5" />
+
+    <FrameLayout
+        android:id="@+id/viewpager_instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.flyco.pageindicator.indicator.FlycoPageIndicaor
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            fpi:fpi_cornerRadius="5dp"
+            fpi:fpi_gap="16dp"
+            fpi:fpi_height="8dp"
+            fpi:fpi_selectColor="@color/c1"
+            fpi:fpi_strokeColor="@color/c1"
+            fpi:fpi_strokeWidth="1dp"
+            fpi:fpi_unselectColor="#00000000"
+            fpi:fpi_width="8dp" />
+    </FrameLayout>
+
+</RelativeLayout>

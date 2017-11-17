@@ -1,0 +1,7 @@
+include ':mobile'
+include ':Librarys:material-dialog'
+include ':Librarys:volley'
+include ':Librarys:material-widget'
+include ':Librarys:wheel'
+include ':Librarys:MaterialNavigationDrawerModule'
+include ':Librarys:sweetsheet'

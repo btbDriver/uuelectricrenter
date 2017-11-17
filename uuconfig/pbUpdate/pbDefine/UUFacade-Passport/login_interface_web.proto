@@ -1,0 +1,23 @@
+import "login_common.proto";
+package com.uu.facade.passport.pb.iface;
+
+
+
+// 提交短信验证码，如果该手机号码没有注册过，则直接给用户注册
+message SmsLoginWeb {
+	message Request {
+		required string phone = 1; // 手机号码
+		required string verifyCode = 2; // 验证码
+	}
+
+	message Response {
+		/*
+		 * 0：成功；-1:验证码错误；-2：登录失败；-3：验证码已经失效
+		 */
+		required int32 ret = 1;
+		optional string sessionkey = 2;
+	}
+
+}
+
+

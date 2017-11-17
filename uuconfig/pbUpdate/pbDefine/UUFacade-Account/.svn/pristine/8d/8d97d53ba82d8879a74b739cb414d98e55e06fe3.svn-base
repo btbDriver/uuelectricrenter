@@ -1,0 +1,50 @@
+package com.uu.facade.account.protobuf.common;
+
+message BalanceInfo {
+		optional string desc = 1; // 描述
+		optional int32 opratorTime = 2;//操作时间秒数
+		optional string opratorPrice = 3;//操作金额
+		optional string opratorBalance = 4;//操作余额
+}
+
+message AbsAccountLogInfo {
+		optional string desc = 1; // 描述
+		optional int32 opratorTime = 2;//操作时间秒数
+		optional string opratorAmount = 3;//操作金额
+		optional string busId = 4;//业务id
+		optional int32 busType = 5;//业务类型
+}
+
+
+message AbsAccountInfo {
+		optional string depostiAmount = 1; //当前押金金额
+		optional int32 frozenAmount = 2;//冻结金额
+		optional string refundingAmount = 3;//正在退还的金额
+}
+
+
+//发票操作日志详情
+message InvoiceQuotaIssue {
+	optional string title = 1; //发票抬头
+	optional double invoiceValue = 2; //开票额度
+	optional int32 opTime = 3; //操作时间 时间戳，单位：秒
+	optional int32 status = 4; //状态 1：待开票 2：已邮寄 4：驳回
+	optional string content = 5; //发票内容
+	optional string receiver = 6; //收件人
+	optional string phone = 7; //收件电话
+	optional string address = 8; //详细地址
+	optional string expressName = 9; //状态为已邮寄，此值为快递名称
+	optional string expressNo = 10; //状态为已邮寄，此值为快递单号
+	optional string refuseReason = 11; //状态为驳回，此值为驳回原因
+}
+
+
+/**
+预约账户充值信息
+**/
+message AccountReChargeStrategy {
+	required double rechargeAmount = 1; // 充值金额
+	required double rewardAmount = 2; // 赠送金额
+	optional int64 startDate = 3; // 策略开始日期
+	optional int64 endDate = 4; // 策略结束日期
+}

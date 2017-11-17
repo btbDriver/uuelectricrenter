@@ -1,0 +1,29 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="primary">@color/c1</color>
+    <color name="colorPrimaryDark">#3f8bd2</color>
+    <color name="accent">@color/c4</color>
+
+    <color name="drawer_header_bg">#31363d</color>
+    <!-- 颜色设计规范 -->
+    <color name="c1">#4aa3f7</color>
+    <color name="c2">#3c9eef</color>
+    <color name="c3">#434a54</color>
+    <color name="c4">#989fa5</color>
+    <color name="c5">#c8ccd1</color>
+    <color name="c6">#e2e4e6</color>
+    <color name="c7">#1dc89e</color>
+    <color name="c8">#ff8201</color>
+    <color name="c9">#ff5b63</color>
+    <color name="c10">#f1f3f7</color>
+    <color name="c11">#ffffff</color>
+    <color name="cxx">#b0d5ff</color>
+    <color name="nocolor">#00FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background_color">#FF5E5B94</color>
+    <color name="tabbar_main">#FF4AD5BC</color>
+    <color name="tabbar_secondly">#FF54B4B4</color>
+
+    <color name="dialog_btn_color">#4d6b95</color>
+</resources>

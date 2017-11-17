@@ -1,0 +1,22 @@
+package com.uu.facade.message.pb.iface;
+import "msg_center_common.proto";
+import "uu_common.proto";
+
+
+/**
+获取消息中心用户未读消息
+**/
+message QueryMsgCenterInfoList {
+	message Request {
+	optional com.uu.facade.base.common.PageNoRequest pageRequest = 1; // 翻页请求
+
+}
+
+	message Response {
+		required int32 ret = 1;//状态码 0成功  -1 失败
+		optional  string msg = 2; // 返回状态码说明		
+		repeated com.uu.facade.message.pb.common.MsgSenceContext msgSenceContext =3; //消息文本内容
+		optional com.uu.facade.base.common.PageNoResult pageResult = 4;//分页		
+	}
+}
+

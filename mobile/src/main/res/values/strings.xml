@@ -1,0 +1,239 @@
+<resources>
+    <string name="app_name">友友用车</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_start">StartActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_h5">h5</string>
+
+    <string name="network_error_tip">网络连接错误，请打开网络重试</string>
+    <string name="network_timeout">操作失败，请重试</string>
+
+    <!--  -->
+    <string name="progressActivityErrorButton">重新加载</string>
+    <string name="progressActivityEmptyTitlePlaceholder">未加载到任何内容!</string>
+    <string name="progressActivityEmptyContentPlaceholder">We couldn\'t find anything. Tap the button to take your first image</string>
+    <string name="progressActivityErrorTitlePlaceholder">No Connection</string>
+    <string name="progressActivityErrorContentPlaceholder">网络不给力哦，请刷新重试</string>
+    <string name="title_activity_other">OtherActivity</string>
+    <string name="title_activity_gudie">GudieActivity</string>
+
+
+    <string name="welcome_head_01">Spreadsheets on the go</string>
+    <string name="welcome_content_01">Get stuff done with or without an internet connection.</string>
+    <string name="welcome_head_02">Share and edit together</string>
+    <string name="welcome_content_02">Write on your own or invite more people to contribute.</string>
+    <string name="welcome_head_03">Automatically save to the web</string>
+    <string name="welcome_content_03">Never lose your progress, so you can keep working from any computer or device.</string>
+    <string name="welcome_head_04">Edit Excel spreadsheets</string>
+    <string name="welcome_content_04">Open, edit, and save Excel files - all within Sheets.</string>
+    <string name="title_activity_validate_phone">验证手机</string>
+    <string name="title_near_station_activity">附近有车网点</string>
+    <string name="near_station">网点列表</string>
+    <string name="near_no_station_tip">很抱歉,您附近无可用车网点</string>
+    <string name="text_map">地图</string>
+    <string name="activity_validate_phone_desc">点击“开始使用”即表示同意</string>
+    <string name="rent_car">立即用车</string>
+    <string name="rent_car_this_dot">本次网点还车</string>
+    <string name="title_activity_confirm_car">确认用车</string>
+    <string name="car_number_title">车牌号</string>
+    <string name="car_Mileage_title">当前可续航</string>
+    <string name="car_seat_title">座位数/结构</string>
+    <string name="price_mileage_unit">/公里</string>
+    <string name="price_time_unit">/分钟</string>
+    <string name="trip_plan">行程规划</string>
+    <string name="confirm_rent_car">确认用车</string>
+    <string name="title_activity_favour">优惠</string>
+    <string name="addfriend_cupons">邀请好友获得代金券</string>
+    <!--侧导列表名称-->
+    <string name="money">余额</string>
+    <string name="coupon">优惠</string>
+    <string name="stroke">行程</string>
+    <string name="share">邀请好友</string>
+    <string name="message">消息</string>
+    <string name="setting">更多</string>
+    <string name="active">活动</string>
+    <string name="usercarknow">用车早知道</string>
+    <!-- 设置页各个Title-->
+    <string name="fapiao">发票</string>
+    <string name="helper">帮助中心</string>
+    <string name="about">关于我们</string>
+    <string name="rating">给我们评分</string>
+    <string name="feedback">意见反馈</string>
+    <string name="paymentNotice">待支付费用</string>
+    <string name="peccancyList">待处理违章</string>
+    <string name="title_activity_user_info">个人信息</string>
+
+    <!-- 用户中心-->
+    <string name="logout">退出登录</string>
+    <string name="div">驾驶证</string>
+    <string name="card">信用卡</string>
+    <string name="div_state_validateing">未认证</string>
+    <string name="card_state_nobind">未绑定</string>
+    <string name="title_activity_start_navi">实时导航</string>
+    <string name="title_activity_cost_assess">行程规划</string>
+    <string name="title_activity_address_select">地址选择</string>
+    <string name="title_activity_validate_license">驾驶证认证</string>
+    <string name="text_submit_licnese_getcash">3天内提交驾照认证，审核通过后即可获得10元账户余额</string>
+    <!-- 有车提醒页面-->
+    <string name="create_dot_button">催我建点</string>
+    <string name="has_car_notice_name">很抱歉</string>
+    <string name="has_car_notice_desc">很抱歉，这个网点的车都被开走啦！</string>
+    <string name="create_dot_notice_desc">您附近1公里内暂无友友网点。</string>
+    <string name="has_car_notice_button">有车提醒</string>
+    <string name="has_car_notice_outher">还有哪些网点适合我</string>
+    <string name="has_car_notice_outher_button">去看看</string>
+    <string name="title_activity_get_car">取车地点</string>
+    <string name="navigation_title">取车路线</string>
+    <string name="find_car_title">鸣笛找车</string>
+    <string name="call_center"><u>客服热线 4007-5555-88</u></string>
+    <string name="open_car_door_text">开车门</string>
+    <string name="has_car_tip">有车了，提醒我</string>
+    <!-- 还车-->
+    <string name="title_activity_return_car">还车</string>
+    <string name="close_car_door_text">锁车门</string>
+    <string name="ok_close_car_door_text">好的，锁车门</string>
+    <string name="return_car_tip">锁车门操作会结束本次行程</string>
+    <string name="return_car_check_tip_title">还车注意事项</string>
+    <string name="return_car_check_tip_desc">● 将车停在指定停车场和车位\n● 关闭车窗、车灯、空调\n● 将车钥匙放回钥匙存放处\n● 带走随身物品，保持车内清洁\n● 确保站在车外，并点击锁车门</string>
+
+    <string name="price_calculate_default_text">请选择还车网点</string>
+    <string name="trip_cross">请输入途径地点</string>
+    <string name="price_rule">计费规则</string>
+    <string name="cancel_text">取消</string>
+    <string name="sure_text">确定</string>
+    <string name="title_activity_route">我的行程</string>
+    <string name="price_deatil">费用详情</string>
+
+    <!-- 支付、订单相关 -->
+    <string name="title_activity_need_pay_order">支付车费</string>
+    <string name="title_activity_trip_detail">行程详情</string>
+    <string name="title_activity_order_detail">订单详情</string>
+    <string name="opt_menu_back_main">返回首页</string>
+    <string name="pay_type_alipay">支付宝支付</string>
+    <string name="pay_type_wechat">微信支付</string>
+    <string name="pay_need_text">还需支付</string>
+
+    <!-- 取车相关 -->
+    <string name="getcar_open_gps">开车门需要您的准确定位，请打开“GPS”开关。</string>
+    <string name="getcar_findcar_gps">鸣笛需要您的准确定位，请打开“GPS”开关。</string>
+    <string name="getcar_operatoring_car">正在鸣笛...</string>
+    <string name="getcar_opening_car">正在开车门，请稍候</string>
+
+    <!-- 当前行程页面-->
+    <string name="title_activity_current_stroke">当前行程</string>
+    <string name="use_mileage">里程</string>
+    <string name="use_time">用时</string>
+    <string name="use_price">费用</string>
+    <string name="return_car_address_title">还车地点</string>
+
+    <string name="change_return_car_address">更改还车地点</string>
+    <string name="return_car_button">我要还车</string>
+    <string name="time_tip1">最大还车时间为48小时</string>
+    <string name="time_tip2">还车时间必须大于当前时间</string>
+
+    <string name="car_feedback">车况反馈</string>
+    <string name="car_guide">驾车指南</string>
+    <string name="car_safe">出险怎么办</string>
+    <string name="cancel_stroke">取消订单</string>
+
+    <string name="title_other_pay">待支付费用</string>
+    <string name="fourhour_returncar">4小时还车</string>
+    <string name="goto_recharge">去充值</string>
+
+
+    <!-- 科大讯飞语音播报 -->
+    <string name="app_id">55f78c5c</string>
+    <string-array name="preference_values_tts_role">
+        <item>xiaoyan</item>
+        <item>xiaoyu</item>
+        <item>vixy</item>
+        <item>vixq</item>
+        <item>vixf</item>
+        <item>vixm</item>
+        <item>vixl</item>
+        <item>vixr</item>
+        <item>vixyun</item>
+        <item>vixk</item>
+        <item>vixqa</item>
+        <item>vixying</item>
+        <item>vixx</item>
+        <item>vinn</item>
+        <item>vils</item>
+    </string-array>
+    <string name="preference_default_tts_role">xiaoyan</string>
+    <string name="preference_key_tts_speed">tts_speed</string>
+    <string name="preference_title_tts_speed">语速</string>
+    <string name="preference_default_tts_speed">50</string>
+    <string name="preference_dialog_title_tts_speed">选择语速</string>
+    <string name="preference_key_tts_volume">tts_volume</string>
+    <string name="preference_title_tts_volume">音量</string>
+    <string name="preference_default_tts_volume">50</string>
+    <string name="preference_dialog_title_tts_volume">选择音量</string>
+    <string name="preference_key_tts_pitch">tts_pitch</string>
+    <string name="preference_title_tts_pitch">语调</string>
+    <string name="preference_default_tts_pitch">50</string>
+    <string name="title_activity_main_loop">MainLoopActivity</string>
+    <string name="title_activity_feedback">意见反馈</string>
+
+
+    <string name="return_car">要确保站在车外锁车哦？</string>
+    <!-- 关于-->
+    <string name="about_title">关于我们</string>
+    <string name="map_search_title">地图搜索</string>
+    <string name="loading_fragment">加载中</string>
+    <string name="title_activity_favour_select">选择优惠券</string>
+    <string name="about_new">您当前使用的友友用车已是最新版本</string>
+    <!-- 语音登录-->
+    <string name="login_voice_btn"><u>收不到短信？获取语音验证码</u></string>
+    <!-- 驾照认证-->
+    <string name="upload_license_title">驾驶证信息认证</string>
+    <string name="upload_license_tip1">请按照示例，正确上传您的驾照正副页</string>
+    <string name="upload_license_tip2">请参考失败原因，正确上传您的驾照</string>
+    <string name="upload_license_img_need">*请拍摄本人驾驶证正、副页照片(拍在一张中)\n*照片完整清晰、无遮挡、无反光\n*预计工作时间（10:00-22:00）15分钟内完成认证</string>
+    <string name="upload_license_speed_btn">点这里,加快认证速度</string>
+    <string name="upload_license_helper">填写证件号码后,有助于您更快的通过认证</string>
+    <string name="upload_license_next_btn">提交</string>
+    <string name="photo_camera_preview">拍照图片</string>
+
+    <string name="no_can_call_phone">友友用车拨打电话的权限已被禁用，请在权限管理中启用该权限</string>
+    <!-- 确认用车规则弹窗文案-->
+    <string name="confirm_car_dialog_text">小友将为您预留30分钟的取车时间\n超时后行程将自动取消</string>
+
+    <!--地图页地址栏不同状态的显示文案-->
+    <string name="map_top_no_address">请选择取车地点</string>
+    <string name="map_top_address_searching">正在计算步行距离...</string>
+    <string name="map_top_address_fail">获取距离失败</string>
+
+    <string name="confirm_dialog_btn_msg">知道了，确认用车</string>
+
+    <!--取消订单时，弹出的取消原因弹窗文案-->
+    <string name="cancel_reason">能告诉我们取消的原因吗？</string>
+    <string name="cancel_reason_sub">我们会努力改善</string>
+    <string name="cancel_reason_confirm">确认取消</string>
+    <string name="cost_assess_desc">优惠券、活动减免将在行程结束时，根据实际情况抵扣</string>
+    <string name="always_dot_text">常用网点</string>
+    <string name="near_dot_text">附近网点</string>
+
+    <string name="cost_select_address">请选择途径地点</string>
+    <string name="comment_text_nagtive">收到，小友回去一定好好改正</string>
+    <string name="comment_text_normal">好开心，小友会继续努力哒～</string>
+
+    <string-array name="text_license_photo_error_title">
+        <item>正确拍照示例</item>
+        <item>错误一：照片模糊</item>
+        <item>错误二：照片反光</item>
+        <item>错误三：照片遮挡</item>
+    </string-array>
+    <string-array name="text_license_photo_error_des">
+        <item>请将驾照正副页整体放入取景框内拍照，并\n保证驾照完整清晰、无反光、无遮挡、无缺角</item>
+        <item>取景框内拍照时，请注意对焦，确保照片清晰</item>
+        <item>拍照时请去掉驾驶证保护套，以保证照片无反光</item>
+        <item>将驾照正副页一起放入取景框内拍照，\n并保证驾照边角无遮挡、无缺角</item>
+    </string-array>
+
+
+</resources>

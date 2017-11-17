@@ -1,0 +1,30 @@
+import "uu_common.proto";
+package com.uu.facade.pay.pb.bean;
+
+//支付相关参数
+message PayInfo {
+	required com.uu.facade.base.common.ThirdPayType type = 1; // 支付方式
+	required string payId = 2; // 友友支付单号
+	required string notifyUrl = 3; // 支付回调
+	required float rechargeAmout = 4; // 充值金额
+	optional WechatPayParam wechatPayParam = 5; // 微信支付相关参数
+}
+
+// 微信支付相关参数
+message WechatPayParam {
+	required string appId = 1; // 公众账号ID
+	required string mchId = 2; // 商户号
+	required string prePayId = 3; // 预支付ID
+	required string package = 4; // 扩展字段
+	required string nonceStr = 5; // 随机字符串
+	required int32 timestamp = 6; // 时间截，精确到秒
+	required string sign = 7; // 签名
+}
+
+//充值策略
+message RechargeStrategy {
+	required double rechargeAmount = 1; // 充值金额
+	required double rewardAmount = 2; // 赠送金额
+	optional int32 startDate = 3; // 策略开始日期
+	optional int32 endDate = 4; // 策略结束日期
+}

@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.youyou.uuelectric.renter.UI.main.user.UserInfoActivity">
+
+    <RelativeLayout
+        android:id="@+id/top_root"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="?attr/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/userinfo_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/ic_criclepic_menu" />
+
+            <TextView
+                android:id="@+id/userinfo_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/s2"
+                android:text="尚未登录，请登录"
+                android:textColor="@color/c11"
+                android:textSize="@dimen/f3" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_root"
+        android:layout_marginTop="@dimen/s4"
+        android:orientation="vertical">
+
+        <com.youyou.uuelectric.renter.Utils.view.RippleView
+            android:id="@+id/div_rip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c1"
+            app:rv_type="rectangle">
+
+            <include
+                android:id="@+id/div"
+                layout="@layout/user_info_item" />
+        </com.youyou.uuelectric.renter.Utils.view.RippleView>
+
+
+        <include
+            android:id="@+id/card"
+            layout="@layout/user_info_item"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s5"
+            android:layout_marginTop="@dimen/s4"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ll_userinfo_getcash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/s4"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_userinfo_getcash"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_gold_myview" />
+
+            <TextView
+                android:id="@+id/tv_userinfo_getcash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:paddingBottom="@dimen/s2"
+                android:paddingLeft="@dimen/s2"
+                android:text="@string/text_submit_licnese_getcash"
+                android:textColor="@color/c7"
+                android:textSize="@dimen/f4" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/b4_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s5"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/s4"
+        android:layout_marginLeft="@dimen/s4"
+        android:layout_marginRight="@dimen/s4" />
+</RelativeLayout>

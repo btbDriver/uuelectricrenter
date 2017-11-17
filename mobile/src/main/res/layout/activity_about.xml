@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:background="@mipmap/ic_logo_about" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/s3"
+        android:text="@string/app_name"
+        android:textColor="@color/c3"
+        android:textSize="@dimen/f3" />
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/s1"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f4" />
+
+    <RelativeLayout
+        android:id="@+id/get_version"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_above="@+id/line"
+        android:layout_marginTop="92dp"
+        android:background="@color/c11">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/s3"
+            android:text="检查新版本"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/f3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/s3"
+            android:background="@mipmap/ic_nextpage_list" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/rule"
+        android:background="@color/c11" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/rule"
+        android:layout_marginLeft="@dimen/s3"
+        android:background="@color/c6" />
+
+    <RelativeLayout
+        android:id="@+id/rule"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_above="@+id/call_center"
+        android:background="@color/c11">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/s3"
+            android:text="平台规则"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/f3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/s3"
+            android:background="@mipmap/ic_nextpage_list" />
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/call_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/s3"
+        android:layout_marginTop="160dp"
+        android:text="@string/call_center"
+        android:textColor="@color/c1"
+        android:textSize="@dimen/f4" />
+</RelativeLayout>

@@ -1,0 +1,27 @@
+import "uu_common.proto";
+package com.uu.facade.usecar.protobuf.iface;
+
+//车辆基本信息
+message CarBaseInfo{
+		optional string carImgUrl = 1;         //车辆图片
+		optional string carLicense = 2;        //车牌号
+		optional int32 endurance = 3;          //当前可续航 XX 公里
+		optional int32 seat = 4;               //座位
+		optional string structure = 5;         //结构  （eg：两厢）
+		optional float pricePerKm = 6;         //公里价（每公里 XX 元）
+		optional float pricePerMinute = 7;     //分钟价 (每分钟 XX 元)
+		optional string activityDesc = 8;      //活动描述
+		optional string activityIconDesc = 9;  //活动图标文字（eg：折后）
+		optional string carId = 10;            //车辆唯一标识 carId
+		optional string brand = 11;            //品牌
+		optional string model = 12;            //型号
+		optional int32  carGearBox = 13;       //变速箱 （1-自动 2-手动）
+		optional string labelColor = 14;       //标签颜色代码     eg:#CC0033
+		optional string labelContent = 15;     //标签文案            eg:特惠
+		optional string activityDetails = 16;  //优惠活动描述    eg:新用户可享受前3小时优惠活动
+		optional int32 isActivityUrlExist = 17; // 0 存在 -1 不存在 是否存在链接
+		optional com.uu.facade.base.common.WebUrl activityWebUrl = 18; //活动链接和title
+		optional string  basicInsuranceCost =19; //基础保险费用
+		optional string  sdewCost  =20; //不计免赔费用
+}
+

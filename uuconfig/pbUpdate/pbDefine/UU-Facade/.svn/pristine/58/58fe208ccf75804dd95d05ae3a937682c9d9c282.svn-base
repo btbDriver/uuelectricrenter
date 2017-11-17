@@ -1,0 +1,190 @@
+package com.uu.facade.base.cmd; /*
+ * 1、命令字编号定义，命令字编号是一个7位数的数字，前三位表示模块编号，后四位表示业务处理单元编号
+ * 示例：登录服务模块编号为 100，短信登录的业务处理单元编号为 1， 则短信登录的命令字为 1000001
+ *      网点服务(UUFacade-Dot)模块编号为 101
+ *      用车服务(UUFacade-Usecar)模块编号为 102
+ *      运营服务(UUFacade-Activity)模块编号为 103
+ *		行程服务(UUFacade-Trip)模块编号为 104
+ *		订单服务(UUFacade-Order)模块编号为 105
+ *		账户服务(UUFacade-Account)模块编号为 106
+ *		用户服务(UUFacade-User)模块编号为 107
+ *      用户认证(UUFacade-Auth)模块编号为 108
+ *      用户认证(UUFacade-Pay)模块编号为 109
+ *      用户扩展服务(UUFacade-Ext)模块编号为 110
+ *      通知消息服务(UUFacade-Message)模块编号为 111
+ *      长连接服务(UUAccess-LongConnection)模块编号为 112
+ *
+ * 2、命令字名称格式：
+ *     1)配置命令字是否是走 https 协议，在命令字末尾添加 SSL
+ *     2)配置命令字必须是登录态访问，在命令字末尾添加 NL
+ * 使用下划线"_"分隔，注意，"SSL"、"NL" 是关键字，在命令字的名称里，不能取和这两个关键字一样的名称
+ *
+ * 示例：SmsLogin_SSL 表示，命令字 SmsLogin 必须走https协议，
+ *		GetOrderDetail_SSL_NL 表示，命令字 GetOrderDetail 必须走https协议，并且要求是登录态才能访问
+ *
+ * 3、命令字和请求响应结构命名关系
+ *      如果命令字名称为 GetOrderDetail_SSL_NL 则结构定义的名称必须为 GetOrderDetail，既第一个下划线之前的字符
+ */ enum CmdCode {
+
+// ============== 登录服务(UUFacade-Passport)命令字开始 ==============
+	RequireSmsVerifyCode_SSL = 1000000; // 请求验证码
+	SmsLogin_SSL = 1000001; // 短信登陆
+	AccountLogin_SSL = 1000002; // 账号密码登陆
+	UpdateTicket_NL = 1000003; // 更新票据
+	Logout_NL = 1000004; // 注销
+	RequireVoiceVerifyCode_SSL = 1000005; // 获取语音验证码
+	VerifyActivitySupport_SSL = 1000006; // 活动点赞验证用户
+	// ============== 登录服务(UUFacade-Passport)命令字结束 ==============
+
+
+	// ============== 网点服务(UUFacade-Dot)命令字开始 ==============
+	MapSearchDotList = 1010001; // 地图页获取网点
+	FindNearA2BDot = 1010002; // 行程规划-附近网点-非登录态
+	FindCommonA2BDotNL = 1010003; // 行程规划-常用网点-登录态
+	ChangeBackDotNL = 1010004;	// 行程更改网点数据更新-登录态
+	
+	
+	// ============== 网点服务命令字结束 ==============
+
+
+	// ============== 用车服务(UUFacade-Usecar)命令字开始 ==============
+	RentConfirmDetail_NL = 1020001; // 确认用车详情页
+	RentConfirm_NL = 1020002; //确认用车
+	FindCar_NL = 1020003; //找车
+	OpenTheDoor_NL = 1020004; //开车门
+	OpratorUserCommitment_NL = 1020005;//操作用户同意记录
+	RentConfirmDetail = 1020006; // 确认用车详情页——非登录态访问
+	SubmitUserCommitment = 1020007;  //弹窗提示，用户同意（我知道了），记录同意结果
+	QueryUseCarEvaluate = 1020008; 	 //查询评价标签
+	SaveUseCarEvaluate_NL = 1020009; //保存用户评价信息
+	QueryOrderEvaluate = 1020010; 	 //查询行程评价
+
+	// ============== 用车服务命令字结束 ==============
+
+
+	// ============== 运营服务(UUFacade-Activity)命令字开始 ==============
+	ActivateCouponCode_NL = 1030001; //激活优惠码、分享码
+	GetUserCouponsCount_NL = 1030002; //优惠页 优惠券数量
+	QueryUserCouponsList_NL = 1030003; //优惠页 优惠券列表
+	QueryCanUseCoupons_NL = 1030004; //订单可用优惠券列表
+	InvitationFriends = 1030005; //邀请好友
+	WxGrabRedEnvelope = 1030006; //微信抢红包
+	WxHasGrabRedEnvelopeList = 1030007; //已领取微信红包好友列表
+	WxshareUserInfo = 1030008; //根据订单ID查找分享用户信息
+	WxGetAccessToken = 1030009;//查询微信access_token
+	XmasActivity_NL = 1030010;//活动
+	WxGrabRedEnvelopeUserInfo_NL = 1030011;//根据手机号码查找领取红包者的用户信息
+	AddActivityQuotaCoupon_NL = 1030012;//新年抢券活动-发放固定金额优惠券
+	InitActivityGrabCoupon_NL = 1030013;//新年抢劵活动-初始化方法
+	SelectActivityGrabCouponFirends_NL = 1030014;//新年抢劵活动-查询朋友帮忙记录
+	AddActivityGrabCoupon_NL = 1030015;//新年抢劵活动-发放抢劵优惠券
+	SelectWxGrabRedEnvelopeUserInfo_NL = 1030016;//根据订单号码 微信openid查询抢红包人信息
+    GetCouponDiscountInfo_NL=1030017;//根据订单、用户、优惠券等查询优惠券的优惠信息
+    QueryActivityById_NL = 1030018;//根据主键获取提供服务对象信息
+    ActivateCouponByChannelNum_NL = 1030019;	//根据渠道号激活相对应的优惠券
+    DriverLicenseActivityFilter_NL = 1030020;	//驾照指引活动命令字
+    
+	// ============== 运营服务命令字结束 ==============
+
+	// ============== 行程服务(UUFacade-Trip)命令字开始 ==============
+	TripList_NL = 1040001; // 行程列表
+	TripDetail_NL = 1040002; //行程详情
+
+	// ============== 行程服务命令字结束 ==============
+
+	// ============== 订单服务(UUFacade-Order)命令字开始 ==============
+	PriceEstimate_NL = 1050001; // 价格预估
+	GetCar_NL = 1050002; //取车
+	ReturnCar_NL = 1050003; //还车
+	QueryUnderWayOrderInfo_NL = 1050004; //查询进行中订单信息
+	OperateCar_NL = 1050005; //操作车
+	CancelOrder_NL = 1050006; //取消订单
+	QueryOnTripOrderInfo_NL = 1050007; //查询行程中的订单（用车中）
+	PriceEstimateUnLogin = 1050008; //费用预估不需要登录态
+	QueryOrderFines_NL = 1050009;   //查询欠费单列表（包括其它欠费单和违章单）
+	NewYearStatistics = 1050010;    //元旦活动用户年终总结（非登录态访问,微信中,B拿到A的userId的MD5散列结果,非登录态查A的年终数据）
+	NewYearStatistics_NL = 1050011; //元旦活动用户年终总结（登录态访问,App中,登录态用户传来的sessionKey查年终数据）
+	ReportedCarCondition_NL = 1050012;    //车况反馈
+	ReportedCarConditionList_NL = 1050013; //车况反馈列表
+	CarConditionLabel_NL = 1050014; //车况反馈标签云控
+	CancelOrderReasonList_NL = 1050015; //取消订单原因列表
+	QueryOnWaitOrderInfo_NL = 1050016; //查询等待用车中的的订单
+	PayActionConfirm_NL = 1050017;//支付行为确认 将订单更改为支付中
+	PayActionCancel_NL = 1050018;//支付行为确认 将订单从支付中更改为待支付
+	
+
+	// ============== 订单服务命令字结束 ==============
+
+	// ============== 账户服务(UUFacade-Account)命令字开始 ==============
+	BalanceList_NL = 1060001; // 获取余额列表
+	QueryInvoiceQuota_NL = 1060002; // 获取发票可用额度
+	UseInvoiceQuota_NL = 1060003; // 使用发票额度
+	QueryInvoiceQuotaIssues_NL = 1060004; // 获取发票开票明细列表
+
+	// ============== 账户服务命令字结束 ==============
+
+	// ============== 用户服务(UUFacade-User)命令字开始 ==============
+	ShareCode_NL = 1070001; // 获取分享码
+	UserInfo_NL = 1070002; // 拉取用户信息
+	StartQueryInterface = 1070003; // 客户端启动时，调用的通用查询接口
+	ReportDot_NL = 1070004; // 用户催促建点
+	UserVerifyInfo_NL = 1070005; // 查询用户审核提示信息
+
+	// ============== 用户服务命令字结束 ==============
+
+	// ==============  用户认证(UUFacade-Auth)命令字开始 ==============
+	UploadLicenseMessage_NL = 1080001; // 提交驾驶证号 驾驶证档案编号信息进行验证
+	LicenseAuthMessage_NL = 1080002; // 提交驾驶本图片 进行驾照验证
+	AddLicenseVerifyInfoMessage_NL = 1080003; // 客服系统提交驾驶证姓名 驾驶证号 驾驶证档案编号 可驾驶车辆 驾驶证有效期
+	StaffSetVerifyResult_NL = 1080004; // 提交客服审核结果
+
+	// ============== 用户认证服务命令字结束 ==============
+
+	// ==============  支付(UUFacade-Pay)命令字开始 ==============
+	Pay_NL = 1090001; // 支付
+	PayForOtherItem_NL = 1090002; //欠费追缴支付
+	QueryRechargeStrategy_NL = 1090003; //查询充值策略
+
+	// ============== 支付服务命令字结束 ==============
+
+	// ==============  (UUFacade-Ext)命令字开始 ==============
+	Feedback_NL = 1100001; // 用户意见反馈
+	ReportApnsToken = 1100002; // ios设备上报token
+	CommonReportLog = 1100003; // 客户端基本日志上报
+	GetShContent_SSL = 1100004; // 获取脚本代码
+    AddAppBaseVersionInfoNL = 1100005;	// 添加app版本信息-登录态
+	UpdateAppBaseVersionInfoNL = 1100006;	// 更新app版本信息-登录态
+	QueryAppBaseVersionInfo = 1100007;	// 查询app版本信息-非登录态
+	// ============== EXT命令字结束 ==============
+	// ============== (UUFacade-Message)命令字开始 ==============
+
+	GetInstantMsg_NL = 1110001; // 端(APP)获取消息
+	FeedbackHasGetMsg_NL = 1110002; // 端(APP)反馈给消息服务器已经获取消息
+
+	// ============== (UUFacade-Message)命令字结束 ==============
+
+
+	// ==============  (UUAccess-LongConnection)命令字开始 ==============
+	EstablishLongConnection_NL = 1120001; // 建立长连接
+	HeartBeat_NL = 1120002; // 心跳
+	NotifyMsg_NL = 1120003; // 通知客户端有新消息
+
+	// ============== (UUAccess-LongConnection)命令字结束 ==============
+
+
+	// ==============  (UUFacade-Advertisement)命令字开始 ==============
+	QueryAdvertisement = 1130001; // 查询广告
+	PopWindowStat = 1130002;      // 弹窗统计
+	QueryAdvertisementForWeb = 1130006;//活动展示
+	//以下命令字咱不用 start
+	QueryAdv_NL = 1130003;			 // 查询广告详情
+	ListAdv_NL = 1130004;				//查询广告列表
+	OperateAdv_Nl = 1130005;          //操作广告信息
+	//以下命令字咱不用 end
+	// ============== (UUFacade-Advertisement)命令字结束 ==============
+
+
+
+
+
+}

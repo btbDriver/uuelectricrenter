@@ -1,0 +1,51 @@
+import "uu_common.proto";
+import "pay_common.proto";
+package com.uu.facade.pay.pb.iface;
+
+message Pay {
+
+	message Request {
+		required string orderId = 1; //订单id
+		optional com.uu.facade.base.common.ThirdPayType payType = 2; // 支付方式
+	}
+
+	message Response {
+		required int32 ret = 1; // 1：成功（需根据payInfo跳转第三方支付）；0：成功(余额扣款)；-1：失败；-2:需充值（request中payType为空并且余额不足支付，会返回此状态）；-3：订单状态有冲突，需要刷新页面，以便拿到订单的最新状态；
+								// -4 : 支付中
+		optional com.uu.facade.pay.pb.bean.PayInfo payInfo = 2; // 支付相关参数(如果余额不够支付并且request中payType不为空，则返回此参数)
+	}
+
+}
+
+message PayForOtherItem {
+
+	message Request {
+		required int32 businessType = 1; // 支付的类型，h5传给客户端，客户端透传给后台，是必选项 (1-侧导充值   2-偿还欠费，3：日结充值，4：预约充值)
+		repeated string orderId = 2; //欠费单Id
+		optional float fineTotal = 3; //支付总额
+		required com.uu.facade.base.common.ThirdPayType payType = 4; // 支付方式
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功 -1：失败  -2： 支付中
+		optional com.uu.facade.pay.pb.bean.PayInfo payInfo = 2; // 支付相关参数
+	}
+
+}
+
+message QueryRechargeStrategy {
+
+	message Request {
+		optional int32 r = 1; // 默认字段，填入一个随机数即可
+		optional int32 rechargeType = 2;//   1:侧导充值   2：日结充值  3:预约充值
+	}
+
+	message Response {
+		required int32 ret = 1; // 0：成功 -1：失败；
+		optional com.uu.facade.base.common.ThirdPayType lastPayType = 2; //最后一次使用的支付方式
+		repeated com.uu.facade.pay.pb.bean.RechargeStrategy strategies = 3; //支付策略
+		repeated com.uu.facade.base.common.ThirdPayType payTypes = 4; // 支持的支付方式
+	}
+
+}
+

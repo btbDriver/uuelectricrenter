@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c10">
+
+
+    <com.youyou.uuelectric.renter.Utils.view.MSwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_marginBottom="60dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/favour_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/favour_top_rela"
+            android:paddingTop="@dimen/s4"></android.support.v7.widget.RecyclerView>
+
+
+    </com.youyou.uuelectric.renter.Utils.view.MSwipeRefreshLayout>
+    <!-- 空数据页面 -->
+    <RelativeLayout
+        android:id="@+id/favour_empty_rela1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/favour_top_rela"
+        android:visibility="visible"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@mipmap/ic_nodata_reminder" />
+
+            <TextView
+                android:id="@+id/empty_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/s3"
+                android:text="还没有优惠券哦"
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f3" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/c11">
+
+        <include
+            android:id="@+id/favour_select_bottom_button"
+            layout="@layout/b3_button"
+            android:layout_height="match_parent"
+            android:layout_width="125dp"
+            android:layout_marginTop="@dimen/s2"
+            android:layout_marginBottom="@dimen/s2"
+            android:layout_marginRight="@dimen/s3"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/favour_select_bottom_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/favour_select_bottom_button"
+            android:text="请选择优惠券"
+            android:textColor="@color/c4"
+            android:textSize="@dimen/f4"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/s3"
+            android:singleLine="true"
+            android:ellipsize="end" />
+
+        <RelativeLayout
+            android:id="@+id/favour_select_bottom_loadrela"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/s3"
+            android:layout_toLeftOf="@+id/favour_select_bottom_button"
+            android:background="@color/c11"
+            android:visibility="gone"
+            >
+            <ProgressBar
+                android:id="@+id/favour_select_bottom_process"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                style="?android:attr/progressBarStyleSmall"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/favour_select_bottom_process"
+                android:text="计算金额中..."
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f4"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/s3"
+                android:maxLines="1"
+                android:ellipsize="end"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

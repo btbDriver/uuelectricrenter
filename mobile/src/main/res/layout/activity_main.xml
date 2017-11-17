@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 加载Map对应的Fragment -->
+    <fragment
+        class="com.youyou.uuelectric.renter.UI.main.MainMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/c11"
+        android:paddingBottom="@dimen/s2"
+        android:paddingTop="@dimen/s2">
+
+        <include
+            layout="@layout/b3_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s4"
+            android:layout_marginRight="@dimen/s4" />
+
+    </RelativeLayout>
+
+</LinearLayout>

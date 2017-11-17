@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/s2"
+    android:layout_marginRight="@dimen/s2"
+    android:background="@drawable/confirm_car_round_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@mipmap/ic_pic_usecar_popup" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
+            android:orientation="vertical" />
+
+    </ScrollView>
+
+
+    <!--<com.rey.material.widget.Button
+        android:id="@+id/ok_btn"
+        style="@style/confirm_dialog_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/confirm_dialog_btn_bg"
+        android:gravity="center"
+        android:text="@string/confirm_dialog_btn_msg"
+        app:rd_enable="true" />-->
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/confirm_dialog_btn_bg"
+        android:gravity="center"
+        android:text="@string/confirm_dialog_btn_msg"
+        android:textColor="@drawable/reason_button_text_color" />
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="30dp" />
+</LinearLayout>

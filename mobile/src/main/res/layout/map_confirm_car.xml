@@ -1,0 +1,105 @@
+<com.youyou.uuelectric.renter.Utils.view.DoubleClickFilterLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/map_confirm_height">
+
+
+    <RelativeLayout
+        android:id="@+id/car_root"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/map_confirm_height"
+        android:background="@drawable/map_confirm_bg"
+        android:paddingLeft="@dimen/s2"
+        android:paddingRight="@dimen/s2">
+
+        <ImageView
+            android:id="@+id/left_page"
+            android:layout_width="wrap_content"
+            android:layout_height="122dp"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="@dimen/s2"
+            android:src="@mipmap/ic_homepage_lastpage_list" />
+
+        <ImageView
+            android:id="@+id/right_page"
+            android:layout_width="wrap_content"
+            android:layout_height="122dp"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="@dimen/s2"
+            android:src="@mipmap/ic_homepage_nextpage_list" />
+
+        <com.youyou.uuelectric.renter.Utils.view.UUViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="122dp"
+            android:overScrollMode="never"
+            android:layout_toLeftOf="@id/right_page"
+            android:layout_toRightOf="@id/left_page" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/left_button"
+            style="@style/b1_left_button"
+            android:layout_width="130dp"
+            android:layout_height="44dp"
+            android:layout_below="@id/viewPager"
+            android:layout_marginBottom="@dimen/s2"
+            android:layout_marginRight="@dimen/s2"
+            android:background="@drawable/btn_white_shape_normal"
+            android:gravity="center"
+            android:text="@string/trip_plan"
+            app:rd_enable="true" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/b3_button"
+            style="@style/b3_button"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@id/viewPager"
+            android:layout_marginBottom="@dimen/s2"
+            android:layout_toRightOf="@id/left_button"
+            android:gravity="center"
+            app:rd_enable="true" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/nocar_root"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/map_confirm_height"
+        android:background="@drawable/map_confirm_bg"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="90dp"
+            android:layout_height="56dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/s3"
+            android:background="@mipmap/ic_nocar_reminder_pic" />
+
+
+        <TextView
+            android:id="@+id/tip_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/s3"
+            android:gravity="center"
+            android:text="@string/has_car_notice_desc"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/f4" />
+
+        <include
+            layout="@layout/b5_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/s2"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp" />
+
+    </RelativeLayout>
+
+</com.youyou.uuelectric.renter.Utils.view.DoubleClickFilterLayout>

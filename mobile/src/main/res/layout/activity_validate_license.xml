@@ -1,0 +1,296 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c10"
+    android:orientation="vertical"
+    tools:context=".UI.license.ValidateLicenseActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_license_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/upload_license_tip1"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f4" />
+
+            <RelativeLayout
+                android:id="@+id/license_img_root"
+                android:layout_width="180dp"
+                android:layout_height="240dp"
+                android:layout_marginTop="@dimen/s3"
+                android:background="@drawable/dash_bg">
+
+                <ImageView
+                    android:id="@+id/license_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="1dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_instance_license" />
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@mipmap/btn_takepic_license" />
+
+                <ImageView
+                    android:id="@+id/error_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@mipmap/ic_checkout_failed" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/validate_license_backdesc_root"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/b3_include"
+                android:layout_marginLeft="@dimen/s4"
+                android:layout_marginRight="@dimen/s4"
+                android:layout_marginTop="@dimen/s3"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/validate_license_backdesc_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/validate_license_backdesc_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="@dimen/s1"
+                        android:layout_marginRight="@dimen/s1"
+                        android:text="失败原因"
+                        android:textColor="@color/c9"
+                        android:textSize="@dimen/f5" />
+
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="1px"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/s1"
+                        android:layout_toLeftOf="@id/validate_license_backdesc_title_text"
+                        android:background="@color/c9" />
+
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="2px"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/s1"
+                        android:layout_toRightOf="@id/validate_license_backdesc_title_text"
+                        android:background="@color/c9" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/validate_license_backdesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/validate_license_backdesc_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/s2"
+                    android:textColor="@color/c9"
+                    android:textSize="@dimen/f5" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_below="@id/validate_license_backdesc"
+                    android:layout_marginLeft="@dimen/s4"
+                    android:layout_marginRight="@dimen/s4"
+                    android:layout_marginTop="@dimen/s4"
+                    android:background="@drawable/dash_line_shape" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/s4">
+
+                <ImageView
+                    android:id="@+id/ic_notice_license"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@mipmap/ic_notice_license" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="1px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/s1"
+                    android:layout_toLeftOf="@id/ic_notice_license"
+                    android:background="@color/c5" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="1px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/s1"
+                    android:layout_toRightOf="@id/ic_notice_license"
+                    android:background="@color/c5" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/s2"
+                android:text="@string/upload_license_img_need"
+                android:textColor="@color/c3"
+                android:lineSpacingExtra="5dp"
+                android:textSize="@dimen/f5" />
+
+            <LinearLayout
+                android:id="@+id/expand_license_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/s4"
+                android:layout_marginRight="@dimen/s4"
+                android:layout_marginTop="@dimen/s4"
+                android:animateLayoutChanges="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <include layout="@layout/horizontal_divider" />
+
+
+                <LinearLayout
+                    android:id="@+id/expand_license"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/s5"
+                        android:gravity="center"
+                        android:text="@string/upload_license_speed_btn"
+                        android:textColor="@color/c1"
+                        android:textSize="@dimen/f4" />
+
+                    <ImageView
+                        android:id="@+id/arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/ic_arrow_expaned_license" />
+                </LinearLayout>
+
+                <include layout="@layout/horizontal_divider" />
+
+                <RelativeLayout
+                    android:id="@+id/validate_license_rela1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/s2"
+                    android:layout_marginRight="@dimen/s2"
+                    android:layout_marginTop="@dimen/s2"
+                    android:visibility="gone">
+
+                    <com.rey.material.widget.EditText
+                        android:id="@+id/validate_license_edit"
+                        style="@style/LightEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789xX"
+                        android:hint="请输入18位驾驶证号"
+                        android:maxLength="18"
+                        app:et_supportMaxChars="18"
+                        app:et_supportMode="charCounter" />
+
+                    <ImageView
+                        android:id="@+id/validate_license_rela1_delete"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="5dp"
+                        android:src="@mipmap/ic_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/validate_license_rela2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/validate_license_rela1"
+                    android:layout_marginLeft="@dimen/s2"
+                    android:layout_marginRight="@dimen/s2"
+                    android:visibility="gone">
+
+                    <com.rey.material.widget.EditText
+                        android:id="@+id/validate_record_edit"
+                        style="@style/LightEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入12位档案编号"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        app:et_supportMaxChars="12"
+                        app:et_supportMode="charCounter" />
+
+                    <ImageView
+                        android:id="@+id/validate_license_rela2_delete"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="5dp"
+                        android:src="@mipmap/ic_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/validate_license_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/validate_license_rela2"
+                    android:layout_marginTop="@dimen/s2"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/upload_license_helper"
+                    android:textColor="@color/c5"
+                    android:textSize="@dimen/f4"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/b3_include"
+                layout="@layout/b3_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/validate_license_desc"
+                android:layout_marginLeft="@dimen/s4"
+                android:layout_marginRight="@dimen/s4"
+                android:layout_marginTop="16dp" />
+
+            <View
+                android:layout_width="wrap_content"
+
+                android:layout_height="24dp" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

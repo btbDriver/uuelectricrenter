@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youyou.uuelectric.renter.Utils.view.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rv_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/s3"
+    android:paddingTop="@dimen/s2"
+    app:rv_color="@color/c1"
+    app:rv_type="rectangle">
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/s4"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/s4"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="大悦城停车场"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/f3" />
+
+        <TextView
+            android:id="@+id/tv_remote_price"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:text="10.00元"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/f5" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_sub_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_title"
+        android:layout_marginRight="@dimen/s4"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="具体停车位置"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f4" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/tv_sub_title"
+        android:layout_marginTop="@dimen/s2"
+        android:background="@color/c6" />
+
+
+</com.youyou.uuelectric.renter.Utils.view.RippleView>

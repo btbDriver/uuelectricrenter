@@ -1,0 +1,103 @@
+package com.uu.facade.activity.pb.iface;
+
+//六一活动 初始化抽奖 和分享数据
+message  InitActivityDraw{
+	message Request{
+		required string userMobile = 1;//手机号码
+	}
+	message Response{
+		required int32 result = 1;	//返回码 -1:失败;-2 参数错误 -5 活动未开启或已结束 0:成功;
+		optional UserActivitiDrawPB activitiDraw = 2 ; 
+
+	}
+}
+
+// 记录用户抽奖结果
+message RecordDrawResult{
+	message Request{
+		required string uuid = 1;//用户唯一标识
+		optional int32 resultStatus = 2; // 用户抽奖结果
+	}
+	message Response{
+		required int32 result = 1;	//返回码 -1:失败 -2 参数错误 -3 已完成所有再抽奖不能次插入抽奖结果 -4 此奖品已经领取完 -5 活动未开启或已结束;0:成功
+	}
+}
+//朋友帮忙获取抽奖机会
+message FriendHelpProduceChance{
+	message Request{
+		required string uuid = 1;//用户唯一标识
+		optional string friendMobile = 2; // 朋友手机
+	}
+	message Response{
+		required int32 result = 1;	//返回码 -1:执行失败 -2参数错误 -3此手机号帮助过  -4 帮助朋友已达上限 -5 用户不存在 -6 用户已经达到获取第三次抽奖机会单未成功获得 -5 活动未开启或已结束 ;0:成功
+		optional string message = 2; //返回消息 
+	}
+}
+// 获取朋友帮忙次数
+message GetFriendStatNumber{
+	message Request{
+		required string uuid = 1;//用户唯一标识
+	}
+	message Response{
+		required int32 result = 1;	//返回码 -1:失败 -2 参数错误;0:成功
+		required int32 statNumber = 2;	// 朋友帮忙次数
+	}
+}
+
+//获取每个奖品等级的数量
+message QueryPrizeCount{
+	message Request{
+		required string date = 1;//用户唯一标识
+	}
+	message Response{
+		required int32 result = 1;	//返回码 -1:失败 -2 参数错误;0:成功
+		optional PrizeStatNumber prizeStatNumber = 2 ;
+	}
+
+}
+
+//用户抽中过的奖品 二等奖或三等奖的记录 
+message QueryUserExistPrize{
+	message Request{
+		required string uuid = 1;//用户唯一标识
+	}
+	message Response{
+		required int32 result = 1;	//返回码 -1:失败 -2 参数错误;0:成功
+		optional int32 isExist = 2 ; // 1 领取过 2 未领取过
+	}
+
+}
+// 中奖结果
+message ShowPrizeResult{
+	message Request{
+		required string uuid = 1;//请求标识
+	}
+	message Response{
+		required int32 result = 1;	//返回码 -1:失败 -2 参数错误 -5 活动未开启或已结束;0:成功
+		repeated UserPrizeResult userPrizeResult  = 2 ; // 中奖结果
+	} 
+}
+
+
+//中奖手机号 等级
+message UserPrizeResult{
+	required string mobile = 1 ;//手机号
+	optional int32  resultSattus = 2 ;//中奖 等级
+}
+
+// 每个奖品等级的数量
+message PrizeStatNumber{
+	optional int32 firstPrize = 1 ;
+	optional int32 secondPrize = 2 ;
+	optional int32 threePrize = 3 ;
+	optional int32 fourPrize = 4 ;
+}
+
+// 初始化抽奖的结果
+message UserActivitiDrawPB{
+	required string uuid = 1; //用户唯一标识
+	optional int32 resultStatus = 2; // 用户奖品 
+	optional int32 statNumber = 3; //朋友帮忙统计次数
+	optional int32 availableNumber = 4; //用户可用的抽奖次数
+	optional string userMobile = 5; //用户可用的抽奖次数
+}

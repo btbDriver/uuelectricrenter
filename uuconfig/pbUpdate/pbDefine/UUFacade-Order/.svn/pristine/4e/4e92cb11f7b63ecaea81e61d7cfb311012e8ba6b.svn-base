@@ -1,0 +1,445 @@
+import "order_common.proto";
+import "uu_common.proto";
+package com.uu.facade.order.pb.bean;
+
+
+//价格预估
+	message PriceEstimate {
+	message Request {
+		required double distance = 1;        //距离   米
+		required int32 endTime = 2;         //还车时间
+		required string carId = 3;//车的
+		required double backDistance = 4;        //返回距离   米
+		optional string cityCode = 5;//城市码
+		optional string startParkingId = 6; //开始网点id
+		optional string endParkingId = 7;	//结束网点id（没开AtoB之前传A点的id） 
+	}
+
+	message Response {
+		required int32 ret = 1;  //返回码
+		optional double cost = 2; //预估费用 （eg: ￥28）
+		optional double mileagePrice = 3; //公里费用
+		optional double timePrice = 4; //时间费用 
+		optional string timeSource = 5; //时长描述(小时分钟)
+		optional string mileageFee = 6;//公里价格
+		optional string timeFee = 7;//时间价格
+		optional string labelColor = 8;//标签颜色代码
+		optional string labelContent = 9;//标签文案
+		optional string desc = 10;//文案描述
+		optional double backCarFee= 11;//还车费
+	}
+}	
+	
+	//价格预估(非登录态)
+message PriceEstimateUnLogin {
+	message Request {
+		required double distance = 1;        //距离   米
+		required int32 endTime = 2;         //还车时间
+		required string carId = 3;//车的
+		required double backDistance = 4;        //返回距离   米
+		optional string cityCode = 5;//城市码
+		optional string startParkingId = 6; //开始网点id
+		optional string endParkingId = 7;	//结束网点id（没开AtoB之前传A点的id） 
+	}
+
+	message Response {
+		required int32 ret = 1;  //返回码
+		optional double cost = 2; //预估费用 （eg: ￥28）
+		optional double mileagePrice = 3; //公里费用
+		optional double timePrice = 4; //时间费用 
+		optional string timeSource = 5; //时长描述(小时分钟)
+		optional string mileageFee = 6;//公里价格
+		optional string timeFee = 7;//时间价格
+		optional string labelColor = 8;//标签颜色代码
+		optional string labelContent = 9;//标签文案
+		optional string desc = 10;//文案描述
+		optional double backCarFee= 11;//还车费
+	}
+}
+
+//取车
+message GetCar{
+	message Request{
+		optional string orderId = 1;         //订单id 
+		optional string cityCode = 2;		//城市id
+		optional com.uu.facade.base.common.LatLon latLon = 3;//手机客户端的经纬度
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+		optional string msg = 2 ;//提示信息 
+	}
+}
+
+//还车
+message ReturnCar{
+	message Request{
+		required string orderId = 1;         //订单id
+		required string cityCode = 2; //城市码
+		optional com.uu.facade.base.common.LatLon latLon = 3;	//手机客户端的经纬度
+		optional string parkingId = 4;	//网点ID,如果传空说明是第一次点击锁车门，需要校验并提示客户端还车费，如果有值需要判断当前车辆可还车网点是否与网点ID一致，不一致再次弹窗提示，一致执行还车逻辑
+	}
+	message Response{
+		required int32 ret = 1; //0:成功   -1：失败 1：订单状态已变更（订单状态不是用车中，只有用车中才可还车）2:弹窗提示还车网点及费用
+		optional string parkingId = 2;	//返回给客户端的网点ID
+		optional string windowMsg = 3;  //弹窗信息（高亮部分）
+	}	
+}
+
+//查询车辆详情
+message QueryCarDetailInfo{
+	message Request{
+		optional int32 orderId  = 1 ;//订单id
+		optional string cityCode = 2;		//城市id
+	}
+	message Reponse{
+		required int32 ret  = 1 ;//0:成功   -1：失败
+		optional string msg  = 2 ;//提示信息 
+		optional com.uu.facade.order.pb.common.OrderDetailInfo orderDetailInfo = 3;
+	}
+}
+
+//支付订单
+/**
+message PayOrder{
+	message Request{
+		required string orderId = 1;// 订单id
+		optional string couponIds  = 2;//优惠券列表 
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败  2:需充值
+		optional string msg  = 2;//提示信息
+		optional string needRechargeAmount = 2; // 需充值的数额
+		
+	}
+}*/
+
+// 用车中订单信息
+message QueryUnderWayOrder{
+	message Request{
+		optional string orderId = 1;		//订单id
+		optional string cityCode = 2;		//城市id
+		optional string couponId = 3;       //优惠券id    传-1 表示从优惠券页面传过来  不使用优惠券场景
+		optional com.uu.facade.base.common.LatLon latLon = 4;//手机客户端的经纬度
+		//optional string fromType = 5;//从优惠券访问 订单详情 传1  否则传 0
+		
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+		optional com.uu.facade.order.pb.common.UnderWayOrderInfo underWayOrderInfo = 2;//进行中订单信息
+		optional string msg  = 3;//提示信息 
+	}
+}
+
+
+//车辆操作
+message OperateCar{
+	message Request{
+		optional string orderId = 1;
+		optional com.uu.facade.order.pb.common.CarOperationType operateType = 2;
+		optional com.uu.facade.base.common.LatLon latLon = 3;//手机客户端的经纬度
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+		optional string msg = 2;//
+	}
+}
+
+
+/**
+//寻车
+message SearchCar{
+	message Request{
+		optional string orderId = 1;
+		optional com.uu.facade.base.common.LatLon latLon = 2;//手机客户端的经纬度
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+	}
+}
+//开车门
+message OpenCarDoor{
+	message Request{
+		optional string orderId = 1;
+		optional com.uu.facade.base.common.LatLon latLon = 2;//手机客户端的经纬度
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+	}
+}
+//关车门
+message CloseCarDoor{
+	message Request{
+		optional string orderId = 1;
+		optional com.uu.facade.base.common.LatLon latLon = 2;//手机客户端的经纬度
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+	}
+}
+
+
+//锁上车门并停止供电
+message CloseCarDoorAndCutOffPowerSupply{
+	message Request{
+		optional string orderId = 1;
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+	}
+}
+
+//停止供电
+message CutOffPowerSupply{
+	message Request{
+		optional string orderId = 1;
+	}
+	message Response{
+		required int32 ret = 1;//0:成功   -1：失败
+	}
+}
+*/
+
+//取消订单
+message CancelOrder{
+	message Request{
+		required string orderId = 1;   // 订单Id
+		required int32 cancelType = 2; // 1：用户自主取消    2:系统自动取消
+		repeated string reasons = 3;   // 取消原因
+	}
+
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败
+	}
+}
+
+
+
+
+//用车中（行程中）
+message OnTripOrderInfo{
+	message Request{
+		optional string orderId = 1; // 订单Id
+		optional string cityCode = 2;		//城市id
+		optional int32 isDisplayDetailInfo = 4;//是否显示非金额信息    1：不显示  0：显示
+		optional int32 clickButton = 5;   //1:单击4小时内还车
+	}
+
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败
+		optional string carId=2;	//车辆id
+		optional string plateNumbe=3;	//车牌
+		optional string brandName=4;	// 品牌
+		optional string modelName=5;	//型号
+		optional string autoTrassactionName =  6;//“自动档”、“手动档”
+		optional string actualCost = 7;//实际费用（总费用不扣除优惠券，活动的金额）
+		optional string mileage = 8;//里程      (10.80公里)
+		optional string drivedTime = 9;//用时 (秒)
+		optional com.uu.facade.order.pb.common.ParkingInfo backParkingInfo = 10;//还车车网点
+		optional string carHeadUrl = 11;//车辆图片
+		optional int32 isFirstOrder = 12 ;//是否首单  0-否；1-是
+		optional com.uu.facade.base.common.WebUrl carGuideUrl = 13;        //用车指南对应的H5页面
+		optional com.uu.facade.base.common.WebUrl carConditionUrl = 14;        //车况反馈对应的H5页面
+		optional string waitFee = 15;//等待费用
+		optional com.uu.facade.base.common.WebUrl failSafeUrl = 16;        //保险故障对应的H5页面
+		optional int32 isAllDotsA2B = 17;   //是否全网开放异地还车1-支持，2-不支持
+		optional int32 waitFeeTimeSec = 18;//超时等待时间
+		
+		
+		optional string dayClearTitle = 19;//  下发  小友用车提醒 标题文本
+		optional string dayClearText = 20;//   下发日结的文本
+		optional string dayClearBackCar = 21;//  下发  4小时内还车 按钮文本
+		optional string dayClearChargeButtonText = 22;//下发  去充值
+		optional string dayClearChargeButtonUrl = 23;//下发  去充值 Url
+		optional string dayClearChargePageTile = 24;//充值 页面 title
+		optional int32 dayClearFlag = 25;//日结下发标志    -1:不弹    0：24小时弹窗     1：28小时弹窗     2：48小时弹窗     3：52小时弹窗      4：72小时弹窗    5：76小时弹窗
+		optional string dayClearTip = 26;//日结下发提示
+		optional bool dayClearTipFlag = 27;//日结下发提示标志
+
+		repeated RuningCarActiAdvertisementPB runingCarActiAdver=28; // 行车中的广告
+	}
+}
+
+
+//要展示的广告
+message RuningCarActiAdvertisementPB{
+	optional string showContent = 1; // 需要显示的内容
+	optional com.uu.facade.base.common.WebUrl activityUtl = 2;  
+}
+
+
+
+//等待取车
+message QueryOnWaitOrderInfo{
+	message Request{
+		optional string orderId = 1; // 订单Id
+		optional string cityCode = 2;		//城市id
+	}
+
+	message Response{
+		required int32 ret = 1; // 0:成功   -1：失败   -2 开关关闭
+		optional string waitFee = 12;//等待费用
+	}
+}
+
+//查询欠费单列表
+message QueryOrderFines{
+
+	message Request{
+           required int32 pageType = 1;   //页面类型                1:其它欠费单页（包括大于7天的违章单）   2:违章单页（所有的违章单，不考虑天数）
+    }
+
+	message Response{
+		required int32 ret = 1;
+		repeated OrderFine orderFines = 2;      //各个订单相应的罚款单列表
+		optional float fineTotal = 3;                //确认支付总额
+    		optional int64 deadline = 4;                 //缴费截止时间
+    		optional com.uu.facade.base.common.ThirdPayType defaultThirdPayType = 5 ;//默认支持的第三方支付方式
+		repeated com.uu.facade.base.common.ThirdPayType thirdPayTypeList = 6;//可支持的支付方式
+	}
+
+    //其它欠费单
+    message OtherFineItem{
+	optional string arrearId = 1;      //欠费单Id
+    	optional string fineName = 2;      //欠费单名称（eg：拖车费、清洁费）
+    	optional float fine = 3;           //金额
+    	optional string desc = 4;          //描述
+    	optional int64 createTime = 5;     //创建时间
+    }
+    
+    //违章欠费单
+    message IllegalItem{
+	optional string arrearId = 1;      //欠费单Id
+    	optional float deductMark = 2;           //扣分
+    	optional float fine = 3;                 //罚款金额
+    	optional int64 createTime = 4;           //违章时间
+    	optional string desc = 5;                //违章描述
+    	optional string address = 6;             //违章地点
+    }
+    
+    //违章欠费列表
+    message IllegalList{
+    	repeated IllegalItem illegalItems = 1;       //违章费用列表
+    	optional float illegalTotal = 2;             //违章总费用
+    }
+    
+    //针对一个订单的 其它欠费单列表和违章欠费列表
+    message OrderFine{
+    	optional string orderId = 1;                 //订单Id
+    	repeated OtherFineItem otherFineItems = 2;   //其它欠费单列表
+    	optional IllegalList illegalList = 3;        //违章费用列表
+		optional string plateNumbe = 4;		     //车牌
+		optional int64 startTime = 5;	             //用车开始时间
+		optional int64 endTime = 6;	             //用车结束时间
+		optional string carEngineSn = 7;       //电机号
+    }
+}
+
+//元旦活动用户年终总结(登录态/非登录态都用以下Request、Response结构)
+message NewYearStatistics{
+	message Request{
+		optional string userIdHash = 1;        //用户userId 散列结果 (登录态传"userIdHash"字符串,非登录态传真正的userIdHash)
+	}
+
+	message Response{
+		required int32 ret = 1;               // 0:成功   -1：失败
+		optional string userIdHash = 2;        //用户userId 散列结果
+		optional int32 allUserMileage = 3;    //所有用户累计里程数（单位: 公里）
+		optional int32 allUserSaveMoney = 4;  //所有订单省钱总数
+		optional int32 rank = 5;              //友友第几位用户
+		//optional string existenceTime = 6;    //与友友相识多少天多少小时 （直接给字符串 eg:20天8小时）
+		optional int32 totalMileage = 7;      //该用户总公里数
+		optional int32 totalMinute = 8;       //该用户总分钟数
+		optional int32 totalInvitation = 9;   //总邀请数
+		optional string invitationCode = 10;  //用户邀请码
+		optional int64 createTime = 11;       //用户创建时间
+		optional string nickname = 12;        //微信昵称
+		optional string userAvatar = 13;      //微信头像
+		optional float totalPay = 14;         //该用户支付总额
+		optional int64 existenceDay = 15;     //与友友相识多少天 
+		optional int64 existenceHour = 16;    //与友友相识多少小时 
+	}
+}
+
+//车况反馈
+message ReportedCarCondition{
+	message Request{
+		required string orderId = 1;   // 订单id
+		repeated string carConditionLabel  = 2;  //车况标签
+		repeated int32 labelControl = 3; //标签云控，提交车况反馈时，是否需要上传照片  0-不需要  1-需要
+		optional string carConditionDesc = 4;    //车况详细描述
+		repeated string carConditionUrl = 5;  //车况相关照片url
+	}
+
+	message Response{
+		required int32 ret = 1;   // 0:成功   -1：失败   -2:必须上传照片  -3：不能全为空
+	}
+}
+
+//车况反馈列表
+message ReportedCarConditionList{
+	message Request{
+		required string orderId = 1;   // 订单id
+	}
+
+	message Response{
+		required int32 ret = 1;   // 0:成功   -1：失败
+		repeated com.uu.facade.order.pb.common.CarConditionDTO carConditionDTO = 2; //车况反馈信息
+	}
+}
+
+//车况反馈标签云控
+message CarConditionLabel {
+	message Request{
+		required int32  labelScene = 1;   // 1-待取车场景   2-行程中
+	}
+
+	message Response{
+		required int32  ret = 1;   // 0:成功   -1：失败
+		repeated string carConditionLabel  = 2;  //车况标签
+		repeated string labelControl = 3; //标签云控，提交车况反馈时，是否需要上传照片  0-不需要  1-需要
+	}
+}
+
+//取消订单原因列表
+message CancelOrderReasonList{
+	message Request{
+		optional int64 currentTime = 1;   // 时间戳，该字段只是为了访问通过，无实际意义；
+	}
+
+	message Response{
+		required int32 ret = 1;            // 0:成功   -1：失败
+		repeated string reason = 2;        // 取消原因列表
+		optional string cancelWarning = 3; // 取消订单 温馨提示
+		optional string cancelWarningRGBValue = 4;//取消订单 温馨提示 颜色值
+	}
+}
+
+enum PayActionConfirmType{
+	ORDER = 1;
+	ARREAR = 2;
+}
+
+//支付确认，订单状态更改为支付中
+message PayActionConfirm{
+	message Request{
+		repeated string orderId = 1;   //订单号    订单类型只能传一个  欠费id  可传多个
+		required PayActionConfirmType type = 2;//类型
+	}
+	message Response{
+		required int32 ret = 1;            // 0:成功   -1：失败
+	}
+}
+
+//支付确认，订单状态更改为支付中
+message PayActionCancel{
+	message Request{
+		repeated string orderId = 1;   //订单号   
+		required PayActionConfirmType type = 2;//类型
+	}
+	message Response{
+		required int32 ret = 1;            // 0:成功   -1：失败
+	}
+}
+
+
+

@@ -1,0 +1,215 @@
+import "uu_common.proto";
+package com.uu.facade.order.pb.common;
+
+//订单详情
+message OrderDetailInfo{
+	required string orderId=1;	//订单号
+	optional int32 userId=2;	//租客id
+	optional string userName=3;	//用户名
+	optional string phone=4;	//手机号
+	optional string carId=5;	//车辆id
+	optional string carImgUrl=6;	//车辆图片url
+	optional string plateNumbe=7;	//车牌
+	optional int64 startTime=9;	//用车开始时间
+	optional int64 endTime=10;	//用车结束时间
+	optional string brandName=13;	// 品牌
+	optional string modelName=14;	//型号
+	optional double mileage=15;	//里程   单位公里
+	optional int32 maxUseTime=16;	//最大使用时间  单位秒
+	optional int32 maxDelayPayTime=17;	//最大延期支付时间  单位秒
+	optional OrderFormStatus status=18;		//状态  订单表单状态
+	optional string priceMin=19;	//价格每分钟
+	optional string priceKM=20;	//价格每公里
+	optional int32 waitGetCarSeconds = 23;//等待取车的最大等待时间 （单位秒）
+	optional int64 createTime = 24;//订单创建时间  单位毫秒（注意是  毫秒）
+	optional int32 automaticTransmission = 27;//是否自动档  0：自动档，1 手动档
+	//optional string parkingAddress = 25;// 网点具体地址
+	//optional string carDetailAddress = 26;//车位地址
+	//optional string backCarParkingName=22;	//还车网点
+	//optional string getCarParkingId=11;	//取车网点
+	//optional string backCarParkingId=12;	//还车网点
+	//optional string getCarParkingName=21;	//取车网点
+	//optional string orderAccountId=8;	//关联到 order_account.id
+	optional int32 seatAmount = 28;// 座位数量
+	optional int32 classAmount = 29;//车厢数量
+	optional com.uu.facade.order.pb.common.ParkingInfo getParkingInfo = 30;//取车网点信息
+	optional com.uu.facade.order.pb.common.ParkingInfo backParkingInfo = 31;//还车车网点信息
+	optional string orderFormStatusName = 32;//订单状态名称
+	optional int32 isDisplayWallet = 33;//是否展示红包  0-否  1-是
+	optional string shareContent = 34;//分享内容
+	optional string shareUrl = 35;//分享URL
+	optional string shareTitle = 36;//分享标题
+	optional string iconUrl = 37;//分享图标url
+	optional int64 payWaitBeginTime = 38;//等待计费开始时间(毫秒)
+	optional string waitFee = 39;
+	optional int32 walletNum = 40;		//红包个数
+	optional int32 payWaitRemains = 41;//等待计费时长 （单位秒）
+	optional bool waitPayFlag = 42;//等待计费开关（true:为开）
+	optional int32 freeWaitRemains = 43;//免费等待计费时长 （单位秒）
+	optional int32 orderType = 44;//订单类型，0：普通订单，1：预约单
+	
+}
+
+//停车信息
+message ParkingInfo{
+	optional string carParkingId=1;	//取车网点
+	optional string carParkingName=2;	//取车网点
+	optional string parkingAddress = 3;// 网点具体地址
+	optional string carDetailAddress = 4;//车位地址
+	optional com.uu.facade.base.common.LatLon latlon = 5;//网点经纬度
+	optional string backCarFeeDesc = 6;	//还车费用及描述
+}
+
+//订单状态
+enum OrderFormStatus{
+	renter_cancel = 0;	//已取消
+	wait_get_car = 1;	//待取车
+	using_car = 2;	//用车中
+	//on_lock = 3;	//锁定
+	wait_pay = 4;	//待支付
+	//pay_timeout = 5;	//支付超时
+//	partial_pay = 6;	//部分支付
+	//partial_pay_timeout = 7 ;//部分支付超时
+	order_finish = 8;	//订单完成 
+	wait_timeout = 19;//等待超时状态
+}
+enum OrderFeeType{
+	order = 1;//订单费用
+	activity = 2;// 更改成活动
+	//repaid = 3;//充值
+}
+
+
+//费用项记录
+message OrderAccountItem{
+	//required string orderId = 1;//订单id
+	required string amount = 2 ;//金额
+	required string item_type = 3;//订单项类型
+	required string item_name = 4;//费用类别名称
+	required OrderFeeType orderFeeType = 5;//费用类别
+	repeated OrderAccountItem itemList =6;//子费用项记录列表
+}
+
+//可执行动作
+enum ActionDisplay{
+	CANCEL_ORDER = 1;//取消
+	PICK_UP_CAR = 2;//取车
+	RETURN_CAR = 3;//还车
+	PAY_ORDER = 4;//支付
+}
+
+message ThirdPayOrderInfo{
+	optional string amount =1;//第三方支付金额
+	optional com.uu.facade.base.common.ThirdPayType thirdPayType = 2;//第三方支付方式
+}
+
+//订单信息
+message UnderWayOrderInfo {
+		optional OrderDetailInfo orderDetailInfo = 1;//订单信息
+		repeated OrderAccountItem OrderAccountItemList = 2;//费用项
+		optional string orderActualCost = 3;//实际费用（总费用不扣除优惠券，活动的金额）
+		optional string orderPayCost = 4;//应付价格(还需支付)
+		optional string couponsCost = 5;//优惠券抵扣（默认值）
+		optional string balance = 6;//余额支付金额
+		optional string travelledDistance = 7;//已行驶里程 单位 KM
+		optional int32 drivedTime =  8;//已行驶时间 单位秒
+		repeated ActionDisplay actionDisplayList = 9;//可执行动作
+		repeated OrderStatusHistory  orderStatusHistoryLIst = 10;//状态记录
+		//required string orderMileageCost = 9;//里程费用
+		//required string orderTimeCost = 10;//用时费用
+		optional com.uu.facade.base.common.ThirdPayType defaultThirdPayType = 11 ;//默认支持的第三方支付方式
+		repeated com.uu.facade.base.common.ThirdPayType thirdPayTypeList = 12;//可支持的支付方式
+		optional int32 isDisplayCopun = 14;//是否显示优惠券  0:显示 1：不显示
+		//repeated CouponBaseInfo couponBaseInfoList = 15;//优惠券列表
+		optional ThirdPayOrderInfo thirdPayOrderInfo = 16;//第三方支付信息
+		optional int32 couponId = 17 ;//优惠券id
+		optional com.uu.facade.base.common.WebUrl carGuideUrl = 18; //用车指南对应的H5页面
+		optional com.uu.facade.base.common.WebUrl carConditionUrl = 19;  //车况反馈对应的H5页面
+		optional com.uu.facade.base.common.WebUrl carConditionListUrl = 20;  //车况反馈列表对应的H5页面
+		optional com.uu.facade.base.common.WebUrl failSafeUrl = 21;        //保险故障对应的H5页面
+}
+
+message CouponBaseInfo {
+	required int32 couponId = 1;//优惠券Id
+	optional string couponName = 2;//优惠券名称
+	required string couponAmount = 3;//优惠券金额
+	optional int64 startTime = 4;//开始时间
+	optional int64 endTime = 5; //截止时间
+}
+
+message OrderStatusHistory{
+	//required string order_id = 1;//订单id 
+	//optional OrderFormStatus pre_status = 2;//  上一状态 
+	optional string cur_status = 3;//  当前状态 
+	optional int64 create_time = 4;//创建时间
+}
+enum CarOperationType{
+	SEARCH_CAR = 1;//搜车
+	OPEN_CAR_DOOR = 2;//开门
+	CLOSE_CAR_DOOR = 3;//关门
+}
+
+/**
+ * 订单费用明细
+ */
+message FeeItemDTO{
+	optional int64 startTime=1; // 开始时间
+	optional int64 endTime=2; // 结束时间
+	optional string startMileage=3; // 开始里程
+	optional string endMileage=4; // 结束里程
+	optional string basePrice=5; // 基础定价
+	optional string priceDiscount=6; // 价格折扣
+	optional string priceDiscountDesc=7; // 价格折扣说明
+	optional string stepTimePriceRatio=8; // 阶梯定价时长系数
+	optional string feeAmount=9; // 费用
+	optional string feeItemDesc=10; // 费用说明
+	optional string feeItemActivityId=11; // 活动ID
+}
+
+/**
+ * 订单费用
+ */
+message OrderFeeStepTimeDTO{
+	optional int64 endTime=1; // 结束时间
+	optional string endMileage=2; // 结束里程
+	optional int64 totalTime=3; // 总时长
+	optional string totalMileage=4; // 总里程
+	optional string totalTimeFee=5; // 总时长费
+	optional string totalMileageFee=6; // 总里程费
+	optional string totalBaseFee=7; // 总时长费+总里程费
+	optional string totalActivityFee=8; // 总活动减免费用
+	optional string totalFinalFee=9; // 最终的合计费用=总时长费+总里程费-总活动减免费用
+	optional FeeItemDTO mileageFee=10; // 里程费用明细
+	repeated FeeItemDTO stepTimeFees=11; // 阶梯时长明细 
+	repeated FeeItemDTO realTimeActivityFees=12; // 实时活动费用明细
+	repeated FeeItemDTO summaryActivityFees=13; // 综合活动明细
+}
+
+message CarConditionDTO{
+	required string orderId = 1;   // 订单id
+	repeated string carConditionLabel  = 2;  //车况标签
+	optional string carConditionDesc = 3;    //车况详细描述
+	repeated string carConditionUrl = 4;  //车况相关照片url
+	optional int64  createTime = 5; //车况反馈信息提交时间
+	optional string plateNumbe = 6;	//车牌
+	optional string phone = 7; //手机号
+}
+
+
+
+ /**
+ * 订单费用明细
+ */
+message OrderFeeTimeNode{
+	optional string orderId=1; // 订单号
+	optional string timeNodeType=2; // 时间节点类型 24,48
+	optional string timeNodeOrderFee=3; // 节点订单费用
+	optional string timeNodeAccountFee=4; // 节点订单用户账户金额
+	optional int64 createTime=5; // 创建时间
+}
+
+
+
+
+
+

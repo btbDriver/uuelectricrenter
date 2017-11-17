@@ -1,0 +1,130 @@
+import "uu_common.proto";
+package com.uu.facade.appointment.pb.bean;
+
+//预约单状态
+enum AppointmentStatus{
+	bind_order_fail = -3;	//绑定订单失败
+	bind_car_fail = -2;		//绑定车辆失败
+	cancel=-1;				//取消预约单
+	init=0;					//初始化状态
+	bind_car_success=1;		//绑定车辆成功
+	bind_order_success=2;	//绑定订单成功
+}
+//预约单校验流程
+enum AppointmentProce{
+	step_one = 1;	//校验用户基本信息 ，成功返回0 ；失败：-1，并弹出MSG
+	step_two = 2;	//校验网点、预约时间 ，成功返回 0；失败：-1，并弹出MSG
+	step_three = 3;	//校验金额，创建预约单信息 ，成功返回0 ；失败：-1，并弹出MSG
+}
+//可预约网点信息
+message AppointmentPark{
+	required string  id = 1;   			 	 // 网点id
+	required string  name = 2;   	 		 // 网点名称
+	optional string address= 3;				 // 网点地址
+	required int32  availableCar= 4;   		 // 可用车辆信息
+	optional double distance = 5;        	 //距离  
+	optional com.uu.facade.base.common.LatLon latlon = 6;//网点经纬度
+}
+//预约单信息
+message Appointment{
+	optional string   appointmentId = 1;   	  // 预约单ID
+	optional string   appointmentTime = 2;    // 预约时间
+	optional string   orderId = 3;   	 	  // 绑定订单ID
+	optional int32    userId = 4;   	 	  // 用户ID
+	optional string   userName = 5;   	      // 用户名称
+	optional string   phone = 6;   		      // 用户手机
+	optional string   carId = 7;			  //车辆ID
+	optional string   carNumber = 8;			  //车牌
+	optional string   carBrand = 9;			  //车辆品牌 
+	optional string   carModel = 10;			  //车辆型号 
+	optional int32    packageType = 11;		  //套餐类型 （保留字段）
+	optional string   packageDesc = 12;		  //套餐描述
+	optional string   parkingId=13;   		  //取车网点ID
+	optional string   parkingName = 14;		  //取车网点名称
+	optional AppointmentStatus appointmentStatus  = 15;  // 预约单状态
+	optional string  createTime = 16;		//创建时间
+	optional CostInfo costInfo = 17;		//费用信息
+} 
+//预约单相关费用信息
+message CostInfo{
+	required int32    charges = 1;   	 		// 手续费
+	required double   freeze = 2;   	 	 	// 冻结费用
+}
+//获取附近可预约网点信息
+message QueryAppointmentParks {
+	message Request{
+		required string cityCode = 1;			//城市id
+		optional com.uu.facade.base.common.LatLon latLon = 2;//手机客户端的经纬度
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败 
+		repeated AppointmentPark appointmentPark  = 2;  //网点信息
+		optional string msg = 3;						//操作结果文案
+	}
+}
+//创建预约订单信息
+message SaveAppointment{
+	message Request{
+		required int32  appointmentProce = 1;    //创建流程
+		optional string  parkId = 2;      					//网点ID信息
+		optional string  appointmentTime = 3;   			//预约时间
+	 	optional string  cityCode = 4;						//城市id
+		optional string  carBrand = 5;						//车辆品牌 （保留字段）
+		optional string  carModel = 6;						//车辆型号 （保留字段）
+		optional int32   packageType = 7;					//套餐类型 （保留字段）
+	}
+	message Response{ 
+		required int32 ret = 1;   							// 0:成功   -1：失败  -2:已存在相同的预约单（同一时间段只能创建一个预约单）
+		optional string msg = 2; 							//操作结果文案
+		optional Appointment appointment  = 3;  			//预约单信息
+		
+	}
+}
+
+//取消预约单
+message CancelAppointment {
+	message Request{
+		required string  appointmentId = 1;  	 	//预约单ID
+	}
+	message Response{
+		required int32  ret = 1;   			 		// 0:成功   -1：失败,-2:预约单已经取消
+		optional string msg = 2; 					//操作结果文案
+	}
+}
+//创建预约单的订单信息
+message SaveAppointmentOrder {
+	message Request{
+		required string  appointmentId = 1;  	 	//预约单ID
+	}
+	message Response{
+		required int32  ret = 1;   			 		// 0:成功   -1：失败,-2:绑定订单失败
+		optional string msg = 2; 					//操作结果文案
+	}
+}
+//获取用户的预约单列表
+message QueryAppointments {
+	message Request{
+		repeated AppointmentStatus appointmentStatus  = 1; //预约单状态(为空表示查询所有)，反之查询指定状态信息
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败,-2:绑定订单失败
+		optional string msg = 2; 						//操作结果文案
+		repeated Appointment appointment  = 3;  		//预约单信息
+	}
+}
+//获取用户的预约单详情
+message QueryAppointmentDetail {
+	message Request{
+		required string  appointmentId = 1;  	 		//预约单ID
+	}
+	message Response{
+		required int32  ret = 1;   			 			// 0:成功   -1：失败,-2:绑定订单失败
+		optional string msg = 2; 						//操作结果文案
+		optional Appointment appointment  = 3;  		//预约单信息
+	}
+}
+
+
+
+
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/s2"
+              android:layout_marginRight="@dimen/s2"
+              android:background="@drawable/confirm_car_round_bg"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="30dp"
+        android:background="@mipmap/ic_pic_usecar_popup"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:text="本次还车地点"
+        android:textColor="@color/c3"
+        android:textSize="@dimen/f3"/>
+
+    <TextView
+        android:id="@+id/tv_lock_car_window_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/s1"
+        android:gravity="center"
+        android:text="某个停车场\n(异地还车费：10元)"
+        android:textColor="@color/c2"
+        android:textSize="@dimen/f3"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/s4"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f4"
+        android:visibility="visible"
+        android:text="请站在车外锁噢"/>
+
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/confirm_dialog_btn_bg"
+        android:gravity="center"
+        android:text="@string/ok_close_car_door_text"
+        android:textSize="@dimen/f3"
+        android:textColor="@drawable/reason_button_text_color"/>
+
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="24dp"/>
+</LinearLayout>

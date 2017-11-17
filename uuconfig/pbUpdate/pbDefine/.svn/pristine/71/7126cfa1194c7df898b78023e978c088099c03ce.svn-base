@@ -1,0 +1,204 @@
+import "activity_common.proto";
+import "uu_common.proto";
+package com.uu.facade.activity.pb.iface;
+
+//根据主键获取活动信息pb
+message QueryActivityById{
+	message Request{
+		required int32 activityId = 1;   //主键参数
+	}
+
+	message Response{
+		required int32 ret = 1;     //返回码    0:成功    -1:失败
+		required string mobile = 2;   //手机
+		optional string address = 3;//地址
+		required string wish = 4;//愿望
+	}
+}
+
+//存储圣诞节活动pb
+message ActivityXmas{
+	message Request{
+		required string mobile = 1;   //手机
+		optional string address = 2;//地址
+		required string uuid = 3;
+		required string wish = 4;//愿望
+	}
+
+	message Response{
+		required int32 ret = 1;     //返回码    0:成功    -1:失败
+	}
+}
+
+//激活优惠码、分享码
+message ActivateCouponCode{
+	message Request{
+		required string code = 1;   //优惠码、分享码		
+	}
+
+	message Response{
+		required int32 ret = 1;     //返回码    0:成功    -1:失败
+	}
+}
+
+//查询用户优惠券数量
+message GetUserCouponsCount{
+	message Request{
+	}
+	message Response{
+		required int32 ret = 1;     //返回码    0:成功    -1:失败
+		required int32 count = 2;	//优惠券数量
+	}
+}
+
+//优惠页 优惠券列表
+message QueryUserCouponsList{
+	message Request{
+		optional com.uu.facade.base.common.PageNoRequest pageRequest=1;		//翻页
+	}
+
+	message Response{
+		required int32 ret=1;		//返回码 0:成功	-1:失败
+		repeated com.uu.facade.activity.pb.common.UserCouponInfo userCouponList=2;	//优惠券列表
+		optional com.uu.facade.base.common.PageNoResult pageResult=3;		//翻页参数
+	}
+}
+
+//订单可用优惠券列表
+message QueryCanUseCoupons{
+	message Request{
+		required string orderId = 1;                                                    //订单Id
+		optional com.uu.facade.base.common.PageNoRequest pageRequest =2;		//翻页
+	}
+	
+	message Response{
+		required int32 ret= 1;		                                                //返回码 0:成功	-1:失败
+		repeated com.uu.facade.activity.pb.common.UserCouponInfo userCouponList = 2;	//可用优惠券列表
+		optional com.uu.facade.base.common.PageNoResult pageResult = 3;		        //分页参数
+	}
+}
+
+
+//邀请好友
+message InvitationFriends{
+	message Request{
+		required string code = 1;    //邀请码
+		required string mobile =2;	//被邀请人手机号码
+	}
+	
+	message Response{
+		required int32 ret= 1;	//返回码 0:成功	;-1:失败 ; -2:用户是邀请者本人  ; -3:已注册用户已经领取过;  -4: 用户已有订单;-9:您已经兑换过新人优惠券啦
+	}
+}
+
+//微信抢红包
+message WxGrabRedEnvelope{
+	message Request{
+		required string mobile = 1;	//被邀请人手机号码
+		required string orderId = 2;//订单ID
+		required string openId = 3;//微信用户唯一标识ID
+		optional string nickName = 4;//微信用户昵称
+		optional string imagUrl = 5;// 微信用户图像URL
+	}
+	
+	message Response{
+		required int32 ret= 1;	//返回码 0:成功	;-1:失败 ;	-2:已领取过; -3:红包已抢完
+		optional com.uu.facade.activity.pb.common.RedCouponInfo redCouponInfo = 2;	//领取的微信红包详情
+		optional int32 isNewUser = 3;//是否为新用户   0-否  1-是
+	}
+}
+
+//已领取微信红包好友列表
+message WxHasGrabRedEnvelopeList{
+	message Request{
+		required string orderId = 1;//订单ID
+		optional com.uu.facade.base.common.PageNoRequest pageRequest =2; //翻页
+	}
+	
+	message Response{
+		required int32 ret= 1;	//返回码 0:成功	;-1:失败 ; 
+		repeated com.uu.facade.activity.pb.common.RedEnvelopeInfo redEnvelopeInfoList = 2;	//已领取微信红包好友列表
+		optional com.uu.facade.base.common.PageNoResult pageResult = 3;	 //分页参数
+		
+		optional string shareUserOpenId = 8;	//分享的用户微信用户唯一标识ID
+		optional string shareUserNickName = 9;		//分享的用户微信用户昵称
+		optional string shareUserImagUrl = 10;		//分享的用户 微信用户图像URL
+	}
+}
+
+//根据订单ID查找分享用户信息
+message WxshareUserInfo{
+	message Request{
+		required string orderId = 1;//订单ID
+	}
+	
+	message Response{
+		required int32 ret= 1;	//返回码 0:成功	;-1:失败 ;
+		optional com.uu.facade.activity.pb.common.ShareUserInfo shareUserInfo = 2;	//分享用户信息
+	}
+}
+
+//根据手机号码查找领取红包者的用户信息
+message WxGrabRedEnvelopeUserInfo{
+	message Request{
+		required string mobile = 1;//手机号码
+	}
+	
+	message Response{
+		required int32 ret= 1;	//返回码 0:成功	;-1:失败 ;
+		optional com.uu.facade.activity.pb.common.ShareUserInfo shareUserInfo = 2;	//用户信息
+	}
+}
+
+//根据订单号码 微信openid查询抢红包人信息
+message SelectWxGrabRedEnvelopeUserInfo{
+	message Request{
+		required string orderId = 1;//订单ID
+		required string openId = 2;//微信用户唯一标识ID
+	}
+	
+	message Response{
+		required int32 ret= 1;	//返回码 0:成功	;-1:失败 ;
+		optional com.uu.facade.activity.pb.common.ShareUserInfo shareUserInfo = 2;	//用户信息
+	}
+}
+
+// 根据订单、用户、优惠券查询优惠金额信息
+message GetCouponDiscountInfo{
+	message Request{
+		required string orderId = 1; // 订单ID
+		required string couponId = 2; // 优惠券ID
+	}
+
+	message Response{
+		required int32 ret = 1; //返回码 0:成功	;-1:失败 ;
+		optional string discountTips = 2; // 提示文案
+		optional string discountAmount = 3; // 减免金额
+		optional string couponId = 4; // 优惠券ID
+	}
+}
+
+//根据渠道号激活相对应的优惠券
+message ActivateCouponByChannelNum{
+	message Request{
+		required string channelNum = 1;    	//渠道号
+		required string mobile =2;			//被邀请人手机号码
+	}
+	
+	message Response{
+		required int32 ret = 1; //返回码 0:成功	;-1:失败 ;
+		repeated ActivateChannelNumResult activateResult = 2;	//激活的结果	(同一渠道号可能对应好几个优惠码)
+		optional string invitationCode = 3;		//返回用户的邀请码
+	}
+}
+//激活渠道相对应的优惠码的结果
+message ActivateChannelNumResult{
+	optional int32 ret = 1; 	//返回码 0:成功;-1:您已经是友友的老用户了，把机会留给新人吧; -2：你之前已经获取过新人券，无法再领取了; 
+								//-3:来晚了,优惠券已经领光啦; -4: 您已经领取过这张优惠券啦
+	optional string couponName = 2;			//优惠券名称
+	optional int32 couponType = 3;			//优惠券类型 0-普通金额优惠券；1-折扣优惠券
+	optional string couponAmount = 4;		//优惠券金额(普通优惠券)
+	optional string couponDiscount = 5;		//优惠券折扣值(折扣优惠券)
+	optional string couponMaxReduce = 6;	//折扣优惠券最多减免金额		
+	optional int32	endUseTime=7;			//截至使用时间	
+}

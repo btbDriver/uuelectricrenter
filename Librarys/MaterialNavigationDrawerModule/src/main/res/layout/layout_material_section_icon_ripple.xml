@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/section_ripple"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    app:mrl_rippleBackground="#fafafa"
+    app:mrl_rippleHover="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="18dp">
+
+        <ImageView
+            android:id="@+id/section_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:alpha="0.54" />
+
+        <TextView
+            android:id="@+id/section_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toRightOf="@id/section_icon"
+            android:alpha="0.87"
+            android:textColor="#434a54"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/section_notification_point"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/section_text"
+            android:background="@drawable/red_point_bg"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/section_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="#ff8201"
+            android:visibility="invisible"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/section_notification"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:alpha="0.54"
+            android:gravity="center_horizontal"
+            android:lines="1"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+</com.balysv.materialripple.MaterialRippleLayout>

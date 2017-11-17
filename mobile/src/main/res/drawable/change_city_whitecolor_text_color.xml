@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true" android:drawable="@drawable/change_city_whitecolor_select_bg" />
+    <!--选中时效果-->
+    <item android:state_selected="false" android:drawable="@drawable/change_city_whitecolor_select_bg" />
+    <!--未选中时效果-->
+</selector>

@@ -1,0 +1,97 @@
+package com.uu.facade.base.common;
+// 地理位置信息，经纬度
+message LatlngPosition {
+	optional double lat = 1; // 纬度
+	optional double lng = 2; // 经度
+}
+
+// 翻页结构
+message PageResult {
+	optional bool hasMore = 1; // 是否还有更多
+	optional string nextPageStart = 2; // 下一页的偏移起始量(下标)
+}
+
+// 翻页请求
+message PageRequest {
+	optional int32 direction = 1 [default = 0]; // 0:最新页；1：向后翻页
+	optional string pointer = 2; // 翻页点
+}
+
+//	翻页请求(web端分页)
+message PageRequestNew {
+	optional int32 pageIndex = 1 [default = 1]; //翻页页码(默认显示第一页)
+	optional int32 pageSize = 2; // 每页显示多少条
+}
+
+// 号码翻页
+message PageNoRequest {
+	optional int32 pageNo = 1 [default = 1]; // 页码
+}
+
+// 号码翻页响应
+message PageNoResult {
+	optional bool hasMore = 1; // 是否还有更多
+	optional int32 totalRecord = 2; // 总数
+}
+
+message PageResultNew {
+	optional bool hasMore = 1; // 是否还有更多
+	optional int32 pageNo = 2; // 当前页
+}
+
+// 号码翻页响应
+message ResultPage {
+	optional int64 total = 1; // 总条数
+	optional int32 pid = 2; // 当前页
+	optional int32 psize = 3; // 总页数
+}
+
+message ColoredText {
+	required string text = 1; // 文案
+	optional string textHexColor = 2; // 文案颜色，以"#"开头的16进制表示颜色的字符串，不区分大小写，如：#ffffff
+}
+
+ message WebUrl {
+	optional string url = 1;
+	optional string title = 2;
+}
+
+enum Gender {
+	MALE = 1; // 男性
+	FEMALE = 2; // 女性
+}
+
+/**
+ * 坐标	for php
+ */
+message LatLonForPhp{
+	optional string lat=1;// 纬度
+	optional string lon=2;// 经度
+}
+
+// 第三方支付方式
+enum ThirdPayType {
+	UNSET = 1; // 未设置，默认值
+	ALIPAY = 2; // 支付宝
+	WECHAT = 3; // 微信支付
+}
+
+/*
+ *用户状态
+ */
+enum UserStatus {
+	NEW_REG = 0; // 新注册
+	WAIT_VERIFY = 1; // 待审核
+	APPLY_REJECTED = 2; // 申请被驳回
+	APPLY_PASSED = 3; // 已通过审核
+	APPLY_REJECTED_NOT_ALLOW_TRY_AGAIN = 4; // 申请被驳回，并且不能再次提交审核数据
+}
+
+/**
+ * 坐标
+ */
+message LatLon{
+	optional string lat=1;// 纬度
+	optional string lon=2;// 经度
+}
+

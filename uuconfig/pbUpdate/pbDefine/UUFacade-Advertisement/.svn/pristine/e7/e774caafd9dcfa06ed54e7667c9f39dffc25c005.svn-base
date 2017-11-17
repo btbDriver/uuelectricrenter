@@ -1,0 +1,50 @@
+package com.uu.facade.advertisement.protobuf.bean;
+
+//广告信息 用与客户端
+message AdvInfo{
+	required string adv_id=1;	//广告id
+	optional int64 create_time = 2 ;//广告创建时间
+	optional string adv_title = 3 ;//广告标题
+	optional string url = 4; //  外链地址
+	optional string activity_img = 5;//'活动图片URL'
+}
+
+//广告信息 用于后台管理
+message AdvDetailInfo{
+	optional string adv_id=1;		//广告id   用于更新
+	optional string adv_title = 2 ;	//广告标题
+	optional string url = 3; 		//  外链地址
+	optional string city_value = 4;	//  '如果是全国,不存值.如果是选择地区存入地区码，以逗号分割(半角/英文标点)'   需要在city_type 设置相应的值（'投放城市类型：0-全国,1-局部地区',）
+	optional string client_type = 5;//	客户端类型：0-全部，1-ios，2-android
+	optional string client_version = 6;	//  '客户端版本号，全部值为空，多个以逗号分割(半角/英文标点)',
+	optional string effective_scope_type = 7;	//生效范围（用户）:0-所有用户，1-指定用户
+	optional string effective_scope_value = 8;	//有效用户详情：全部为空，多个用户ID以逗号分割（半角/英文标点）
+	optional string order_count_judge_condition = 9;//订单数判断条件:0-等于,1-大于等于,2-大于,3-小于等于,4-小于
+	optional string order_count = 10;				//订单数
+	optional string on_time_type = 12;				//上线时间类型：0-手动，1-自动
+	optional string off_time_type = 13;				//下线时间类型：0-手动，1-自动
+	optional int32 on_time = 14;					//上线时间
+	optional int32 off_time = 15;					//下线时间
+	optional string activity_img = 16;				//活动图片URL
+	
+	//广告弹窗配置
+	optional string config_type = 17;				//配置类型：0-弹窗
+	optional string attr_name = 18;					//属性名称：0-曝光次数，1-弹窗间隔时间，2-弹窗图片
+	optional string attr_type = 19;					//属性类型：与attr_name关联使用:0-0:曝光次数-不限,0-1:曝光次数-特定次数,1-0:弹窗间隔时间-自定义天数,1-1星期选择,2-1弹窗图片
+	optional string attr_value = 20;				//属性对应的值
+	
+	optional int32 create_time = 21 ;//广告创建时间
+	optional int32 update_time = 22;//广告更新时间
+	optional string  adv_status = 23 ;//广告发布状态：0-下线，1-在线
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C0000000">
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="300dp"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/ic_guide_moreoption_pic"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/getcar_layer_know"
+        android:layout_width="140dp"
+        android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/getcar_layer_background"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:background="@mipmap/ic_guide_moreoption_wrod"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

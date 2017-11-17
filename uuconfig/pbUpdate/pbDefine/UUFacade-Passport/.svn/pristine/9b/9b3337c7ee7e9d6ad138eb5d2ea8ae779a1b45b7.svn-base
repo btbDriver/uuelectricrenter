@@ -1,0 +1,22 @@
+package com.uu.facade.passport.pb.bean;
+
+// 用户票据
+message UserAppSessionTicket {
+	required bytes sessionKey = 1; // sessionKey
+	required bytes b2 = 2; // 用于标示用户身份
+	required bytes b3 = 3; // b3、b3Key用于传输通道加密
+	required bytes b3Key = 4;
+	required bool isLoginState = 5; // 是否是登录态，指的是是否登录过用户的真实身份，匿名登录除外
+	required int32 validSecs = 6; // 票据有效时间 secs
+	optional bytes b4 = 7; // 跳转到内置h5的key，客户端转换成16进制字符串
+	optional string b4Domain = 8; // b4跳转的域
+}
+
+
+
+enum VerifyCodeScene {
+	SMS_LOGIN = 0; // 短信登陆
+	FORGET_PASSWORD = 1; // 忘记密码
+	REG_ACCOUNT = 2; // 注册场景
+	activity_verify = 3;//活动验证码验证
+}

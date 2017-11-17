@@ -1,0 +1,38 @@
+package com.uu.facade.account.protobuf.common;
+
+/**
+ * 订单费用 2016-05-16
+ */
+message OrderFeeStepTimeDTO{
+	optional int64 endTime=1; // 结束时间
+	optional string endMileage=2; // 结束里程
+	optional int64 totalTime=3; // 总时长
+	optional string totalMileage=4; // 总里程
+	optional string totalTimeFee=5; // 总时长费
+	optional string totalMileageFee=6; // 总里程费
+	optional string totalBaseFee=7; // 总时长费+总里程费
+	optional string totalActivityFee=8; // 总活动减免费用
+	optional string totalFinalFee=9; // 最终的合计费用=总时长费+总里程费-总活动减免费用
+	optional FeeItemDTO mileageFee=10; // 里程费用明细
+	repeated FeeItemDTO stepTimeFees=11; // 阶梯时长明细 
+	repeated FeeItemDTO realTimeActivityFees=12; // 实时活动费用明细
+	repeated FeeItemDTO summaryActivityFees=13; // 综合活动明细
+}
+
+/**
+ * 订单费用明细
+ */
+message FeeItemDTO{
+	optional int64 startTime=1; // 开始时间
+	optional int64 endTime=2; // 结束时间
+	optional string startMileage=3; // 开始里程
+	optional string endMileage=4; // 结束里程
+	optional string basePrice=5; // 基础定价
+	optional string priceDiscount=6; // 价格折扣
+	optional string priceDiscountDesc=7; // 价格折扣说明
+	optional string stepTimePriceRatio=8; // 阶梯定价时长系数
+	optional string feeAmount=9; // 费用
+	optional string feeItemDesc=10; // 费用说明
+	optional string feeItemActivityId=11; // 活动ID
+}
+

@@ -1,0 +1,36 @@
+package com.uu.facade.order.protobuf.common;
+
+message OperatorInfo {
+		required int32 opratorTime = 1; //操作时间年月日时分
+		required string status = 2; // 预定成功，已开始，还车成功，系统扣款成功，取消成功
+}
+
+message OrderInfo {
+		required int32 createTime = 1; // 创建时间
+		required string status = 2; // 状态 已完成，已取消
+		required string car = 3; // 车辆品牌型号
+		optional string carImg = 4;//图片url
+		required string carPhotograph = 5; //车辆牌照
+		required float mileage = 6;//该订单所行驶里程
+		required int32 drivingTime = 7;//订单行驶时间
+		required float orderActualCost = 8;//实际费用
+		required float orderMileageCost = 9;//里程费用
+		required float orderTimeCost = 10;//用时费用
+		required float orderPayCost = 11;//应付价格
+		required float couponsCost = 12;//优惠券价格
+		required float balance = 13;//余额
+		required string getCarAddress = 14;//取车地点
+		repeated OperatorInfo operatorInfos = 15;//操作记录
+}
+
+message TripListInfo {
+		required int32 createTime = 1; // 创建时间
+		required int32 status = 2; // 状态码
+		required string car = 3; // 车辆品牌型号
+		required string getCarAddress = 4;//取车地点
+		required string orderId = 5;//订单标识
+		required string LicensePlateNumber = 6;//车牌号
+		required string statusDesc = 7;//状态描述
+}
+
+

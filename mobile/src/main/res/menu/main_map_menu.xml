@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/menu_active"
+        android:title="@string/active"
+        android:orderInCategory="100"
+        android:icon="@mipmap/ic_news_navigationbar"
+        app:showAsAction="always" />
+</menu>

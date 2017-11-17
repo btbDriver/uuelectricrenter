@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youyou.uuelectric.renter.Utils.view.ProgressLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/progress_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 内容布局容器 -->
+    <FrameLayout
+        android:id="@+id/fl_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</com.youyou.uuelectric.renter.Utils.view.ProgressLayout>

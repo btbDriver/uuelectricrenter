@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c11"
+    tools:context="com.youyou.uuelectric.renter.UI.main.rentcar.ReturnCarActivity">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@mipmap/ic_notification_pic" />
+
+    <TextView
+        android:id="@+id/check_tip_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/s2"
+        android:text="@string/return_car_check_tip_title"
+        android:textColor="@color/c3"
+        android:textSize="@dimen/f3" />
+
+    <TextView
+        android:id="@+id/check_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/check_tip_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/s2"
+        android:lineSpacingExtra="@dimen/s2"
+        android:text="@string/return_car_check_tip_desc"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f4" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/check_tip"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/close_car_door"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/open_car_door_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/close_car_door_icon_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/s2"
+                    android:text="@string/close_car_door_text"
+                    android:textColor="@color/open_car_door_text_color"
+                    android:textSize="@dimen/f4" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/return_car_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/call_center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/s2"
+                android:text="@string/return_car_tip"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f4" />
+
+            <TextView
+                android:id="@+id/call_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/s2"
+                android:text="@string/call_center"
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f4" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

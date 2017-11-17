@@ -1,0 +1,73 @@
+package com.uu.access.app.header;
+
+message CommonReqHeader { // 请求头字段
+	required int32 seq = 1;
+	required int32 cmd = 2;
+	optional bytes b2 = 3; // 如果没有票据，则该字段为空
+	optional string uuid = 4; // 客户端uuid
+	optional int32 clientIp = 5; // 用户ip 该字段客户端不填，ProxyServer填
+	optional string ua = 6; // 客户端版本，以及系统版本（android or iphone）从该字段中解析
+	optional string imei = 7;// 手机的imei，有就填，没有就不填
+}
+
+// 请求数据
+message RequestData {
+	required CommonReqHeader header = 1;
+	required bytes busiData = 2; // pb定义的业务数据结构
+	optional string jump2ClientSourceSessionKey = 3; // 跳转来源的key
+}
+
+// 请求包，当客户端有票据的情况下（不管是游客的票据，还是用户的票据），发送请求统一使用该结构体承载
+message RequestPackage {
+	optional bytes sessionKey = 1; // 用户身份标识key，如果没有，则填空数据
+	optional bytes b3 = 2; // 如果没有则不填
+	required bytes reqData = 3; // 该字段是结构 RequestData 经 b3key 加密后的数据
+}
+
+// 响应数据，整个包体数据由 b3key 加密
+message ResponseData {
+	optional int32 cmd = 1; // 如果是客户端主动请求，则回填客户端cdm；如果是长连接push，则填入的是业务cmd
+	optional bytes busiData = 2; // pb定义的业务数据结构
+	optional ResponseCommonMsg commonMsg = 3; // 通用提示消息
+}
+
+// RequestPackage 对应的响应包，客户端的登录态请求统一由该结构体返回，该结构不加密，客户端拿到后直接parse
+message ResponsePackage {
+
+// 通用状态码，表示本次接口调用是否成功，
+// 0：成功；
+// -1：提示“网络失败”；
+// -11：用户的登录态失效，需要强制客户端重新登陆；
+// -12：客户端的匿名票据失效，如果server返回该值，客户端需要使用公共密钥再重试一次接口访问，并且启动客户端的后台异步匿名登陆
+// -13：该用户在另一个设备上登陆，当前设备的登录态失效，客户端需要弹出提示框，让用户去登陆页登陆
+// -14：从页面通过scheme，页面传入的身份和客户端本地的身份不匹配，返回该错误码，客户端让用户去登陆页
+// -21：频率限制
+	required int32 ret = 1 [default = 0];
+	optional int32 seq = 2; // 客户端发起主动调用，该字段回填客户端的 seq 字段。在push情况下，该字段为-1。客户端通过判断seq字段是否为-1，来确认是否是长连接
+	optional bytes resData = 3; // 当 ret = 0，则表示该字段值有效，先使用b3key解密，然后parse成 ResponseData 结构
+}
+
+// 通用提示消息提示类型
+enum ResponseCommonMsgShowType {
+	TOAST = 1;
+	WINDOW = 2;
+}
+
+enum WindowButtonType {
+	BOTTOM_MIDDLE = 1;
+	BOTTOM_LEFT = 2;
+	BOTTOM_RIGHT = 3;
+}
+
+message ResponseCommonMsgWindowButton {
+	required WindowButtonType buttonType = 1;
+	required string buttonText = 2; // 按钮文案
+}
+
+// 通用提示消息，客户端按照这个结构，去展示提示
+message ResponseCommonMsg {
+	optional string msg = 1; // 提示消息
+	optional ResponseCommonMsgShowType showType = 2 [default = TOAST]; // 消息提示类型
+	repeated ResponseCommonMsgWindowButton buttons = 3; // 当 showType = WINDOW 的时候，按钮的列表
+}
+

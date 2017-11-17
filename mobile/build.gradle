@@ -1,0 +1,168 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+    defaultConfig {
+        applicationId "com.youyou.uuelectric.renter"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode  14
+        versionName "2.3.0"
+        // dex突破65535的限制
+        multiDexEnabled true
+        // AndroidManifest.xml 里面UMENG_CHANNEL的value为 ${UMENG_CHANNEL_VALUE}
+//        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "channel_name"]
+    }
+    //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
+    lintOptions {
+        abortOnError false
+    }
+    //签名
+    signingConfigs {
+        debug {
+            storeFile file("android.keystore")
+            storePassword "165154615"
+            keyAlias "android.keystore"
+            keyPassword "165154615"
+        }
+        relealse {
+            storeFile file("android.keystore")
+            storePassword "165154615"
+            keyAlias "android.keystore"
+            keyPassword "165154615"
+        }
+    }
+    buildTypes {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            //混淆
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            //加载默认混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.debug
+        }
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            //加载默认混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.relealse
+        }
+    }
+
+    productFlavors {
+
+        internal {}
+
+        /*InHouse {}
+        pcguanwang {}
+        h5guanwang {}
+        hiapk {}
+        m91 {}
+        appchina {}
+        baidu {}
+        qq {}
+        jifeng {}
+        anzhi {}
+        mumayi {}
+        m360 {}
+        youyi {}
+        wandoujia {}
+        xiaomi {}
+        sougou {}
+        leshangdian {}
+        huawei {}
+        uc {}
+        oppo {}
+        flyme {}
+        jinli {}
+        letv {}*/
+
+        /* productFlavors.all { flavor ->
+             flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+         }*/
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = outputFile.name.replace(".apk", ".apk")
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile project(':Librarys:volley')
+    compile project(':Librarys:wheel')
+    compile project(':Librarys:material-widget')
+    compile project(':Librarys:material-dialog')
+    compile project(':Librarys:MaterialNavigationDrawerModule')
+    //底部弹窗效果
+    compile project(':Librarys:sweetsheet')
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:support-annotations:23.0.0'
+    compile 'com.android.support:recyclerview-v7:23.0.0'
+    compile 'com.android.support:palette-v7:23.0.0'
+    compile 'com.android.support:support-v4:23.0.0'
+    compile 'com.android.support:cardview-v7:23.2.0'
+    compile 'com.android.support:design:23.2.0'
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile('com.mikepenz:aboutlibraries:5.2.0@aar') {
+        transitive = true
+    }
+    compile 'com.mikepenz:crossfader:1.0.3@aar'
+    compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
+    compile 'com.mikepenz:google-material-typeface:1.2.0.1@aar'
+    compile 'com.mikepenz:fontawesome-typeface:4.4.0.1@aar'
+    compile 'com.mikepenz:octicons-typeface:3.0.0.1@aar'
+    compile 'com.malinskiy:materialicons:1.0.2'
+    compile 'com.github.rey5137:material:1.2.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.orhanobut:logger:1.11'
+    compile 'com.facebook.rebound:rebound:0.3.8'
+    compile 'jp.wasabeef:recyclerview-animators:1.2.2'
+    compile 'com.flyco.pageindicator:FlycoPageIndicator_Lib:1.0.0@aar'
+    //文件下载框架
+    compile 'com.mani:ThinDownloadManager:1.2.5'
+    //百分比布局
+    compile 'com.android.support:percent:23.0.0'
+    //自适应文字大小
+    compile 'me.grantland:autofittextview:0.2.+'
+    // andfix热修复框架
+    compile 'com.alipay.euler:andfix:0.3.1@aar'
+    // 异常检测
+
+    //    debugCompile 'me.drakeet.library:crashwoodpecker:0.9.7'
+
+    //    releaseCompile 'me.drakeet.library:crashwoodpecker-do-nothing:0.9.7'
+
+    // 内存泄露
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+}

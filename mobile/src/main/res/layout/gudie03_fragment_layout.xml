@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tv_bottom_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="105dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="3dp"
+        android:text="我们只是想让您用车更简单，押金、保险、车辆\n每日维护...都交给友友的员工来做吧~"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f5" />
+
+    <LinearLayout
+        android:id="@+id/ll_introduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_bottom_desc"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="0"
+            android:textColor="#f8b62d"
+            android:textSize="34sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="押金"
+            android:textColor="#f8b62d"
+            android:textSize="28sp" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="送保险 用车无压力"
+            android:textColor="@color/c4"
+            android:textSize="@dimen/f1" />
+    </LinearLayout>
+
+
+</RelativeLayout>

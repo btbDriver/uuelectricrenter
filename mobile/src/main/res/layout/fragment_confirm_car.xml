@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/car_img"
+        android:layout_width="99dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="@dimen/s1" />
+
+    <LinearLayout
+        android:id="@+id/car_name_root"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/s4"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/car_img"
+        android:gravity="center|left"
+        android:orientation="vertical">
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/car_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="name"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/f3" />
+
+        <TextView
+            android:id="@+id/car_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text="number"
+            android:textColor="@color/c4"
+            android:textSize="@dimen/f4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/car_img"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_baterry_details" />
+
+        <TextView
+            android:id="@+id/car_mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s1"
+            android:gravity="center_vertical"
+            android:text="120"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/f4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="公里"
+            android:gravity="bottom"
+            android:textColor="@color/c4"
+            android:textSize="@dimen/f6" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/tv_price_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/s1"
+                android:layout_gravity="center"
+                android:background="@mipmap/ic_cost_details"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_favorable"
+                android:layout_width="28dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/s1"
+                android:background="@drawable/tv_favorable_bg"
+                android:gravity="center"
+                android:text="价格"
+                android:textColor="@color/c8"
+                android:textSize="@dimen/f6" />
+
+            <TextView
+                android:id="@+id/price_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥1.20"
+                android:gravity="center_vertical"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="@string/price_time_unit"
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f6" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" + "
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f5" />
+
+            <TextView
+                android:id="@+id/price_mileage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥1.20"
+                android:gravity="center_vertical"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/f4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price_mileage_unit"
+                android:textColor="@color/c4"
+                android:textSize="@dimen/f6" />
+
+            <ImageView
+                android:id="@+id/iv_tip_icon"
+                android:layout_width="@dimen/s4"
+                android:layout_height="@dimen/s4"
+                android:layout_marginLeft="@dimen/s1"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_regulation_homeview" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_price"
+        android:layout_marginTop="@dimen/s1"
+        android:singleLine="true"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f5" />
+
+
+</RelativeLayout>

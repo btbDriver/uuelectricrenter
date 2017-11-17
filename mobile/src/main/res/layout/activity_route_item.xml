@@ -1,0 +1,157 @@
+<com.youyou.uuelectric.renter.Utils.view.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/route_item_root_rela"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:rv_color="@color/c1"
+    app:rv_type="rectangle"
+    tools:context="com.youyou.uuelectric.renter.UI.order.RouteActivity">
+
+    <!-- 背景 -->
+    <include
+        layout="@layout/activity_list_item_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/content_rela"
+        android:layout_alignBottom="@+id/content_rela"></include>
+
+    <RelativeLayout
+        android:id="@+id/content_rela"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:id="@+id/route_item_title_rela"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s4"
+            android:layout_marginRight="@dimen/s4"
+            android:layout_marginTop="@dimen/s2"
+            android:layout_marginBottom="@dimen/s2">
+
+            <TextView
+                android:id="@+id/route_item_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正在用车"
+                android:textColor="@color/c8"
+                android:textSize="@dimen/f4" />
+
+            <TextView
+                android:id="@+id/route_item_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="2015-08-28 10:04:59"
+                android:textSize="@dimen/f5"
+                android:textColor="@color/c4"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/route_item_view"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/s3"
+            android:layout_marginRight="@dimen/s3"
+            android:background="@color/c6"
+            android:layout_below="@+id/route_item_title_rela" />
+
+        <RelativeLayout
+            android:id="@+id/route_item_content_rela"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s4"
+            android:paddingTop="@dimen/s3"
+            android:layout_marginRight="@dimen/s3"
+            android:paddingBottom="@dimen/s3"
+            android:layout_below="@+id/route_item_view">
+
+            <RelativeLayout
+                android:id="@+id/route_item_book_rela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/route_item_book_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="预定车辆:"
+                    android:textColor="@color/c4"
+                    android:textSize="@dimen/f4" />
+
+                <TextView
+                    android:id="@+id/route_item_book_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/route_item_book_title"
+                    android:layout_marginLeft="@dimen/s2"
+                    android:text="北汽EV160"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/route_item_car_rela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/route_item_book_rela"
+                android:layout_marginTop="@dimen/s1">
+
+                <TextView
+                    android:id="@+id/route_item_car_inlinea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车　　牌:"
+                    android:textColor="@color/c4"
+                    android:textSize="@dimen/f4" />
+
+
+                <TextView
+                    android:id="@+id/route_item_car_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/route_item_car_inlinea"
+                    android:layout_marginLeft="@dimen/s2"
+                    android:text="京17NK65"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/route_item_address_rela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/route_item_car_rela"
+                android:layout_marginTop="@dimen/s1">
+
+                <TextView
+                    android:id="@+id/route_item_address_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="取车地点:"
+                    android:textColor="@color/c4"
+                    android:textSize="@dimen/f4" />
+
+                <TextView
+                    android:id="@+id/route_item_address_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/route_item_address_title"
+                    android:layout_marginLeft="@dimen/s2"
+                    android:text="朝阳区亮马桥路46号"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</com.youyou.uuelectric.renter.Utils.view.RippleView>

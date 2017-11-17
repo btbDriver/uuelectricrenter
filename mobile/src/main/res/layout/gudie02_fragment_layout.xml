@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_bottom_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="105dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="3dp"
+        android:text="什么时候想用车，什么时候想还车均随您的心意。\n手机自动开关车门，科技范十足！"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f5" />
+
+    <LinearLayout
+        android:id="@+id/ll_introduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_bottom_desc"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Cool"
+            android:textColor="#2ea7e0"
+            android:textSize="34sp" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="手机开车门 全程自助"
+            android:textColor="@color/c4"
+            android:textSize="@dimen/f1" />
+    </LinearLayout>
+
+
+</RelativeLayout>

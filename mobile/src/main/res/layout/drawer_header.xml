@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="@mipmap/ic_headerpic_menu">
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/header_user_pic_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/ic_criclepic_menu" />
+
+        <TextView
+            android:id="@+id/header_user_phone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/s2"
+            android:text="尚未登录，请登录"
+            android:textColor="@color/c11"
+            android:textSize="@dimen/f3" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:background="@mipmap/ic_nextpage_menu" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_header_getcash"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:visibility="gone"
+        android:layout_below="@id/ll_header"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_header_getcash_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@mipmap/ic_tag_headerpic"
+            android:paddingBottom="@dimen/s1"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:paddingTop="6dp"
+            android:text="立即认证为租客，领取10元现金！"
+            android:textColor="@color/c11"
+            android:textSize="@dimen/f5" />
+    </LinearLayout>
+</RelativeLayout>

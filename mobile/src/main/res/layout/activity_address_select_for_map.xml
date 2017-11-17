@@ -1,0 +1,186 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.youyou.uuelectric.renter.Utils.view.RippleView
+                android:id="@+id/rv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="@dimen/s4"
+                android:paddingRight="@dimen/s4"
+                app:rv_alpha="255"
+                app:rv_color="@color/c11"
+                app:rv_type="rectangle">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="@color/c11"
+                    android:textSize="@dimen/f3" />
+
+            </com.youyou.uuelectric.renter.Utils.view.RippleView>
+
+            <RelativeLayout
+                android:id="@+id/left_rela"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_toLeftOf="@+id/rv_cancel">
+
+                <ImageView
+                    android:id="@+id/image_search"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/ic_search_textfield" />
+
+                <ImageView
+                    android:id="@+id/iv_del_icon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/s1"
+                    android:background="@mipmap/ic_delete_textfield"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/s2"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@+id/iv_del_icon"
+                    android:layout_toRightOf="@+id/image_search"
+                    android:background="@android:color/transparent"
+                    android:hint="输入目的地，查看可还车的网点"
+                    android:inputType="text"
+                    android:textColor="@color/c11"
+                    android:textColorHint="#c7dfff"
+                    android:textSize="@dimen/f4" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignLeft="@+id/left_rela"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/left_rela"
+                android:layout_marginBottom="6dp"
+                android:visibility="gone"
+                android:background="@color/c11" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ll_always_near_address"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dip"
+            android:background="@color/c11"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_page_title"
+                android:layout_width="match_parent"
+                android:layout_height="44dip"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_always_dot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/always_dot_text"
+                    android:textColor="@color/c3"
+                    android:textSize="@dimen/f4" />
+
+                <View
+                    android:visibility="gone"
+                    android:layout_width="1px"
+                    android:layout_height="14dp"
+                    android:background="#b6b6b6" />
+
+                <Button
+                    android:id="@+id/btn_near_dot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/near_dot_text"
+                    android:textColor="@color/c5"
+                    android:textSize="@dimen/f4" />
+            </LinearLayout>
+            <View
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/c6"></View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/cursor"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/c1" />
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"></View>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:visibility="gone" />
+
+</LinearLayout>

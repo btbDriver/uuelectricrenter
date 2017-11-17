@@ -1,0 +1,36 @@
+package com.uu.access.longconnection.pb;
+
+// 建立长连接
+message EstablishLongConnection {
+	message Request {
+		optional int32 netType = 1; // 1：wifi；2：2g；3：3g；4：4g
+	}
+
+	message Response {
+		required int32 ret = 1; // 0:建立成功；-1：失败，服务端返回该值就表示会立刻关闭链路；
+	}
+
+}
+
+// 心跳 客户端每60秒发一次心跳请求
+message HeartBeat {
+	message Request {
+	}
+
+	message Response {
+		required int32 ret = 1; // 0:成功；-1：失败，服务端返回该值就表示会立刻关闭链路；
+	}
+
+}
+
+/*
+ * 通知客户端有新消息
+ */
+message NotifyMsg {
+
+	message Response {
+		required int32 ret = 1; // 0: 用户有新消息，客户端需要调用拉取消息的接口
+	}
+
+}
+

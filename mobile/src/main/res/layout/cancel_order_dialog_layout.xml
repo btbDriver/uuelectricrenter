@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/confirm_car_round_bg"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/s4">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_cancel_reason_popup" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:text="@string/cancel_reason"
+        android:textColor="@color/c3"
+        android:textSize="@dimen/f2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/s1"
+        android:text="@string/cancel_reason_sub"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f4" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_reason"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginBottom="@dimen/s4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/s4"
+        android:overScrollMode="never" />
+
+    <TextView
+        android:id="@+id/tv_cancel_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/c4"
+        android:textSize="@dimen/f4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:text="您当天可取消3次;需支付取车超时费" />
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/s3"
+        android:background="@drawable/confirm_dialog_btn_bg"
+        android:gravity="center"
+        android:text="@string/cancel_reason_confirm"
+        android:textColor="@drawable/reason_button_text_color" />
+
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="@dimen/s4" />
+</LinearLayout>

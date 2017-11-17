@@ -1,0 +1,88 @@
+package com.uu.facade.activity.pb.common;
+
+//优惠券详情
+message UserCouponInfo{
+	required int32 couponId=1;			//优惠券ID
+	optional string couponName=2;		//优惠券名称
+	optional int32	startUseTime=3;		//开始使用时间
+	optional int32	endUseTime=4;		//截至使用时间
+	optional CouponState couponState=5;	//优惠券状态
+	optional string couponDes=6;		//优惠券描述
+	optional string couponAmount=7;		//优惠券金额
+	optional string	orderUseMsg=8;		//当前订单可用文字信息
+	optional string couponDiscount=9;	//优惠券折扣值 如：8.5折(带'折'字)
+	optional string couponMaxReduce=10;	//折扣优惠券最多减免金额
+	optional int32 couponType=11;		//优惠券类型 0-普通金额优惠券；1-折扣优惠券
+}
+
+//优惠券状态
+enum CouponState{
+	IS_NOT_USE = 0;		//未使用
+	IS_USE = 1;			//已使用
+	IS_OVERTIME = 2;	//已过期
+	IS_ORDER_USE = 3;	//当前订单可用
+}
+
+
+//微信红包列表详情
+message RedEnvelopeInfo{
+	required string orderId = 1;		//订单ID
+	required string openId = 2;			//微信用户唯一标识ID
+	optional string nickName = 3;		//微信用户昵称
+	optional string imagUrl = 4;		// 微信用户图像URL
+	optional int32  title = 5;			//已领取红包用户展示文案对应的ID
+	optional int32 redCouponAmount=6;	//红包优惠券金额
+	optional int64	receiveTime=7;		//红包领取时间
+	optional string couponDiscount = 8;	// 优惠规则折扣值
+	optional double couponMaxReduce = 9;	//折扣优惠券最多减免金额
+	optional int32 couponType = 10;			//优惠券类型 0-普通金额优惠券；1-折扣优惠券
+}
+
+//用户自己领取的微信红包详情
+message RedCouponInfo{
+	optional int32 couponId = 1;			//红包优惠券Id
+	optional string redCouponName = 2;		//名称
+	optional int32  redCouponAmount = 3;	//金额
+	optional int32	validityDays = 4;		//有效期天数
+	optional string shareUserOpenId = 5;	//分享的用户微信用户唯一标识ID
+	optional string shareUserNickName = 6;		//分享的用户微信用户昵称
+	optional string shareUserImagUrl = 7;		//分享的用户 微信用户图像URL
+	optional int64	receiveTime= 8;				//红包领取时间
+	optional string couponDiscount = 9;	// 优惠规则折扣值
+	optional double couponMaxReduce = 10;	//折扣优惠券最多减免金额
+	optional int32 couponType = 11;			//优惠券类型 0-普通金额优惠券；1-折扣优惠券
+}
+
+//微信红包发送消息（MQ）
+message RedEnvelopePush{
+	required string orderId = 1;		//订单ID
+	required string openId = 2;			//微信用户唯一标识ID
+	optional string nickName = 3;		//微信用户昵称
+	optional string imagUrl = 4;		// 微信用户图像URL
+	optional int32	validityDays = 5;		//有效期天数
+	optional int32 redCouponAmount=6;	//红包优惠券金额
+	optional int64	receiveTime=7;		//红包领取时间
+	optional string shareUserOpenId = 8;	//分享的用户微信用户唯一标识ID
+	optional string shareUserNickName = 9;		//分享的用户微信用户昵称
+	optional string shareUserImagUrl = 10;		//分享的用户 微信用户图像URL
+	optional string couponDiscount = 11;	// 优惠规则折扣值
+	optional double couponMaxReduce = 12;	//折扣优惠券最多减免金额
+	optional int32 couponType = 13;			//优惠券类型 0-普通金额优惠券；1-折扣优惠券
+}
+
+//分享用户信息
+message ShareUserInfo{
+	optional string orderId = 1;		//订单ID
+	optional string openId = 2;			//微信用户唯一标识ID
+	optional string nickName = 3;		//微信用户昵称
+	optional string imagUrl = 4;		// 微信用户图像URL
+	optional string mobile = 5;			//用户手机号码
+}
+
+//驾照指引活动文案信息
+message DriverLicenseActivityDescResult{
+	optional string homePageDesc = 1;		//客户端首页文案
+	optional string sideBarDesc = 2;		//侧边栏文案
+	optional string personalPageDesc = 3;	//个人页面文案
+	optional int32 ativityDeadLineTime = 4;	//结束时间
+}

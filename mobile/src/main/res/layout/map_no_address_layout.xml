@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.grantland.widget.AutofitTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_no_address_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="start"
+    android:gravity="center"
+    android:singleLine="true"
+    android:textColor="@color/c3"
+    android:textSize="@dimen/f4" />

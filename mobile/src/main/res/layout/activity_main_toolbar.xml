@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <com.rey.material.widget.Button
+        android:id="@+id/near_station_button"
+        style="@style/NoBgRaiseWaveButtonRippleStyle"
+        app:rd_enable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:text="附近网点"
+        android:textColor="#ffffff" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/h5Button"
+        style="@style/NoBgRaiseWaveButtonRippleStyle"
+        app:rd_enable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:text="跳转H5"
+        android:visibility="gone"
+        android:textColor="#ffffff" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/mdButton"
+        style="@style/NoBgRaiseWaveButtonRippleStyle"
+        app:rd_enable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:onClick="showMD"
+        android:text="MD组件"
+        android:visibility="gone"
+        android:textColor="#ffffff" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/validateButton"
+        style="@style/NoBgRaiseWaveButtonRippleStyle"
+        app:rd_enable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:onClick="showMD"
+        android:text="验证手机"
+        android:textColor="#ffffff" />
+
+</android.support.v7.widget.Toolbar>
